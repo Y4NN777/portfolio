@@ -272,3 +272,4 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 _This portfolio demonstrates modern web development practices and showcases the beauty of well-crafted user interfaces._
 # portfolio
+# portfolio
