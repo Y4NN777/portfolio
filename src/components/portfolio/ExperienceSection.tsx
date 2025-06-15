@@ -19,7 +19,7 @@ const experience = [
       "Consistently praised for skillfulness, quick learning, and strong communication",
       "Earned repeated engagements through reliability and expertise"
     ],
-    technologies: ["JavaScript", "Python", "Node.js", "AWS", "GCP", "OpenAI API", "LangChain"]
+    technologies: ["JavaScript", "Python", "Node.js", "AWS", "Google AI studio"]
   },
   {
     role: "HIMS Master Trainer / PACS Specialist",
