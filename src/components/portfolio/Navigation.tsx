@@ -4,10 +4,12 @@ import { useTheme } from "@/components/ThemeProvider";
 import { useTranslations } from "@/contexts/TranslationContext";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import { useCallback, useState } from "react";
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslations();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: "overview", labelKey: "navigation.links.overview" },
@@ -18,6 +20,13 @@ export default function Navigation() {
     { id: "certifications", labelKey: "navigation.links.certifications" },
     { id: "contact", labelKey: "navigation.links.contact" },
   ];
+
+  const handleScroll = useCallback((sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
 
   return (
     <nav className="fixed top-0 md:top-4 w-full z-50 ">
@@ -30,12 +39,24 @@ export default function Navigation() {
           >
            {t("navigation.brand")}
           </motion.div>
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center gap-4 md:gap-8">
+            <button
+              className="md:hidden p-2 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-300 dark:border-gray-600 transition-all duration-300"
+              aria-label="Toggle navigation menu"
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            >
+              <Icon icon={isMobileMenuOpen ? "solar:close-square-bold" : "solar:hamburger-menu-bold"} width={20} height={20} />
+            </button>
+
             <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.id}
                   href={`#${item.id}`}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    handleScroll(item.id);
+                  }}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -64,6 +85,26 @@ export default function Navigation() {
           </div>
         </div>
       </div>
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white/95 dark:bg-gray-950/90 border-t border-gray-200 dark:border-gray-800 backdrop-blur-md">
+          <div className="flex flex-col divide-y divide-gray-200 dark:divide-gray-800">
+            {navItems.map((item) => (
+              <a
+                key={`mobile-${item.id}`}
+                href={`#${item.id}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  handleScroll(item.id);
+                }}
+                className="py-3 px-6 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+              >
+                {t(item.labelKey)}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 } 
