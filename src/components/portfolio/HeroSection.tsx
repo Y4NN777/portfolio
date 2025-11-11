@@ -2,10 +2,14 @@
 
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "@/contexts/TranslationContext";
 import TypewriterRole from "./TypewriterRole";
 
 export default function HeroSection() {
+  const { t } = useTranslations();
+
   return (
     <div className="relative min-h-[100dvh] flex items-center justify-center">
       {/* Subtle Background Pattern */}
@@ -38,15 +42,31 @@ export default function HeroSection() {
         className="relative z-10 max-w-4xl mx-auto px-6 text-center -mb-8"
       >
 
+        {/* Portrait */}
+        <motion.div
+          className="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 rounded-full bg-white/80 dark:bg-gray-900/80 border border-white/60 dark:border-gray-800/60 shadow-2xl overflow-hidden"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          <Image
+            src="/the-y4nn.png"
+            alt="Ragnang-Newende Yanis Axel DABO portrait"
+            fill
+            priority
+            className="object-cover"
+          />
+        </motion.div>
+
         {/* Name */}
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4"
+          className="text-5xl md:text-6xl %AIfont-bold mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
           <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent z-10">
-            Ragnang-Newende Yanis Axel DABO, aka the Y4NN
+            Ragnang-Newende Yanis Axel DABO
           </span>
         </motion.h1>
 
@@ -60,7 +80,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
         >
-          They call me the digital dreams architect
+          {t("hero.tagline")}
         </motion.p>
 
         {/* Social Links - keeping exactly the same */}
@@ -71,9 +91,9 @@ export default function HeroSection() {
           transition={{ delay: 1.0 }}
         >
           {[
-            { href: "https://github.com/Y4NN777", icon: "simple-icons:github", label: "GitHub", color: "hover:text-gray-900 dark:hover:text-white" },
-            { href: "https//www.linkedin.com/in/y4nnthedev777/", icon: "skill-icons:linkedin", label: "LinkedIn", color: "hover:text-blue-600" },
-            { href: "mailto:axeldaboworkplace@gmail.com", icon: "material-https://www.linkedin.com/in/y4nnthedev777/://www.linkedin.com/in/y4nnthedev777/con-theme:email", label: "Email", color: "hover:text-green-600" }
+            { href: "https://github.com/Y4NN777", icon: "simple-icons:github", label: t("hero.social.github"), color: "hover:text-gray-900 dark:hover:text-white" },
+            { href: "https://www.linkedin.com/in/y4nnthedev777/", icon: "skill-icons:linkedin", label: t("hero.social.linkedin"), color: "hover:text-blue-600" },
+            { href: "mailto:y4nn.dev@gmail.com", icon: "material-symbols:mail-rounded", label: t("hero.social.email"), color: "hover:text-green-600" }
           ].map((link) => (
             <motion.div key={link.label} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
@@ -129,7 +149,7 @@ export default function HeroSection() {
           />
           <Link href="#contact">
             <span className="text-green-700 dark:text-green-300 text-sm font-medium">
-              Available for projects
+              {t("hero.status")}
             </span>
           </Link>
         </motion.div>
@@ -158,7 +178,7 @@ export default function HeroSection() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <span className="text-sm font-medium tracking-wide">Scroll for more</span>
+          <span className="text-sm font-medium tracking-wide">{t("hero.scrollPrompt")}</span>
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

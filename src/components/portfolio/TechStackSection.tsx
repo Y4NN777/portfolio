@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTranslations } from "@/contexts/TranslationContext";
 import SectionHeader from "./SectionHeader";
 
 interface TechItem {
@@ -19,84 +20,84 @@ const techStackData: Record<string, TechItem[]> = {
     {
       name: "Node.js",
       icon: "devicon:nodejs",
-      level: "Expert",
+      level: "Intermediate",
       category: "Backend",
       description: "JavaScript runtime for server-side applications",
-      yearsUsed: 4
-    },
-    {
-      name: "Python",
-      icon: "devicon:python",
-      level: "Expert",
-      category: "Backend",
-      description: "Versatile language for backend and data science",
-      yearsUsed: 5
+      yearsUsed: 2
     },
     {
       name: "Express",
       icon: "skill-icons:expressjs-dark",
-      level: "Expert",
+      level: "Intermediate",
       category: "Backend",
       description: "Fast, minimalist web framework for Node.js",
+      yearsUsed: 2
+    },
+    {
+      name: "FastAPI",
+      icon: "devicon:fastapi",
+      level: "Beginner",
+      category: "Backend",
+      description: "Versatile language for backend and data science",
+      yearsUsed: 1
+    },
+    {
+      name: "Flask",
+      icon: "devicon:flask",
+      level: "Intermediate",
+      category: "Backend",
+      description: "Lightweight Python web framework",
+      yearsUsed: 2
+    },
+    {
+      name: "Laravel",
+      icon: "devicon:laravel",
+      level: "Intermediate",
+      category: "Backend",
+      description: "PHP web application framework",
       yearsUsed: 3
-    },
-    {
-      name: "Django",
-      icon: "material-icon-theme:django",
-      level: "Intermediate",
-      category: "Backend",
-      description: "High-level Python web framework",
-      yearsUsed: 2
-    },
-    {
-      name: "GraphQL",
-      icon: "logos:graphql",
-      level: "Intermediate",
-      category: "Backend",
-      description: "Query language for APIs",
-      yearsUsed: 2
     },
     {
       name: "Socket.io",
       icon: "simple-icons:socketdotio",
-      level: "Intermediate",
+      level: "Beginner",
       category: "Backend",
       description: "Real-time bidirectional event-based communication",
-      yearsUsed: 2
+      yearsUsed: 1
     },
   ],
   "Frontend": [
     {
       name: "React",
       icon: "skill-icons:react-dark",
-      level: "Expert",
+      level: "Intermediate",
       category: "Frontend",
       description: "Building modern, interactive user interfaces",
-      yearsUsed: 4
+      yearsUsed: 2
     },
     {
       name: "Next.js",
       icon: "devicon:nextjs",
-      level: "Expert",
+      level: "Intermediate",
       category: "Frontend",
       description: "Full-stack React framework for production apps",
-      yearsUsed: 3
+      yearsUsed: 1
     },
     {
       name: "TypeScript",
       icon: "devicon:typescript",
-      level: "Expert",
+      level: "Intermediate",
       category: "Frontend",
       description: "Type-safe JavaScript for scalable applications",
-      yearsUsed: 4
+      yearsUsed: 2
     },
     {
       name: "JavaScript",
       icon: "devicon:javascript",
-      level: "Expert",
+      level: "Intermediate",
       category: "Frontend",
       description: "Core language for web development",
-      yearsUsed: 5
+      yearsUsed: 2
     },
     {
       name: "Tailwind CSS",
@@ -104,7 +105,7 @@ const techStackData: Record<string, TechItem[]> = {
       level: "Expert",
       category: "Frontend",
       description: "Utility-first CSS framework for rapid UI development",
-      yearsUsed: 3
+      yearsUsed: 2
     },
     {
       name: "Flutter",
@@ -119,39 +120,39 @@ const techStackData: Record<string, TechItem[]> = {
     {
       name: "PostgreSQL",
       icon: "logos:postgresql",
-      level: "Expert",
+      level: "Beginner",
       category: "Database",
       description: "Advanced open-source relational database",
-      yearsUsed: 3
-    },
-    {
-      name: "MongoDB",
-      icon: "devicon:mongodb",
-      level: "Expert",
-      category: "Database",
-      description: "NoSQL document database",
-      yearsUsed: 3
+      yearsUsed: 1
     },
     {
       name: "MySQL",
       icon: "logos:mysql",
-      level: "Intermediate",
+      level: "Expert",
       category: "Database",
       description: "Popular open-source relational database",
       yearsUsed: 3
     },
     {
-      name: "Redis",
-      icon: "devicon:redis",
+      name: "SQlite",
+      icon: "skill-icons:sqlite",
       level: "Intermediate",
       category: "Database",
-      description: "In-memory data structure store",
+      description: "SQlite ",
+      yearsUsed: 3,
+    },
+    {
+      name: "MongoDB",
+      icon: "devicon:mongodb",
+      level: "Intermediate",
+      category: "Database",
+      description: "NoSQL document database",
       yearsUsed: 2
     },
     {
       name: "Prisma",
       icon: "skill-icons:prisma",
-      level: "Expert",
+      level: "Intermediate",
       category: "Database",
       description: "Next-generation ORM for Node.js and TypeScript",
       yearsUsed: 2
@@ -169,18 +170,18 @@ const techStackData: Record<string, TechItem[]> = {
     {
       name: "GCP",
       icon: "skill-icons:gcp-light",
-      level: "Intermediate",
+      level: "Beginner",
       category: "Cloud & DevOps",
       description: "Google Cloud Platform services",
-      yearsUsed: 2
+      yearsUsed: 1
     },
     {
-      name: "Firebase",
-      icon: "vscode-icons:file-type-firebase",
-      level: "Expert",
+      name: "Supabase",
+      icon: "devicon:supabase",
+      level: "Intermediate",
       category: "Cloud & DevOps",
       description: "Google's app development platform",
-      yearsUsed: 3
+      yearsUsed: 1
     },
     {
       name: "Docker",
@@ -188,7 +189,7 @@ const techStackData: Record<string, TechItem[]> = {
       level: "Intermediate",
       category: "Cloud & DevOps",
       description: "Containerization platform",
-      yearsUsed: 2
+      yearsUsed: 1
     },
     {
       name: "Git",
@@ -196,7 +197,7 @@ const techStackData: Record<string, TechItem[]> = {
       level: "Expert",
       category: "Cloud & DevOps",
       description: "Version control system",
-      yearsUsed: 5
+      yearsUsed: 2
     },
   ],
   "AI & Integration": [
@@ -217,16 +218,16 @@ const techStackData: Record<string, TechItem[]> = {
       yearsUsed: 1
     },
     {
-      name: "Vercel AI SDK",
-      icon: "skill-icons:vercel-light",
+      name: "Google AI Studio",
+      icon: "simple-icons:google",
       level: "Expert",
       category: "AI & Integration",
       description: "Building AI-powered streaming UIs",
       yearsUsed: 1
     },
     {
-      name: "Stripe",
-      icon: "logos:stripe",
+      name: "HuggingFace Hub",
+      icon: "simple-icons:huggingface",
       level: "Intermediate",
       category: "AI & Integration",
       description: "Payment processing integration",
@@ -245,7 +246,11 @@ const techStackData: Record<string, TechItem[]> = {
 };
 
 export default function TechStackSection() {
+  const { t } = useTranslations();
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  const formatCategoryKey = (value: string) => value.toLowerCase().replace(/[^a-z]/g, "");
+  const getCategoryLabel = (category: string) =>
+    t(`techStack.filterLabels.${formatCategoryKey(category)}`, category);
 
   const categories = ["All", ...Object.keys(techStackData)];
 
@@ -263,10 +268,10 @@ export default function TechStackSection() {
       className="mb-16"
     >
       <SectionHeader
-        tagText="Tech Arsenal"
+        tagText={t("techStack.tagText")}
         tagIcon="solar:settings-bold"
-        heading="Technology Stack"
-        description="Technologies I use to bring ideas to life"
+        heading={t("techStack.heading")}
+        description={t("techStack.description")}
         showUnderline={false}
         centered={true}
       />
@@ -283,7 +288,7 @@ export default function TechStackSection() {
                 : "bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300"
                 }`}
             >
-              {category}
+              {getCategoryLabel(category)}
             </button>
           ))}
         </div>

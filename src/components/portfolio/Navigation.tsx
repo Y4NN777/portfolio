@@ -1,11 +1,23 @@
 "use client";
 
 import { useTheme } from "@/components/ThemeProvider";
+import { useTranslations } from "@/contexts/TranslationContext";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslations();
+
+  const navItems = [
+    { id: "overview", labelKey: "navigation.links.overview" },
+    { id: "stack", labelKey: "navigation.links.stack" },
+    { id: "experience", labelKey: "navigation.links.experience" },
+    { id: "projects", labelKey: "navigation.links.projects" },
+    // { id: "testimonials", labelKey: "navigation.links.testimonials" },
+    { id: "certifications", labelKey: "navigation.links.certifications" },
+    { id: "contact", labelKey: "navigation.links.contact" },
+  ];
 
   return (
     <nav className="fixed top-0 md:top-4 w-full z-50 ">
@@ -16,20 +28,20 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             className="text-xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-violet-600 dark:from-indigo-400 dark:via-purple-400 dark:to-violet-400 bg-clip-text text-transparent"
           >
-            MR
+           {t("navigation.brand")}
           </motion.div>
           <div className="flex items-center space-x-8">
             <div className="hidden md:flex items-center space-x-8">
-              {["Overview", "Stack", "Experience", "Projects", "Testimonials", "Certifications", "Contact"].map((item, index) => (
+              {navItems.map((item, index) => (
                 <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
+                  key={item.id}
+                  href={`#${item.id}`}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300 text-sm font-medium"
                 >
-                  {item}
+                  {t(item.labelKey)}
                 </motion.a>
               ))}
             </div>

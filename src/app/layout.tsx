@@ -1,5 +1,6 @@
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { TranslationProvider } from "@/contexts/TranslationContext";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -7,13 +8,20 @@ import "./globals.css";
 const inter = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"] });
 
 export const metadata: Metadata = {
-  title: "Muhammad Ramazan - Full Stack Developer",
-  description: "Portfolio of Muhammad Ramazan, a passionate full-stack developer specializing in modern web technologies, React, Next.js, and innovative digital solutions.",
-  keywords: "Muhammad Ramazan, Full Stack Developer, React, Next.js, Web Development, Portfolio",
-  authors: [{ name: "Muhammad Ramazan" }],
+  title: "Ragnang-Newende Yanis Axel DABO(the Y4NN ) - Backend Developer, GenIA & AgenticAI Enthusiast, Web3 Enthusiast, Aspiring Software and Systems Engineer",
+  description: "Portfolio of the Y4NN, a passionate full-stack developer specializing in modern web technologies, React, Next.js, and innovative digital solutions.",
+  keywords: "Ragnang-Newende Yanis Axel DABO, Backend Developer, GenIA, AgenticAI, Web3, Software Engineer, Systems Engineer, Portfolio",
+  authors: [{ name: "Ragnang-Newende Yanis Axel DABO" }],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/the-y4nn.png", type: "image/png" },
+    ],
+    apple: "/the-y4nn.png",
+  },
   openGraph: {
-    title: "Muhammad Ramazan - Full Stack Developer",
-    description: "Portfolio of Muhammad Ramazan, a passionate full-stack developer specializing in modern web technologies.",
+    title: "Ragnang-Newende Yanis Axel DABO - Backend Developer, GenIA & AgenticAI Enthusiast, Web3 Enthusiast, Aspiring Software and Systems Engineer",
+    description: "Portfolio of the Y4NN, a passionate developer specializing in modern and smart systems building.",
     type: "website",
   },
 };
@@ -28,8 +36,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <PostHogProvider>
           <ThemeProvider>
-            {/* <AnimatedBackground /> */}
-            {children}
+            <TranslationProvider>
+              {/* <AnimatedBackground /> */}
+              {children}
+            </TranslationProvider>
           </ThemeProvider>
         </PostHogProvider>
       </body>

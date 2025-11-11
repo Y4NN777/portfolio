@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Background() {
   const [isMobile, setIsMobile] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -16,8 +17,23 @@ export default function Background() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   // Reduce particle count on mobile
   const particleCount = isMobile ? 5 : 12;
+
+  const particles = useMemo(() => {
+    if (!hasMounted) return [];
+    return Array.from({ length: particleCount }).map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      duration: Math.random() * 2 + 4,
+      delay: Math.random() * 3,
+      travel: isMobile ? -50 : -100,
+    }));
+  }, [particleCount, hasMounted, isMobile]);
 
   // Reduce animation complexity on mobile
   const animationConfig = isMobile
@@ -87,23 +103,23 @@ export default function Background() {
       )}
 
       {/* Reduced floating particles */}
-      {Array.from({ length: particleCount }).map((_, i) => (
+      {particles.map((particle, i) => (
         <motion.div
-          key={i}
+          key={`particle-${i}`}
           className="absolute w-1 h-1 bg-blue-400/60 rounded-full"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            willChange: 'transform, opacity',
+            left: particle.left,
+            top: particle.top,
+            willChange: "transform, opacity",
           }}
           animate={{
-            y: [0, isMobile ? -50 : -100],
+            y: [0, particle.travel],
             opacity: [0, 1, 0],
           }}
           transition={{
-            duration: Math.random() * 2 + 4,
+            duration: particle.duration,
             repeat: Infinity,
-            delay: Math.random() * 3,
+            delay: particle.delay,
             ease: "linear",
           }}
         />

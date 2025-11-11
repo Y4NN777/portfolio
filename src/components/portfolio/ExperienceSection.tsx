@@ -1,45 +1,72 @@
 "use client";
 
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "@/contexts/TranslationContext";
 import SectionHeader from "./SectionHeader";
+import { translations } from "@/lib/i18n/translations";
 
-const experience = [
+type ExperienceItemKey = keyof typeof translations.en.experience.items;
+
+const experienceEntries: Array<{
+  id: ExperienceItemKey;
+  companyLogo: string;
+  companyColor: string;
+  accentGradient: string;
+  technologies: string[];
+}> = [
   {
-    role: "Software Developer",
-    company: "Upwork",
-    period: "January 2020 — Present",
-    type: "Freelance",
-    companyIcon: "fa6-brands:square-upwork",
-    companyColor: "from-green-500 to-green-600",
-    description: "Delivered high-quality projects across diverse domains, including web and mobile applications, API development, and cloud integrations (AWS, GCP).",
-    achievements: [
-      "Achieved Top-Rated status with a 91% job success score",
-      "Completed 10+ projects focusing on scalable solutions",
-      "Consistently praised for skillfulness, quick learning, and strong communication",
-      "Earned repeated engagements through reliability and expertise"
+    id: "y7Solutions",
+    companyLogo: "/y7_solutions_logo.jpeg",
+    companyColor: "from-[#061627] to-[#0770cf]",
+    accentGradient: "from-[#0f4c81] to-[#3dbbff]",
+    technologies: [
+      "JavaScript",
+      "TypeScript",
+      "Laravel",
+      "FastAPI",
+      "Node.js",
+      "AWS",
+      "Google AI Studio",
+      "OpenAI",
+      "GenKit SDK",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Docker",
+      "OVHcloud",
+      "Git",
+      "GitHub",
+      "GitHub Actions",
     ],
-    technologies: ["JavaScript", "Python", "Node.js", "AWS", "Google AI studio"]
   },
   {
-    role: "HIMS Master Trainer / PACS Specialist",
-    company: "Public Health Organization, Islamabad",
-    period: "July 2019 — Present",
-    type: "Full-time",
-    companyColor: "from-blue-500 to-blue-600",
-    companyIcon: "mdi:hospital-building",
-    description: "Spearheaded organizational transformation from paper-based manual systems to completely integrated HIMS and PACS (Picture Archiving and Communication System).",
-    achievements: [
-      "Led integration of 45+ radiology machines (CT, MRI, X-Ray, Ultrasound)",
-      "Ensured active monitoring for integration issues",
-      "Acted as master trainer and led support team",
-      "Communicated issues and requirements to backend teams"
-    ],
-    technologies: ["HIMS", "PACS", "System Integration", "Healthcare IT", "Training & Support"]
-  }
+    id: "fikasso",
+    companyColor: "from-[#a4ddf1] via-[#f6fbf7] to-[#95bb2d]",
+    accentGradient: "from-[#a4ddf1] to-[#95bb2d]",
+    companyLogo: "/fikasso-security.jpeg",
+    technologies: ["TypeScript", "Laravel", "React", "MySQL", "Node.js", "Agile Methodology"],
+  },
+  {
+    id: "bitSolutions",
+    companyColor: "from-white via-white to-[#dfe7f2]",
+    accentGradient: "from-white to-[#dfe7f2]",
+    companyLogo: "/bit_solutions.png",
+    technologies: ["Python", "Google AI Studio", "Gemini", "Node.js", "Flask", "Supabase"],
+  },
+  {
+    id: "freelance",
+    companyColor: "from-white via-white to-[#dfe7f2]",
+    accentGradient: "from-white to-[#dfe7f2]",
+    companyLogo: "/freelance.png",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Figma"],
+  },
 ];
 
 export default function ExperienceSection() {
+  const { t, locale } = useTranslations();
+  const experienceCopy = translations[locale].experience.items as typeof translations.en.experience.items;
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -95,11 +122,11 @@ export default function ExperienceSection() {
 
       <div className="relative z-10">
         <SectionHeader
-          tagText="Professional Journey"
+          tagText={t("experience.tagText")}
           tagIcon="solar:case-bold"
-          heading="Experience"
+          heading={t("experience.heading")}
           showUnderline={false}
-          description="My professional journey and the impact I've made across different domains"
+          description={t("experience.description")}
           centered={true}
         />
 
@@ -110,7 +137,10 @@ export default function ExperienceSection() {
           viewport={{ once: true }}
           className="max-w-5xl mx-auto space-y-6 md:space-y-12 px-4 md:px-6"
         >
-          {experience.map((exp, index) => (
+          {experienceEntries.map((exp, index) => {
+            const copy = experienceCopy[exp.id];
+            if (!copy) return null;
+            return (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -124,11 +154,13 @@ export default function ExperienceSection() {
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     className={`w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-gradient-to-br ${exp.companyColor} flex items-center justify-center shadow-xl md:shadow-2xl mb-3 md:mb-4 relative overflow-hidden group-hover:shadow-2xl md:group-hover:shadow-3xl transition-all duration-500`}
                   >
-                    <Icon
-                      icon={exp.companyIcon!}
-                      className="text-white w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 relative z-10"
-                      width={40}
-                      height={40}
+                    <Image
+                      src={exp.companyLogo}
+                      alt={`${copy.company} logo`}
+                      fill
+                      sizes="80px"
+                      priority={index === 0}
+                      className="object-contain p-1 sm:p-2 md:p-3"
                     />
                     {/* Animated background gradient */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${exp.companyColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
@@ -146,7 +178,7 @@ export default function ExperienceSection() {
                       className="flex items-center gap-2 md:gap-3 text-gray-600 dark:text-gray-400 text-xs md:text-sm font-medium"
                     >
                       <Icon icon="solar:calendar-outline" width={14} height={14} className="md:w-4 md:h-4" />
-                      <span>{exp.period}</span>
+                      <span>{copy.period}</span>
                     </motion.div>
 
                     <motion.h3
@@ -155,7 +187,7 @@ export default function ExperienceSection() {
                       transition={{ delay: 0.3 }}
                       className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight"
                     >
-                      {exp.role}
+                      {copy.role}
                     </motion.h3>
 
                     <motion.p
@@ -164,7 +196,7 @@ export default function ExperienceSection() {
                       transition={{ delay: 0.4 }}
                       className="text-lg md:text-xl text-blue-600 dark:text-blue-400 font-semibold"
                     >
-                      {exp.company}
+                      {copy.company}
                     </motion.p>
                   </div>
 
@@ -175,7 +207,7 @@ export default function ExperienceSection() {
                     transition={{ delay: 0.5 }}
                     className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed"
                   >
-                    {exp.description}
+                    {copy.description}
                   </motion.p>
 
                   {/* Achievements */}
@@ -187,11 +219,11 @@ export default function ExperienceSection() {
                   >
                     <h4 className="text-base md:text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
                       <Icon icon="solar:cup-star-bold" className="text-amber-500" width={22} height={22} />
-                      Key Achievements
+                      {t("experience.keyAchievementsTitle")}
                     </h4>
 
                     <div className="space-y-2 md:space-y-3">
-                      {exp.achievements.map((achievement, achIndex) => (
+                      {copy.achievements.map((achievement: string, achIndex: number) => (
                         <motion.div
                           key={achIndex}
                           initial={{ opacity: 0, x: -20 }}
@@ -199,7 +231,7 @@ export default function ExperienceSection() {
                           transition={{ delay: 0.7 + achIndex * 0.1 }}
                           className="flex items-start gap-3 md:gap-4 group/achievement hover:translate-x-1 md:hover:translate-x-2 transition-transform duration-300"
                         >
-                          <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center mt-0.5 shadow-md md:shadow-lg group-hover/achievement:scale-110 transition-transform duration-300">
+                          <div className={`flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-gradient-to-br ${exp.accentGradient ?? "from-green-400 to-blue-500"} flex items-center justify-center mt-0.5 shadow-md md:shadow-lg group-hover/achievement:scale-110 transition-transform duration-300`}>
                             <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full" />
                           </div>
                           <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm md:text-base">
@@ -219,7 +251,7 @@ export default function ExperienceSection() {
                   >
                     <h4 className="text-base md:text-lg font-bold text-gray-800 dark:text-gray-200 flex items-center gap-2">
                       <Icon icon="solar:programming-bold" className="text-purple-500" width={18} height={18} />
-                      Technologies & Skills
+                      {t("experience.techTitle")}
                     </h4>
 
                     <div className="flex flex-wrap gap-2 md:gap-3">
@@ -241,7 +273,7 @@ export default function ExperienceSection() {
               </div>
 
               {/* Divider */}
-              {index < experience.length - 1 && (
+              {index < experienceEntries.length - 1 && (
                 <motion.div
                   initial={{ opacity: 0, scaleX: 0 }}
                   whileInView={{ opacity: 1, scaleX: 1 }}
@@ -250,7 +282,7 @@ export default function ExperienceSection() {
                 />
               )}
             </motion.div>
-          ))}
+          )})}
         </motion.div>
 
         {/* Experience Summary Stats */}
@@ -266,24 +298,24 @@ export default function ExperienceSection() {
               whileHover={{ scale: 1.05, y: -5 }}
               className="group p-6 md:p-8 rounded-xl md:rounded-2xl bg-gradient-to-br from-blue-50/50 to-blue-100/30 dark:from-blue-950/20 dark:to-blue-900/10 border border-blue-200/30 dark:border-blue-800/20 hover:border-blue-300/50 dark:hover:border-blue-600/30 transition-all duration-500"
             >
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300">5+</div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium text-base md:text-lg">Years Experience</div>
+              <div className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300">2+</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium text-base md:text-lg">{t("experience.stats.years")}</div>
             </motion.div>
 
             <motion.div
               whileHover={{ scale: 1.05, y: -5 }}
               className="group p-6 md:p-8 rounded-xl md:rounded-2xl bg-gradient-to-br from-green-50/50 to-green-100/30 dark:from-green-950/20 dark:to-green-900/10 border border-green-200/30 dark:border-green-800/20 hover:border-green-300/50 dark:hover:border-green-600/30 transition-all duration-500"
             >
-              <div className="text-4xl md:text-5xl font-bold text-green-600 dark:text-green-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300">50+</div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium text-base md:text-lg">Projects Completed</div>
+              <div className="text-4xl md:text-5xl font-bold text-green-600 dark:text-green-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300">7+</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium text-base md:text-lg">{t("experience.stats.projects")}</div>
             </motion.div>
 
             <motion.div
               whileHover={{ scale: 1.05, y: -5 }}
               className="group p-6 md:p-8 rounded-xl md:rounded-2xl bg-gradient-to-br from-purple-50/50 to-purple-100/30 dark:from-purple-950/20 dark:to-purple-900/10 border border-purple-200/30 dark:border-purple-800/20 hover:border-purple-300/50 dark:hover:border-purple-600/30 transition-all duration-500 sm:col-span-2 lg:col-span-1"
             >
-              <div className="text-4xl md:text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300">91%</div>
-              <div className="text-gray-600 dark:text-gray-400 font-medium text-base md:text-lg">Success Rate</div>
+              <div className="text-4xl md:text-5xl font-bold text-purple-600 dark:text-purple-400 mb-2 md:mb-3 group-hover:scale-110 transition-transform duration-300">77%</div>
+              <div className="text-gray-600 dark:text-gray-400 font-medium text-base md:text-lg">{t("experience.stats.success")}</div>
             </motion.div>
           </div>
         </motion.div>

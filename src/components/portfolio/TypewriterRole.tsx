@@ -1,19 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useTranslations } from "@/contexts/TranslationContext";
+import { translations } from "@/lib/i18n/translations";
 
 export default function TypewriterRole() {
+  const { locale } = useTranslations();
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const roles = [
-    "Full Stack Developer",
-    "Software Engineer",
-    "Systems Designer",
-    "AI Enthusiast"
-  ];
+  const roles = useMemo(() => translations[locale].hero.roles, [locale]);
 
   // Typewriter effect
   useEffect(() => {
