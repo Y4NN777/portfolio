@@ -36,8 +36,8 @@ export const translations = {
       greeting: "Hello, I'm the Y4NN",
       introHighlight: {
         prefix: "A 22 years old junior ",
-        backend: "Backend Developer that knows some frontend :) and DevOps",
-        connector: " and ",
+        backend: "Backend Developer that knows some frontend and DevOps :).",
+        connector: " I'm also an ",
         ai: "AI hobbyist and Web3 Enthusiast",
         experience: " . 2+ years",
         suffix: " of experience in actively exploring modern software engineering and building products that people love.",
@@ -298,9 +298,9 @@ export const translations = {
       greeting: "Salut, je suis le Y4NN",
       introHighlight: {
         prefix: "Développeur backend junior de 22 ans qui touche aussi au ",
-        backend: "frontend et un peu de DevOps",
-        connector: " et ",
-        ai: "passionné d'IA et de Web3. ",
+        backend: "frontend et un peu de DevOps :).",
+        connector: " Je suis aussi un ",
+        ai: "passionné d'IA et de Web3.",
         experience: " J'ai 2+ ans",
         suffix: " d'expérience dans l'exploration de l'ingenierie logicielle et à concevoir des solutions appréciés.",
       },
