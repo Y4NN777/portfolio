@@ -6,7 +6,17 @@ import { useTranslations } from "@/contexts/TranslationContext";
 import { translations } from "@/lib/i18n/translations";
 import SectionHeader from "./SectionHeader";
 
-const professionalRoleCards = [
+type OverviewRoleKey = keyof typeof translations.en.overview.roles;
+
+const professionalRoleCards: Array<{
+  id: OverviewRoleKey;
+  containerClass: string;
+  iconWrapper: string;
+  icon: string;
+  badgeIcon: string;
+  badgeColor: string;
+  highlightColor: string;
+}> = [
   {
     id: "freelance",
     containerClass:
@@ -30,8 +40,8 @@ const professionalRoleCards = [
 ];
 
 export default function OverviewSection() {
-  const { t, locale } = useTranslations();
-  const overviewCopy = translations[locale].overview;
+  const { locale } = useTranslations();
+  const overviewCopy = translations[locale].overview as typeof translations.en.overview;
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
