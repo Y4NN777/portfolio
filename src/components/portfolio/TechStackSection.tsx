@@ -149,30 +149,14 @@ const techStackData: Record<string, TechItem[]> = {
       description: "NoSQL document database",
       yearsUsed: 2
     },
-    {
-      name: "Prisma",
-      icon: "skill-icons:prisma",
-      level: "Intermediate",
-      category: "Database",
-      description: "Next-generation ORM for Node.js and TypeScript",
-      yearsUsed: 2
-    },
   ],
-  "Cloud & DevOps": [
+  "Cloud & DevOps Tools": [
     {
       name: "AWS",
       icon: "skill-icons:aws-light",
-      level: "Intermediate",
-      category: "Cloud & DevOps",
-      description: "Amazon Web Services cloud platform",
-      yearsUsed: 2
-    },
-    {
-      name: "GCP",
-      icon: "skill-icons:gcp-light",
       level: "Beginner",
       category: "Cloud & DevOps",
-      description: "Google Cloud Platform services",
+      description: "Amazon Web Services cloud platform",
       yearsUsed: 1
     },
     {
@@ -186,7 +170,7 @@ const techStackData: Record<string, TechItem[]> = {
     {
       name: "Docker",
       icon: "devicon:docker",
-      level: "Intermediate",
+      level: "Beginner",
       category: "Cloud & DevOps",
       description: "Containerization platform",
       yearsUsed: 1
@@ -199,20 +183,36 @@ const techStackData: Record<string, TechItem[]> = {
       description: "Version control system",
       yearsUsed: 2
     },
+    {
+      name: "Github",
+      icon: "devicon:github",
+      level: "Expert",
+      category: "Cloud & DevOps",
+      description: "Source Code Hosting",
+      yearsUsed: 2
+    },
+    {
+      name: "Make",
+      icon: "simple-icons:make",
+      level: "Intermediate",
+      category: "Cloud & DevOps",
+      description: "Build automation",
+      yearsUsed: 1
+    }
   ],
   "AI & Integration": [
     {
       name: "OpenAI",
       icon: "simple-icons:openai",
-      level: "Expert",
+      level: "Intermediate",
       category: "AI & Integration",
       description: "AI-powered applications and chatbots",
-      yearsUsed: 2
+      yearsUsed: 1
     },
     {
       name: "LangChain",
       icon: "simple-icons:langchain",
-      level: "Expert",
+      level: "Intermediate",
       category: "AI & Integration",
       description: "Framework for developing LLM applications",
       yearsUsed: 1
@@ -231,7 +231,7 @@ const techStackData: Record<string, TechItem[]> = {
       level: "Intermediate",
       category: "AI & Integration",
       description: "Payment processing integration",
-      yearsUsed: 2
+      yearsUsed: 1
     },
     {
       // vector database

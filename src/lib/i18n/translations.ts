@@ -38,8 +38,8 @@ export const translations = {
         prefix: "A 22 years old junior ",
         backend: "Backend Developer that knows some frontend and DevOps :).",
         connector: " I'm also an ",
-        ai: "AI hobbyist and Web3 Enthusiast",
-        experience: " . 2+ years",
+        ai: "AI hobbyist and Web3 Enthusiast. ",
+        experience: "I have 2+ years",
         suffix: " of experience in actively exploring modern software engineering and building products that people love.",
       },
       introParagraph1:
@@ -85,8 +85,8 @@ export const translations = {
           badge: "Secure, Scalable Backends",
         },
         matrix: {
-          title: "The Matrix Co-Founder & President",
-          company: "Software Engineering Club",
+          title: "The Matrix Co-Founder",
+          company: "Software Engineering Club - Burkina Institute Of Technology",
           period: "2025 — Present",
           description:
             "Leading the strategic vision, coordination, and growth of the Matrix learning ecosystem, fostering innovation, technical mastery, and collaborative leadership among members. Training minds to think deeper, build smarter, and act with structure and commitment.",
@@ -150,7 +150,7 @@ export const translations = {
           description:
             "My earliest freelance experiments: crafting simple static sites with HTML, CSS, and vanilla JS while studying backend concepts and modern frameworks to bring more value later.",
           achievements: [
-            "Delivered a couple of showcase sites for local clubs and shops within tight timelines",
+            "Delivered a couple of showcase sites for local businesses and shops within tight timelines",
             "Learned responsive design basics directly from feedback loops with non-technical clients",
             "Documented naming, spacing, and color systems to speed up each subsequent build",
           ],
@@ -348,7 +348,7 @@ export const translations = {
         },
         matrix: {
           title: "Co-fondateur & Président de The Matrix",
-          company: "Club d'ingénierie logicielle",
+          company: "Club d'ingénierie logicielle - Burkina Institute Of Technology",
           period: "2025 — Aujourd'hui",
           description:
             "Je porte la vision, la coordination et la croissance de l'écosystème d'apprentissage Matrix, en stimulant l'innovation, la maîtrise technique et le leadership collectif. Objectif : former des esprits qui réfléchissent en profondeur, construisent plus intelligemment et agissent avec méthode.",
@@ -412,7 +412,7 @@ export const translations = {
           description:
             "Mes débuts freelance : créer des sites statiques avec HTML, CSS et JavaScript tout en étudiant les bases du backend et des frameworks modernes pour offrir plus de valeur plus tard.",
           achievements: [
-            "Réalisation de quelques sites vitrines pour des clubs et commerces locaux",
+            "Réalisation de quelques sites vitrines pour des commerces locaux",
             "Apprentissage du responsive design via les retours des clients",
             "Documentation des conventions (noms, couleurs, espacements) pour gagner du temps",
           ],
