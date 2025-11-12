@@ -111,7 +111,7 @@ export const translations = {
           company: "Y7 Labs",
           period: "August 2024 — Present",
           description:
-            "Leading Y7 Labs, an project of an applied R&D studio in development, most recently focused on AI-native systems. I architect resilient products, integrate AI responsibly, and deliver security-by-design platforms for communities and partners who need clarity, reliability, and velocity.",
+            "Leading Y7 Labs, a project of an applied R&D studio in development, most recently focused on AI-native systems. I architect resilient products, integrate AI responsibly, and deliver security-by-design platforms for communities and partners who need clarity, reliability, and velocity.",
           achievements: [
             "Achieved every roadmap milestone on schedule and inside budget",
             "Deployed 2+ open source  systems optimized for scale, observability, and UX clarity",
