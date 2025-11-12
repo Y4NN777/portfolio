@@ -106,12 +106,12 @@ export const translations = {
         success: "Success Rate",
       },
       items: {
-        y7Solutions: {
+        y7labs: {
           role: "Founder & CTO",
-          company: "Y7 Solutions",
+          company: "Y7 Labs",
           period: "August 2024 — Present",
           description:
-            "Leading Y7 Solutions, an applied R&D studio in development, most recently focused on AI-native systems. I architect resilient products, integrate AI responsibly, and deliver security-by-design platforms for communities and partners who need clarity, reliability, and velocity.",
+            "Leading Y7 Labs, an project of an applied R&D studio in development, most recently focused on AI-native systems. I architect resilient products, integrate AI responsibly, and deliver security-by-design platforms for communities and partners who need clarity, reliability, and velocity.",
           achievements: [
             "Achieved every roadmap milestone on schedule and inside budget",
             "Deployed 2+ open source  systems optimized for scale, observability, and UX clarity",
@@ -368,7 +368,7 @@ export const translations = {
         success: "Taux de réussite",
       },
       items: {
-        y7Solutions: {
+        y7labs: {
           role: "Fondateur & CTO",
           company: "Y7 Solutions",
           period: "Août 2024 — Aujourd'hui",

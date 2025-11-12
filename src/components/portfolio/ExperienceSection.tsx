@@ -17,7 +17,7 @@ const experienceEntries: Array<{
   technologies: string[];
 }> = [
   {
-    id: "y7Solutions",
+    id: "y7labs",
     companyLogo: "/y7_solutions_logo.jpeg",
     companyColor: "from-[#061627] to-[#0770cf]",
     accentGradient: "from-[#0f4c81] to-[#3dbbff]",
