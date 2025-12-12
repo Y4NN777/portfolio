@@ -10,7 +10,7 @@ const inter = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"] 
 export const metadata: Metadata = {
   title: "TheY4NN, the777th Dev",
   description: "Portfolio of the Y4NN, a curious backend/full-stack developer specializing in modern software engineering, AI engineering.",
-  keywords: "Ragnang-Newende Yanis Axel DABO, Backend Developer, GenIA, AgenticAI, Web3, Software Engineer, Systems Engineer, Portfolio",
+  keywords: "Ragnang-Newende Yanis Axel DABO, Backend Developer, GenIA, AgenticAI, Web3, Software Engineer, Systems Engineer, Portfolio, AI Engineering, Secure, performant",
   authors: [{ name: "Ragnang-Newende Yanis Axel DABO" }],
   icons: {
     icon: [
