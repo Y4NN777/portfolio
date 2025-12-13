@@ -189,7 +189,7 @@ The portfolio includes a lightweight, extensible translation system:
 - **Translation Provider**: Copy is served through the `TranslationProvider` (`src/contexts/TranslationContext.tsx`)
 - **Translation Hook**: Use `const { t, locale, setLocale } = useTranslations();` in any component
 - **Translation Files**: All strings live in `src/lib/i18n/translations.ts`
-- **Default Locale**: French (`fr`) is the default locale
+- **Default Locale**: English (`en`) is the default locale
 
 ### Supported Sections
 
