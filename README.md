@@ -1,26 +1,90 @@
 # 🚀 Y4NN777 - Portfolio
 
-A stunning, modern portfolio website built with cutting-edge technologies and beautiful animations inspired by Aceternity UI design principles.
+A modern portfolio website built with Next.js, TypeScript, and beautiful animations.
 
-![Portfolio Preview](https://img.shields.io/badge/Portfolio-Live-brightgreen)
-![Next.js](https://img.shields.io/badge/Next.js-15.3-black)
+![Next.js](https://img.shields.io/badge/Next.js-15.5-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.0-38B2AC)
-![Framer Motion](https://img.shields.io/badge/Framer%20Motion-11.0-FF0055)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-38B2AC)
+![React](https://img.shields.io/badge/React-19.0-61DAFB)
 
-## Localization (Experimental)
+## ✨ Features
 
-The portfolio now ships with a lightweight translation system:
+- 🎨 **Responsive Design** with dark/light mode
+- 🌐 **Multi-language Support** (English & French)
+- ⚡ **Smooth Animations** with Framer Motion
+- 📧 **Contact Form** with EmailJS integration
+- 📊 **Analytics** with PostHog
 
-- Copy is served through the `TranslationProvider` (`src/contexts/TranslationContext.tsx`), which exposes the current locale and a `t(key, fallback?)` helper. The default locale is French (`fr`).
-- Strings live in `src/lib/i18n/translations.ts`. Add or edit locales by extending this object (e.g., `en`, `fr`).
-- Hero, Navigation, Overview, Experience, Projects, and Tech Stack already pull their copy from the translation dictionaries—use them as blueprints for the remaining sections.
-- Any component can call `const { t } = useTranslations();` and replace hard-coded strings with keys such as `t("techStack.heading")`.
+## 🚀 Quick Start
 
-To add another language:
+```bash
+# Clone the repository
+git clone https://github.com/Y4NN777/portfolio.git
+cd portfolio
 
-1. Add the new locale tree in `translations.ts`.
-2. Update `TranslationProvider`’s `defaultLocale` (or later wire it to routing/user preference).
-3. Replace literal copy in each section with calls to `t(...)`, adding new keys as needed.
+# Install dependencies
+npm install
 
-Tech Stack is already wired up as a reference implementation.
+# Set up environment variables
+cp env-example .env
+# Edit .env with your credentials
+
+# Run development server
+npm run dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000)
+
+## 📝 Environment Variables
+
+Create a `.env` file with:
+
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+NEXT_PUBLIC_POSTHOG_KEY=your_posthog_key
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+```
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 15 with App Router & Turbopack
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **UI Components**: Radix UI, Lucide Icons
+- **Services**: EmailJS, PostHog
+
+## 📦 Commands
+
+```bash
+npm run dev    # Start development server
+npm run build  # Build for production
+npm start      # Run production server
+npm run lint   # Run ESLint
+```
+
+## 🌍 Internationalization
+
+The portfolio supports multiple languages. To add a new language:
+
+1. Add translations in `src/lib/i18n/translations.ts`
+2. Use the `useTranslations()` hook in components:
+
+```typescript
+const { t } = useTranslations();
+return <h1>{t("hero.tagline")}</h1>;
+```
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 👤 Author
+
+**Y4NN777** - [GitHub](https://github.com/Y4NN777) • [Email](mailto:y4nn.dev@gmail.com)
+
+---
+
+<p align="center">Made with ❤️ by Y4NN777</p>
