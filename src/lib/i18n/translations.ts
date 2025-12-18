@@ -109,9 +109,9 @@ export const translations = {
         y7labs: {
           role: "Founder & CTO",
           company: "Y7 Labs",
-          period: "August 2024 — Present",
+          period: "August 2025 — Present",
           description:
-            "Leading Y7 Labs, a project of an applied R&D studio in development, most recently focused on AI-native systems. I architect resilient products, integrate AI responsibly, and deliver security-by-design platforms for communities and partners who need clarity, reliability, and velocity.",
+            "Leading Y7 Labs, a project of an applied R&D studio in development, most recently focused on AI-native systems. I architect resilient products, integrate AI responsibly, and deliver security-by-design platforms for communities and partners who need clarity, reliability, and velocity. At Y7 Labs, we also tackle community and youth challenges through innovative open-source applications, particularly in finance and education, creating accessible tools that empower learning, economic inclusion, and sustainable growth.",
           achievements: [
             "Achieved every roadmap milestone on schedule and inside budget",
             "Deployed 2+ open source  systems optimized for scale, observability, and UX clarity",
@@ -122,7 +122,7 @@ export const translations = {
         fikasso: {
           role: "Full-Stack Developer & Lead Developer",
           company: "FIKASSO Security (Contract)",
-          period: "April 2025 — Present",
+          period: "April 2025 — December 2025",
           description:
             "Partnering with FIKASSO Security to ship custom solutions such portal for media teams and smart management systems for national security actors. I guide producté direction, run full-cycle delivery, and bring modern software practices to a mission-driven organization.",
           achievements: [
@@ -371,9 +371,9 @@ export const translations = {
         y7labs: {
           role: "Fondateur & CTO",
           company: "Y7 Solutions",
-          period: "Août 2024 — Aujourd'hui",
+          period: "Août 2025 — Aujourd'hui",
           description:
-            "Je dirige Y7 Solutions, un studio R&D appliqué en développement, plus recemment spécialisé dans les systèmes natifs IA. J'architecture des produits résilients, j'intègre l'IA de façon responsable et je livre des plateformes sécurisées pour les communautés et partenaires qui veulent clarté et fiabilité.",
+            "Je dirige Y7 Solutions, un studio R&D appliqué en développement, plus recemment spécialisé dans les systèmes natifs IA. J'architecture des produits résilients, j'intègre l'IA de façon responsable et je livre des plateformes sécurisées pour les communautés et partenaires qui veulent clarté et fiabilité. Chez Y7 Labs, nous abordons également les défis communautaires et de la jeunesse à travers des applications open-source innovantes, particulièrement en finance et en éducation, créant des outils accessibles qui favorisent l'apprentissage, l'inclusion économique et la croissance durable.",
           achievements: [
             "Tous les jalons livrés dans les délais",
             "2+ systèmes open source conçus pour l'échelle, l'observabilité et l'UX",
@@ -384,7 +384,7 @@ export const translations = {
         fikasso: {
           role: "Développeur Full-Stack & Lead Developer",
           company: "FIKASSO Security (CDD)",
-          period: "Avril 2025 — Aujourd'hui",
+          period: "Avril 2025 — Décembre 2025",
           description:
             "Je collabore avec FIKASSO Security pour livrer des solutions sur mesure destinés allant des médias aux acteurs de la sécurité. J'accompagne la stratégie produit, j'assure le cycle complet de développement et j'apporte des pratiques modernes centrées sur l'impact.",
           achievements: [
