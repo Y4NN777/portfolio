@@ -71,15 +71,12 @@ const getRandomTechIcons = (projectTech: string[], count: number = 6) => {
     { top: "20%", right: "25%" },
   ];
 
-  // Get matching icons for the project's tech stack
+  // Get matching icons for the project's tech stack using more efficient approach
   const matchedIcons = projectTech
     .map((tech) => {
-      for (const [key, icon] of Object.entries(techIconMap)) {
-        if (tech.includes(key)) {
-          return icon;
-        }
-      }
-      return null;
+      // Use Array.find to exit early on first match
+      const matchedEntry = Object.entries(techIconMap).find(([key]) => tech.includes(key));
+      return matchedEntry ? matchedEntry[1] : null;
     })
     .filter(Boolean) as string[];
 

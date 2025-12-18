@@ -205,9 +205,6 @@ export default function ProjectsPage() {
           className="text-center mt-20 relative z-10"
         >
           <div className="inline-flex flex-col items-center gap-4">
-            <p className="text-gray-600 dark:text-gray-400 text-lg">
-              Interested in working together?
-            </p>
             <Link href="/#contact">
               <motion.div
                 className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
