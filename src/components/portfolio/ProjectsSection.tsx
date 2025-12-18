@@ -399,20 +399,30 @@ export default function ProjectsSection() {
           variants={itemVariants}
           className="text-center mt-12 md:mt-16 lg:mt-20 px-4 mb-12"
         >
-          <Link
-            href="#contact"
-          >
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/projects">
+              <motion.div
+                className="inline-flex items-center gap-2 md:gap-3 px-5 py-2.5 md:px-6 md:py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl md:rounded-2xl font-semibold shadow-lg hover:shadow-xl"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Icon icon="solar:gallery-bold" className="w-5 h-5 md:w-6 md:h-6" />
+                <span className="text-sm md:text-base">View All Projects</span>
+              </motion.div>
+            </Link>
 
-            <motion.div
-              className="inline-flex items-center gap-2 md:gap-3 px-4 py-2.5 md:px-6 md:py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-500/20 dark:border-purple-500/20 rounded-xl md:rounded-2xl"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Icon icon="solar:programming-bold" className="text-blue-500 dark:text-purple-400 w-5 h-5 md:w-6 md:h-6" />
-              <span className="text-gray-700 dark:text-gray-300 font-medium text-sm md:text-base text-center">
-                {t("projects.ctaText")}
-              </span>
-            </motion.div>
-          </Link>
+            <Link href="#contact">
+              <motion.div
+                className="inline-flex items-center gap-2 md:gap-3 px-4 py-2.5 md:px-6 md:py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-500/20 dark:border-purple-500/20 rounded-xl md:rounded-2xl"
+                whileHover={{ scale: 1.05 }}
+              >
+                <Icon icon="solar:programming-bold" className="text-blue-500 dark:text-purple-400 w-5 h-5 md:w-6 md:h-6" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium text-sm md:text-base text-center">
+                  {t("projects.ctaText")}
+                </span>
+              </motion.div>
+            </Link>
+          </div>
         </motion.div>
       </motion.div>
     </motion.section>

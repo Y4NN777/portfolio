@@ -5,17 +5,21 @@ import { useTranslations } from "@/contexts/TranslationContext";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useCallback, useState } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslations();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isProjectsPage = pathname === "/projects";
 
   const navItems = [
     { id: "overview", labelKey: "navigation.links.overview" },
     { id: "stack", labelKey: "navigation.links.stack" },
     { id: "experience", labelKey: "navigation.links.experience" },
-    { id: "projects", labelKey: "navigation.links.projects" },
+    { id: "projects", labelKey: "navigation.links.projects", isPage: true },
     // { id: "testimonials", labelKey: "navigation.links.testimonials" },
     { id: "certifications", labelKey: "navigation.links.certifications" },
     { id: "contact", labelKey: "navigation.links.contact" },
@@ -49,22 +53,43 @@ export default function Navigation() {
             </button>
 
             <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    handleScroll(item.id);
-                  }}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300 text-sm font-medium"
-                >
-                  {t(item.labelKey)}
-                </motion.a>
-              ))}
+              {navItems.map((item, index) => {
+                if (item.isPage) {
+                  return (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link
+                        href="/projects"
+                        className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300 text-sm font-medium"
+                      >
+                        {t(item.labelKey)}
+                      </Link>
+                    </motion.div>
+                  );
+                }
+                return (
+                  <motion.a
+                    key={item.id}
+                    href={isProjectsPage ? `/#${item.id}` : `#${item.id}`}
+                    onClick={(event) => {
+                      if (!isProjectsPage) {
+                        event.preventDefault();
+                        handleScroll(item.id);
+                      }
+                    }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-300 text-sm font-medium"
+                  >
+                    {t(item.labelKey)}
+                  </motion.a>
+                );
+              })}
             </div>
             {/* Theme Toggle */}
             <motion.button
@@ -88,20 +113,38 @@ export default function Navigation() {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white/95 dark:bg-gray-950/90 border-t border-gray-200 dark:border-gray-800 backdrop-blur-md">
           <div className="flex flex-col divide-y divide-gray-200 dark:divide-gray-800">
-            {navItems.map((item) => (
-              <a
-                key={`mobile-${item.id}`}
-                href={`#${item.id}`}
-                onClick={(event) => {
-                  event.preventDefault();
-                  setIsMobileMenuOpen(false);
-                  handleScroll(item.id);
-                }}
-                className="py-3 px-6 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
-              >
-                {t(item.labelKey)}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              if (item.isPage) {
+                return (
+                  <Link
+                    key={`mobile-${item.id}`}
+                    href="/projects"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="py-3 px-6 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                  >
+                    {t(item.labelKey)}
+                  </Link>
+                );
+              }
+              return (
+                <a
+                  key={`mobile-${item.id}`}
+                  href={isProjectsPage ? `/#${item.id}` : `#${item.id}`}
+                  onClick={(event) => {
+                    if (!isProjectsPage) {
+                      event.preventDefault();
+                      setIsMobileMenuOpen(false);
+                      handleScroll(item.id);
+                    } else {
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
+                  className="py-3 px-6 text-gray-700 dark:text-gray-200 text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+                >
+                  {t(item.labelKey)}
+                </a>
+              );
+            })}
           </div>
         </div>
       )}
