@@ -226,8 +226,8 @@ export const translations = {
           description:
             "Open-source RAG assistant delivering trustworthy health information in French or English. Blends curated research, traditional remedies, and modern AI to support 24/7 awareness.",
           category: "AI Healthcare",
-          highlight: "Impact Project",
-          statusLabel: "Alpha",
+          highlight: "Temporarily Unavailable",
+          statusLabel: "Alpha (Offline)",
           timeline: "1 Week",
           clientType: "Open Source",
           features: [
@@ -333,7 +333,7 @@ export const translations = {
           category: "Developer Tools & AI",
           highlight: "Privacy-First",
           statusLabel: "Live",
-          timeline: "1 Day",
+          timeline: "1 Week",
           clientType: "Open Source",
           features: [
             "100% local AI processing with Ollama and Phi 3.5 model",
@@ -595,8 +595,8 @@ export const translations = {
           description:
             "Assistant open source fournissant des réponses fiables en français ou anglais sur les maladies tropicales et les plantes médicinales, 24/7.",
           category: "Santé Informative & IA",
-          highlight: "Projet d'impact",
-          statusLabel: "Alpha",
+          highlight: "Temporairement indisponible",
+          statusLabel: "Alpha (Hors ligne)",
           timeline: "1 semaine",
           clientType: "Open Source",
           features: [
@@ -702,7 +702,7 @@ export const translations = {
           category: "Outils Développeur & IA",
           highlight: "Confidentialité d'abord",
           statusLabel: "En ligne",
-          timeline: "1 jour",
+          timeline: "1 semaine",
           clientType: "Open Source",
           features: [
             "Traitement IA 100% local avec Ollama et modèle Phi 3.5",
