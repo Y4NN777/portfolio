@@ -176,7 +176,7 @@ export const translations = {
           category: "Web Application",
           highlight: "Featured",
           statusLabel: "Live",
-          timeline: "2 months",
+          timeline: "3 Months",
           clientType: "Open Source",
           features: [
             "AI-powered prompt-to-JSON conversion using Google Gemini 2.0 Flash",
@@ -333,7 +333,7 @@ export const translations = {
           category: "Developer Tools & AI",
           highlight: "Privacy-First",
           statusLabel: "Live",
-          timeline: "2 Weeks",
+          timeline: "1 Day",
           clientType: "Open Source",
           features: [
             "100% local AI processing with Ollama and Phi 3.5 model",
@@ -545,7 +545,7 @@ export const translations = {
           category: "Application web",
           highlight: "Mise en avant",
           statusLabel: "En ligne",
-          timeline: "2 mois",
+          timeline: "3 mois",
           clientType: "Open Source",
           features: [
             "Conversion IA de prompt → JSON avec Gemini 2.0 Flash",
@@ -702,7 +702,7 @@ export const translations = {
           category: "Outils Développeur & IA",
           highlight: "Confidentialité d'abord",
           statusLabel: "En ligne",
-          timeline: "2 semaines",
+          timeline: "1 jour",
           clientType: "Open Source",
           features: [
             "Traitement IA 100% local avec Ollama et modèle Phi 3.5",
