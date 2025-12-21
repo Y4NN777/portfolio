@@ -278,7 +278,7 @@ export const translations = {
           category: "Web Application & CMS",
           highlight: "Active Development",
           statusLabel: "Beta",
-          timeline: "4 Months",
+          timeline: "3 Weeks",
           clientType: "NGO Client",
           features: [
             "Complete event management with categories, featured images, and scheduling",
@@ -647,7 +647,7 @@ export const translations = {
           category: "Application Web & CMS",
           highlight: "Développement actif",
           statusLabel: "Bêta",
-          timeline: "4 mois",
+          timeline: "3 semaines",
           clientType: "Client ONG",
           features: [
             "Gestion complète d'événements avec catégories, images et planification",
