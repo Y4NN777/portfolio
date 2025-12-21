@@ -176,7 +176,7 @@ export const translations = {
           category: "Web Application",
           highlight: "Featured",
           statusLabel: "Live",
-          timeline: "2 months",
+          timeline: "3 Months",
           clientType: "Open Source",
           features: [
             "AI-powered prompt-to-JSON conversion using Google Gemini 2.0 Flash",
@@ -226,8 +226,8 @@ export const translations = {
           description:
             "Open-source RAG assistant delivering trustworthy health information in French or English. Blends curated research, traditional remedies, and modern AI to support 24/7 awareness.",
           category: "AI Healthcare",
-          highlight: "Impact Project",
-          statusLabel: "Alpha",
+          highlight: "Temporarily Unavailable",
+          statusLabel: "Alpha (Offline)",
           timeline: "1 Week",
           clientType: "Open Source",
           features: [
@@ -253,7 +253,7 @@ export const translations = {
           category: "Environmental Tech",
           highlight: "Beta Testing Soon",
           statusLabel: "Beta",
-          timeline: "3 Months",
+          timeline: "6 Months",
           clientType: "Open Source",
           features: [
             "Three-tier role system (Admin, Operator, Reporting User) with secure authentication",
@@ -278,7 +278,7 @@ export const translations = {
           category: "Web Application & CMS",
           highlight: "Active Development",
           statusLabel: "Beta",
-          timeline: "4 Months",
+          timeline: "3 Weeks",
           clientType: "NGO Client",
           features: [
             "Complete event management with categories, featured images, and scheduling",
@@ -304,7 +304,7 @@ export const translations = {
           category: "Enterprise Security & AI",
           highlight: "MVP in Progress",
           statusLabel: "Alpha",
-          timeline: "5 Months",
+          timeline: "3 Weeks",
           clientType: "Enterprise Contract",
           features: [
             "Multi-media ingestion (photos, videos, notes, plans) with unified processing",
@@ -333,7 +333,7 @@ export const translations = {
           category: "Developer Tools & AI",
           highlight: "Privacy-First",
           statusLabel: "Live",
-          timeline: "2 Weeks",
+          timeline: "1 Week",
           clientType: "Open Source",
           features: [
             "100% local AI processing with Ollama and Phi 3.5 model",
@@ -545,7 +545,7 @@ export const translations = {
           category: "Application web",
           highlight: "Mise en avant",
           statusLabel: "En ligne",
-          timeline: "2 mois",
+          timeline: "3 mois",
           clientType: "Open Source",
           features: [
             "Conversion IA de prompt → JSON avec Gemini 2.0 Flash",
@@ -595,8 +595,8 @@ export const translations = {
           description:
             "Assistant open source fournissant des réponses fiables en français ou anglais sur les maladies tropicales et les plantes médicinales, 24/7.",
           category: "Santé Informative & IA",
-          highlight: "Projet d'impact",
-          statusLabel: "Alpha",
+          highlight: "Temporairement indisponible",
+          statusLabel: "Alpha (Hors ligne)",
           timeline: "1 semaine",
           clientType: "Open Source",
           features: [
@@ -622,7 +622,7 @@ export const translations = {
           category: "Technologie Environnementale",
           highlight: "Bêta prochainement",
           statusLabel: "Bêta",
-          timeline: "3 mois",
+          timeline: "6 mois",
           clientType: "Open Source",
           features: [
             "Système de rôles à trois niveaux (Admin, Opérateur, Utilisateur reporting) avec authentification sécurisée",
@@ -647,7 +647,7 @@ export const translations = {
           category: "Application Web & CMS",
           highlight: "Développement actif",
           statusLabel: "Bêta",
-          timeline: "4 mois",
+          timeline: "3 semaines",
           clientType: "Client ONG",
           features: [
             "Gestion complète d'événements avec catégories, images et planification",
@@ -673,7 +673,7 @@ export const translations = {
           category: "Sécurité Entreprise & IA",
           highlight: "MVP en cours",
           statusLabel: "Alpha",
-          timeline: "5 mois",
+          timeline: "3 semaines",
           clientType: "Contrat Entreprise",
           features: [
             "Ingestion multi-médias (photos, vidéos, notes, plans) avec traitement unifié",
@@ -702,7 +702,7 @@ export const translations = {
           category: "Outils Développeur & IA",
           highlight: "Confidentialité d'abord",
           statusLabel: "En ligne",
-          timeline: "2 semaines",
+          timeline: "1 semaine",
           clientType: "Open Source",
           features: [
             "Traitement IA 100% local avec Ollama et modèle Phi 3.5",
