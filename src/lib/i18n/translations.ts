@@ -253,7 +253,7 @@ export const translations = {
           category: "Environmental Tech",
           highlight: "Beta Testing Soon",
           statusLabel: "Beta",
-          timeline: "3 Months",
+          timeline: "6 Months",
           clientType: "Open Source",
           features: [
             "Three-tier role system (Admin, Operator, Reporting User) with secure authentication",
@@ -304,7 +304,7 @@ export const translations = {
           category: "Enterprise Security & AI",
           highlight: "MVP in Progress",
           statusLabel: "Alpha",
-          timeline: "5 Months",
+          timeline: "3 Weeks",
           clientType: "Enterprise Contract",
           features: [
             "Multi-media ingestion (photos, videos, notes, plans) with unified processing",
@@ -622,7 +622,7 @@ export const translations = {
           category: "Technologie Environnementale",
           highlight: "Bêta prochainement",
           statusLabel: "Bêta",
-          timeline: "3 mois",
+          timeline: "6 mois",
           clientType: "Open Source",
           features: [
             "Système de rôles à trois niveaux (Admin, Opérateur, Utilisateur reporting) avec authentification sécurisée",
@@ -673,7 +673,7 @@ export const translations = {
           category: "Sécurité Entreprise & IA",
           highlight: "MVP en cours",
           statusLabel: "Alpha",
-          timeline: "5 mois",
+          timeline: "3 semaines",
           clientType: "Contrat Entreprise",
           features: [
             "Ingestion multi-médias (photos, vidéos, notes, plans) avec traitement unifié",
