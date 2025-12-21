@@ -160,7 +160,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.6, duration: 0.6 }}
-        className="hidden md:flex absolute bottom-20 left-0 right-0 justify-center pb-8 z-10"
+        className="hidden md:flex absolute bottom-8 left-0 right-0 justify-center z-10"
       >
         <motion.button
           onClick={() => {
