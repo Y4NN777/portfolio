@@ -226,8 +226,8 @@ export const translations = {
           description:
             "Open-source RAG assistant delivering trustworthy health information in French or English. Blends curated research, traditional remedies, and modern AI to support 24/7 awareness.",
           category: "AI Healthcare",
-          highlight: "Temporarily Unavailable",
-          statusLabel: "Alpha (Offline)",
+          highlight: "Live",
+          statusLabel: "Building",
           timeline: "1 Week",
           clientType: "Open Source",
           features: [
@@ -595,8 +595,8 @@ export const translations = {
           description:
             "Assistant open source fournissant des réponses fiables en français ou anglais sur les maladies tropicales et les plantes médicinales, 24/7.",
           category: "Santé Informative & IA",
-          highlight: "Temporairement indisponible",
-          statusLabel: "Alpha (Hors ligne)",
+          highlight: "En ligne",
+          statusLabel: "En construction",
           timeline: "1 semaine",
           clientType: "Open Source",
           features: [
