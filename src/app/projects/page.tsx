@@ -53,7 +53,7 @@ const projectEntries: Array<{
   {
     id: "tenglaafi",
     gradient: "from-emerald-500 to-lime-500",
-    statusVariant: "beta",
+    statusVariant: "live",
     github: "https://github.com/Y4NN777/tenglaafi",
     live: "https://tenglaafi-chat.y7-solutions.online/",
     tech: [

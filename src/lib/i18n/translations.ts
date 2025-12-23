@@ -227,7 +227,7 @@ export const translations = {
             "Open-source RAG assistant delivering trustworthy health information in French or English. Blends curated research, traditional remedies, and modern AI to support 24/7 awareness.",
           category: "AI Healthcare",
           highlight: "Live",
-          statusLabel: "Building",
+          statusLabel: "Live",
           timeline: "1 Week",
           clientType: "Open Source",
           features: [
@@ -596,7 +596,7 @@ export const translations = {
             "Assistant open source fournissant des réponses fiables en français ou anglais sur les maladies tropicales et les plantes médicinales, 24/7.",
           category: "Santé Informative & IA",
           highlight: "En ligne",
-          statusLabel: "En construction",
+          statusLabel: "En ligne",
           timeline: "1 semaine",
           clientType: "Open Source",
           features: [
