@@ -1,4 +1,4 @@
-# 🚀 Y4NN777 - Portfolio
+#  Y4NN777 - Portfolio
 
 A stunning, modern portfolio website built with cutting-edge technologies and beautiful animations inspired by Aceternity UI design principles.
 
