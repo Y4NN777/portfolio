@@ -47,11 +47,8 @@ export default function HeroSection() {
 
         {/* Portrait */}
         <motion.div
-          className="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-2xl"
-          style={{
-            background: "rgba(240, 247, 255, 0.8)",
-            border: "1px solid rgba(83, 192, 251, 0.3)",
-          }}
+          className="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-2xl bg-[#f0f7ff]/80 dark:bg-[#0f2d40]/80"
+          style={{ border: "1px solid rgba(83, 192, 251, 0.3)" }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
@@ -109,15 +106,14 @@ export default function HeroSection() {
           transition={{ delay: 1.0 }}
         >
           {([
-            { href: "https://github.com/Y4NN777", icon: "simple-icons:github", label: t("hero.social.github"), hoverClass: "hover:text-[#f1f5f9] dark:hover:text-white" },
-            { href: "https://www.linkedin.com/in/y4nnthedev777/", icon: "skill-icons:linkedin", label: t("hero.social.linkedin"), hoverClass: "hover:text-[#53c0fb] dark:hover:text-[#53c0fb]" },
-            { href: "mailto:y4nn.dev@gmail.com", icon: "material-symbols:mail-rounded", label: t("hero.social.email"), hoverClass: "hover:text-amber-500 dark:hover:text-amber-400" }
+            { href: "https://github.com/Y4NN777", icon: "simple-icons:github", label: t("hero.social.github"), hoverClass: "hover:text-[#061825] dark:hover:text-white" },
+            { href: "https://www.linkedin.com/in/y4nnthedev777/", icon: "skill-icons:linkedin", label: t("hero.social.linkedin"), hoverClass: "hover:text-[#296b8d] dark:hover:text-[#53c0fb]" },
+            { href: "mailto:y4nn.dev@gmail.com", icon: "material-symbols:mail-rounded", label: t("hero.social.email"), hoverClass: "hover:text-amber-600 dark:hover:text-amber-400" }
           ] as Array<{ href: string; icon: string; label: string; hoverClass: string }>).map((link) => (
             <motion.div key={link.label} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={link.href}
-                className={`inline-flex items-center gap-2 px-4 py-2 backdrop-blur-sm rounded-full text-sm transition-all duration-300 shadow-lg hover:shadow-xl text-[#0f2d40] dark:text-[#94a3b8] bg-white/80 dark:bg-[#1f4d67]/60 ${link.hoverClass}`}
-                style={{ border: "1px solid rgba(83, 192, 251, 0.25)" }}
+                className={`inline-flex items-center gap-2 px-4 py-2 backdrop-blur-sm rounded-full text-sm transition-all duration-300 shadow-lg hover:shadow-xl text-[#0f2d40] dark:text-[#94a3b8] bg-white/80 dark:bg-[#1f4d67]/60 border border-[#296b8d]/40 dark:border-[#53c0fb]/25 ${link.hoverClass}`}
               >
                 <Icon icon={link.icon} width={18} height={18} />
                 {link.label}
@@ -155,7 +151,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.6, duration: 0.6 }}
-        className="hidden md:flex absolute bottom-20 left-0 right-0 justify-center pb-8 z-10"
+        className="hidden md:flex absolute  bottom-10 left-0 right-0 justify-center pb-8 z-10"
       >
         <motion.button
           onClick={() => {

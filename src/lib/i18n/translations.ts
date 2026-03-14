@@ -121,9 +121,9 @@ export const translations = {
         y7labs: {
           role: "Co-Founder & CTO",
           company: "Y7 Labs",
-          period: "August 2024 — Present",
+          period: "August 2025 — Present",
           description:
-            "Leading Y7 Labs, a project of an applied R&D studio in development, most recently focused on AI-native systems. I architect resilient products, integrate AI responsibly, and deliver security-by-design platforms for communities and partners who need clarity, reliability, and velocity.",
+            "Leading and building Y7 Labs, a project of an applied R&D studio in development, most recently focused on AI-native systems. I architect resilient products, integrate AI responsibly, and deliver security-by-design platforms for communities and partners who need clarity, reliability, and velocity.",
           achievements: [
             "Achieved every roadmap milestone on schedule and inside budget",
             "Deployed 2+ open source  systems optimized for scale, observability, and UX clarity",
@@ -191,7 +191,7 @@ export const translations = {
           timeline: "3 months",
           clientType: "Open Source",
           features: [
-            "AI-powered prompt-to-JSON conversion using Google Gemini 2.0 Flash",
+            "AI-powered prompt-to-JSON conversion using Google Gemini",
             "Template library with search, categories, and instant previews",
             "Learning Center explaining JSON prompting patterns and best practices",
             "Editable JSON panel with syntax highlighting and change tracking",
@@ -297,9 +297,10 @@ export const translations = {
       },
       roles: [
         "Développeur Backend",
-        "Enthousisate DevSecOps",
-        "Passionné de IA Generative & Agentic",
+        "Praticien DevSecOps",
+        "Passionné d'IA Générative & Agentique",
         "Enthousiaste Web3",
+        "Débutant en Game Dev",
         "Futur ingénieur logiciel et systèmes",
       ],
     },
@@ -309,33 +310,36 @@ export const translations = {
       description: "Je crée des expériences numériques avec passion, précision et intention",
       greeting: "Salut, je suis le Y4NN",
       introHighlight: {
-        prefix: "Développeur backend junior de 22 ans qui touche aussi au ",
-        backend: "frontend et un peu de DevOps :).",
+        prefix: "Je pourrais me présenter comme un développeur <<full-stack>>, mais pour mieux comprendre qui je suis, ",
+        backend: "je dirai simplement que je suis un Backend Developer/Lover qui maîtrise aussi le frontend, le DevOps et la sécurité.",
         connector: " Je suis aussi un ",
-        ai: "passionné d'IA et de Web3.",
-        experience: " J'ai 2+ ans",
-        suffix: " d'expérience dans l'exploration de l'ingenierie logicielle et à concevoir des solutions appréciés.",
+        ai: "passionné d'IA, de Web3 & de Game Dev. ",
+        experience: "J'ai 2+ ans",
+        suffix: " d'expérience à explorer activement l'ingénierie logicielle et à concevoir des produits que les gens adorent.",
       },
       introParagraph1:
-        "Je conçois et maintiens des applications web et mobiles sécurisées et scalables avec React, Next.js, TypeScript, Node.js, Python et Flutter.",
+        "Je me spécialise dans la conception et la maintenance d'applications logicielles sécurisées, scalables et performantes, quels que soient les outils et les contraintes du projet.",
       introParagraph2:
-        "En dehors du travail, j'explore les nouvelles technologies, je contribue à l'open source, j'accompagne des apprenti-développeurs et je crée des expériences éducatives.",
+        "En dehors du travail, je fais de la recherche en IA, j'apprends la programmation compétitive avec les maths et le game dev, je construis une communauté open source locale, j'accompagne des apprentis développeurs, je crée des expériences éducatives et je joue au foot :)",
       coreSkillsTitle: "Compétences clés",
       coreSkills: [
         "IA générative",
         "Développement web",
         "Développement mobile",
         "Conception & développement d'API",
-        "CI/CD",
-        "Scripts Bash",
-        "Python",
-        "AWS",
-        "Supervision VPS",
+        "Programmation système",
+        "Sécurité by Design",
+        "Pensée computationnelle",
+        "Intégration et déploiement continus",
+        "Optimisation de bases de données",
+        "Administration de serveurs",
         "Design UI/UX",
-        "Gestion de projet agile",
+        "Collaboration Agile",
+        "Analyse exploratoire de données",
+        "Machine Learning",
       ],
       contactTitle: "Restons en contact",
-      contactWebsites: "y4nn.dev, who-is-y4nn.vercel.app",
+      contactWebsites: "y4nn.dev, writing.y4nn.dev (bientôt), y7labs.studio (très bientôt)",
       contactLocation: "Ouagadougou, Burkina Faso",
       achievementsTitle: "Réalisations",
       achievements: [
@@ -380,12 +384,19 @@ export const translations = {
         success: "Taux de réussite",
       },
       items: {
+        aïobi: {
+          role: "Développeur IA Full-Stack",
+          company: "Aïobi",
+          period: "Mars 2026 — Aujourd'hui",
+          description: "Travail sur des systèmes logiciels propulsés par l'IA et contribution au développement de produits numériques innovants. Mon travail se concentre sur le développement full-stack, l'intégration de l'IA et la construction de solutions scalables pour les plateformes internes et les processus opérationnels.",
+          achievements: [],
+        },
         y7labs: {
-          role: "Fondateur & CTO",
-          company: "Y7 Solutions",
-          period: "Août 2024 — Aujourd'hui",
+          role: "Co-Fondateur & CTO",
+          company: "Y7 Labs",
+          period: "Août 2025 — Aujourd'hui",
           description:
-            "Je dirige Y7 Solutions, un studio R&D appliqué en développement, plus recemment spécialisé dans les systèmes natifs IA. J'architecture des produits résilients, j'intègre l'IA de façon responsable et je livre des plateformes sécurisées pour les communautés et partenaires qui veulent clarté et fiabilité.",
+            "Je dirige et develope Y7 Labs, un studio R&D appliqué en développement, plus recemment spécialisé dans les systèmes natifs IA. J'architecture des produits résilients, j'intègre l'IA de façon responsable et je livre des plateformes sécurisées pour les communautés et partenaires qui veulent clarté et fiabilité.",
           achievements: [
             "Tous les jalons livrés dans les délais",
             "2+ systèmes open source conçus pour l'échelle, l'observabilité et l'UX",
@@ -396,9 +407,9 @@ export const translations = {
         fikasso: {
           role: "Développeur Full-Stack & Lead Developer",
           company: "FIKASSO Security (CDD)",
-          period: "Avril 2025 — Aujourd'hui",
+          period: "Avril 2025 — Janvier 2026",
           description:
-            "Je collabore avec FIKASSO Security pour livrer des solutions sur mesure destinés allant des médias aux acteurs de la sécurité. J'accompagne la stratégie produit, j'assure le cycle complet de développement et j'apporte des pratiques modernes centrées sur l'impact.",
+            "Je collabore avec FIKASSO Security pour livrer des solutions sur mesure destinées aux médias et aux acteurs de la sécurité nationale. J'accompagne la direction produit, j'assure le cycle complet de développement et j'apporte des pratiques logicielles modernes à une organisation tournée vers l'impact.",
           achievements: [
             "Mise en ligne d'un portail  média avec accès sécurisé par rôle",
             "Prise en charge de projets sensibles de bout en bout : besoins, UI, backend, déploiement",
@@ -453,7 +464,7 @@ export const translations = {
           timeline: "2 mois",
           clientType: "Open Source",
           features: [
-            "Conversion IA de prompt → JSON avec Gemini 2.0 Flash",
+            "Conversion IA de prompt → JSON avec Gemini",
             "Bibliothèque de modèles avec recherche et aperçu instantané",
             "Centre d'apprentissage dédié aux bonnes pratiques de prompting",
             "Éditeur JSON avec coloration syntaxique et suivi",

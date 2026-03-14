@@ -263,8 +263,7 @@ export default function ContactSection() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/CV.pdf"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#53c0fb] bg-white/90 dark:bg-[#1f4d67]/60"
-                style={{ border: "2px solid #53c0fb" }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#53c0fb] bg-white/90 dark:bg-[#1f4d67]/60 border-2 border-[#296b8d] dark:border-[#53c0fb]"
               >
                 <Icon icon="solar:download-bold" width={18} height={18} />
                 Download CV
