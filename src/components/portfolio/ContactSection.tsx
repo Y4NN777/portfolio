@@ -8,20 +8,13 @@ import { useState } from "react";
 import SectionHeader from './SectionHeader';
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,28 +23,20 @@ export default function ContactSection() {
     setSubmitStatus('idle');
 
     try {
-      // EmailJS configuration
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
 
-      // Send email using EmailJS
-      const result = await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: 'y4nn.dev@gmail.com', // Your email
-        },
-        publicKey
-      );
+      const result = await emailjs.send(serviceId, templateId, {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'y4nn.dev@gmail.com',
+      }, publicKey);
 
       console.log('Email sent successfully:', result);
       setSubmitStatus('success');
       setFormData({ name: "", email: "", message: "" });
-
     } catch (error) {
       console.error('Failed to send email:', error);
       setSubmitStatus('error');
@@ -59,6 +44,9 @@ export default function ContactSection() {
       setIsSubmitting(false);
     }
   };
+
+  const inputClass = "w-full px-4 py-3 rounded-xl transition-all duration-300 text-gray-900 dark:text-gray-100 bg-white dark:bg-[#0f2d40] outline-none";
+  const inputStyle = { border: "1px solid rgba(83, 192, 251, 0.2)" };
 
   return (
     <motion.section
@@ -70,15 +58,12 @@ export default function ContactSection() {
       className="mb-16"
     >
       <div className="max-w-4xl mx-auto">
-
-
         <SectionHeader
           heading="Let's Work Together"
           description="Ready to bring your ideas to life? I'm always excited to work on interesting projects and collaborate with amazing people. Let's create something extraordinary together."
           tagIcon='solar:chat-line-bold'
           tagText='Contact'
           centered={true}
-
         />
 
         {/* Contact Form */}
@@ -97,7 +82,7 @@ export default function ContactSection() {
                 transition={{ duration: 0.6, delay: 0.7 }}
                 viewport={{ once: true }}
               >
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-[#296b8d] dark:text-[#94a3b8] mb-2">
                   Name *
                 </label>
                 <input
@@ -107,8 +92,11 @@ export default function ContactSection() {
                   required
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300"
+                  className={inputClass}
+                  style={inputStyle}
                   placeholder="Your full name"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = "#53c0fb"; e.currentTarget.style.boxShadow = "0 0 0 2px rgba(83,192,251,0.15)"; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(83, 192, 251, 0.2)"; e.currentTarget.style.boxShadow = "none"; }}
                 />
               </motion.div>
 
@@ -118,7 +106,7 @@ export default function ContactSection() {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
               >
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-[#296b8d] dark:text-[#94a3b8] mb-2">
                   Email *
                 </label>
                 <input
@@ -128,8 +116,11 @@ export default function ContactSection() {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300"
+                  className={inputClass}
+                  style={inputStyle}
                   placeholder="your.email@example.com"
+                  onFocus={(e) => { e.currentTarget.style.borderColor = "#53c0fb"; e.currentTarget.style.boxShadow = "0 0 0 2px rgba(83,192,251,0.15)"; }}
+                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(83, 192, 251, 0.2)"; e.currentTarget.style.boxShadow = "none"; }}
                 />
               </motion.div>
             </div>
@@ -140,7 +131,7 @@ export default function ContactSection() {
               transition={{ duration: 0.6, delay: 0.9 }}
               viewport={{ once: true }}
             >
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-[#296b8d] dark:text-[#94a3b8] mb-2">
                 Message *
               </label>
               <textarea
@@ -150,8 +141,11 @@ export default function ContactSection() {
                 rows={5}
                 value={formData.message}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-all duration-300 resize-none"
+                className={inputClass + " resize-none"}
+                style={inputStyle}
                 placeholder="Tell me about your project or idea..."
+                onFocus={(e) => { e.currentTarget.style.borderColor = "#53c0fb"; e.currentTarget.style.boxShadow = "0 0 0 2px rgba(83,192,251,0.15)"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(83, 192, 251, 0.2)"; e.currentTarget.style.boxShadow = "none"; }}
               />
             </motion.div>
 
@@ -167,7 +161,11 @@ export default function ContactSection() {
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{
+                  background: "linear-gradient(135deg, #296b8d, #53c0fb)",
+                  boxShadow: "0 0 20px rgba(83, 192, 251, 0.3)",
+                }}
               >
                 {isSubmitting ? (
                   <>
@@ -189,7 +187,6 @@ export default function ContactSection() {
                 )}
               </motion.button>
 
-              {/* Status Messages */}
               {submitStatus === 'success' && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
@@ -203,10 +200,9 @@ export default function ContactSection() {
                   <p className="text-green-600 text-left dark:text-green-500 text-sm mt-1">
                     Thank you for reaching out. I&apos;ll get back to you soon!
                   </p>
-                  {/* add a button to close the message */}
                   <button
                     onClick={() => setSubmitStatus('idle')}
-                    className="absolute top-1 right-1  text-red-500 rounded-md"
+                    className="absolute top-1 right-1 text-red-500 rounded-md"
                   >
                     <Icon icon="solar:close-circle-bold" width={20} height={20} />
                   </button>
@@ -226,10 +222,9 @@ export default function ContactSection() {
                   <p className="text-red-600 text-left dark:text-red-500 text-sm mt-1">
                     Please try again or contact me directly on linkedin
                   </p>
-                  {/* add a button to close the message */}
                   <button
                     onClick={() => setSubmitStatus('idle')}
-                    className="absolute top-1 right-1  text-red-500 rounded-md"
+                    className="absolute top-1 right-1 text-red-500 rounded-md"
                   >
                     <Icon icon="solar:close-circle-bold" width={20} height={20} />
                   </button>
@@ -247,24 +242,31 @@ export default function ContactSection() {
           transition={{ duration: 0.8, delay: 1.1 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-600 dark:text-gray-400 mb-6">Or reach out directly:</p>
+          <p className="text-[#296b8d] dark:text-[#94a3b8] mb-6">Or reach out directly:</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* Send Email — filled primary */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="mailto:y4nn.dev@gmail.com"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 border-2 border-gray-300 hover:border-gray-400 dark:border-gray-600 dark:hover:border-gray-500 rounded-xl font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+                style={{
+                  background: "linear-gradient(135deg, #296b8d, #53c0fb)",
+                  boxShadow: "0 0 16px rgba(83, 192, 251, 0.35)",
+                }}
               >
                 <Icon icon="solar:mailbox-bold-duotone" width={18} height={18} />
                 Send Email
               </Link>
             </motion.div>
 
+            {/* Download CV — outlined with dark-mode-safe background */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/CV.pdf"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 border-2 border-gray-300 hover:border-gray-400 dark:border-gray-600 dark:hover:border-gray-500 rounded-xl font-medium transition-all duration-300 shadow-md hover:shadow-lg"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#53c0fb] bg-white/90 dark:bg-[#1f4d67]/60"
+                style={{ border: "2px solid #53c0fb" }}
               >
-                <Icon icon="solar:download-outline" width={18} height={18} />
+                <Icon icon="solar:download-bold" width={18} height={18} />
                 Download CV
               </Link>
             </motion.div>
@@ -273,4 +275,4 @@ export default function ContactSection() {
       </div>
     </motion.section>
   );
-} 
+}

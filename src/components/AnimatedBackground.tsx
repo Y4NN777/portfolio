@@ -18,12 +18,13 @@ const AnimatedBackground = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+    // Sky blue palette only
     const colors = [
-      "rgb(59, 130, 246)",   // blue-500
-      "rgb(139, 92, 246)",   // purple-500
-      "rgb(236, 72, 153)",   // pink-500
-      "rgb(16, 185, 129)",   // emerald-500
-      "rgb(245, 158, 11)",   // amber-500
+      "rgb(83, 192, 251)",   // #53c0fb primary accent
+      "rgb(75, 188, 255)",   // #4bbcff link
+      "rgb(98, 182, 226)",   // #62b6e2 muted accent
+      "rgb(41, 107, 141)",   // #296b8d deep accent
+      "rgb(31, 77, 103)",    // #1f4d67 elevated surface
     ];
 
     const initialParticles: Particle[] = Array.from({ length: 50 }, (_, i) => ({
@@ -53,15 +54,12 @@ const AnimatedBackground = () => {
           let { x, y } = particle;
           const { velocity } = particle;
 
-          // Update position
           x += velocity.x;
           y += velocity.y;
 
-          // Bounce off walls
           if (x <= 0 || x >= window.innerWidth) velocity.x *= -1;
           if (y <= 0 || y >= window.innerHeight) velocity.y *= -1;
 
-          // Mouse interaction
           const dx = mousePosition.x - x;
           const dy = mousePosition.y - y;
           const distance = Math.sqrt(dx * dx + dy * dy);
@@ -73,7 +71,6 @@ const AnimatedBackground = () => {
             velocity.y -= Math.sin(angle) * force * 0.5;
           }
 
-          // Apply damping
           velocity.x *= 0.99;
           velocity.y *= 0.99;
 
@@ -97,10 +94,13 @@ const AnimatedBackground = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-purple-50/20 to-pink-50/30 dark:from-blue-950/30 dark:via-purple-950/20 dark:to-pink-950/30" />
+      {/* Subtle sky-tint overlay */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(83, 192, 251, 0.03)" }}
+      />
 
-      {/* Geometric Shapes */}
+      {/* Geometric ring shapes */}
       <div className="absolute inset-0">
         {[...Array(6)].map((_, i) => (
           <motion.div
@@ -111,10 +111,11 @@ const AnimatedBackground = () => {
             transition={{ delay: i * 0.2, duration: 2 }}
           >
             <motion.div
-              className={`w-${20 + i * 10} h-${20 + i * 10} border border-blue-500/20 dark:border-blue-400/20 rounded-full`}
+              className={`w-${20 + i * 10} h-${20 + i * 10} rounded-full`}
               style={{
                 left: `${10 + i * 15}%`,
                 top: `${5 + i * 10}%`,
+                border: "1px solid rgba(83, 192, 251, 0.2)",
               }}
               animate={{
                 rotate: 360,
@@ -170,7 +171,7 @@ const AnimatedBackground = () => {
                   y1={particle.y}
                   x2={otherParticle.x}
                   y2={otherParticle.y}
-                  stroke="url(#gradient)"
+                  stroke="url(#sky-gradient)"
                   strokeWidth="1"
                   opacity={Math.max(0, 0.3 - distance / 500)}
                 />
@@ -180,9 +181,9 @@ const AnimatedBackground = () => {
           })
         )}
         <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgb(59, 130, 246)" />
-            <stop offset="100%" stopColor="rgb(139, 92, 246)" />
+          <linearGradient id="sky-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#53c0fb" />
+            <stop offset="100%" stopColor="#296b8d" />
           </linearGradient>
         </defs>
       </svg>
@@ -190,4 +191,4 @@ const AnimatedBackground = () => {
   );
 };
 
-export default AnimatedBackground; 
+export default AnimatedBackground;

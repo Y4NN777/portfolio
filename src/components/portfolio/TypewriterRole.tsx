@@ -13,7 +13,6 @@ export default function TypewriterRole() {
 
   const roles = useMemo(() => translations[locale].hero.roles, [locale]);
 
-  // Typewriter effect
   useEffect(() => {
     const currentRole = roles[currentRoleIndex];
     const timeout = setTimeout(() => {
@@ -43,9 +42,10 @@ export default function TypewriterRole() {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.4 }}
     >
-      {/* Floating Orbital Elements */}
+      {/* Orbital accents — sky blue only */}
       <motion.div
-        className="absolute top-0 right-16 w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-lg"
+        className="absolute top-0 right-16 w-2 h-2 rounded-full shadow-lg"
+        style={{ background: "linear-gradient(135deg, #4bbcff, #53c0fb)", transformOrigin: "-60px 30px" }}
         animate={{
           rotate: 360,
           scale: [1, 1.3, 1],
@@ -54,13 +54,11 @@ export default function TypewriterRole() {
           rotate: { duration: 10, repeat: Infinity, ease: "linear" },
           scale: { duration: 2, repeat: Infinity }
         }}
-        style={{
-          transformOrigin: "-60px 30px"
-        }}
       />
 
       <motion.div
-        className="absolute bottom-2 left-12 w-1.5 h-1.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg"
+        className="absolute bottom-2 left-12 w-1.5 h-1.5 rounded-full shadow-lg"
+        style={{ background: "linear-gradient(135deg, #53c0fb, #296b8d)", transformOrigin: "80px -20px" }}
         animate={{
           rotate: -360,
           scale: [1, 1.4, 1],
@@ -69,46 +67,38 @@ export default function TypewriterRole() {
           rotate: { duration: 15, repeat: Infinity, ease: "linear" },
           scale: { duration: 3, repeat: Infinity, delay: 1 }
         }}
-        style={{
-          transformOrigin: "80px -20px"
-        }}
       />
 
-      {/* Enhanced Role Text Container */}
+      {/* Role text container */}
       <motion.div
         className="relative overflow-hidden rounded-2xl px-6 py-3 min-w-[280px]"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
       >
-        {/* Animated Background Layers */}
+        {/* Animated sky-blue gradient background */}
         <motion.div
           className="absolute inset-0 rounded-2xl"
           animate={{
             background: [
-              "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)",
-              "linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f59e0b 100%)",
-              "linear-gradient(135deg, #ec4899 0%, #f59e0b 50%, #3b82f6 100%)",
-              "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%)"
+              "linear-gradient(135deg, #1f4d67 0%, #296b8d 50%, #53c0fb 100%)",
+              "linear-gradient(135deg, #296b8d 0%, #53c0fb 50%, #4bbcff 100%)",
+              "linear-gradient(135deg, #53c0fb 0%, #4bbcff 50%, #1f4d67 100%)",
+              "linear-gradient(135deg, #1f4d67 0%, #296b8d 50%, #53c0fb 100%)"
             ]
           }}
           transition={{ duration: 8, repeat: Infinity }}
         />
 
-        {/* Shimmer Effect */}
+        {/* Shimmer */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-2xl"
-          animate={{
-            x: ["-100%", "100%"],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          className="absolute inset-0 rounded-2xl"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)" }}
+          animate={{ x: ["-100%", "100%"] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Geometric Pattern Overlay */}
+        {/* Dot pattern overlay */}
         <motion.div
           className="absolute inset-0 opacity-20 rounded-2xl"
           animate={{ rotate: [0, 360] }}
@@ -142,20 +132,17 @@ export default function TypewriterRole() {
           </motion.span>
         </div>
 
-        {/* Pulse Border Effect */}
+        {/* Pulse border */}
         <motion.div
-          className="absolute inset-0 rounded-2xl border border-white/20"
+          className="absolute inset-0 rounded-2xl"
+          style={{ border: "1px solid rgba(83, 192, 251, 0.3)" }}
           animate={{
             scale: [1, 1.05, 1],
             opacity: [0.3, 0.6, 0.3]
           }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.div>
     </motion.div>
   );
-} 
+}

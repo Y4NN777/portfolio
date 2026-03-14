@@ -40,11 +40,15 @@ export default function SectionHeader({
     >
       {/* Tag Badge */}
       <motion.div
-        className={`inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full mb-4 md:mb-6 ${centered ? 'justify-center' : ''}`}
+        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 md:mb-6 ${centered ? 'justify-center' : ''}`}
+        style={{
+          background: "rgba(83, 192, 251, 0.1)",
+          border: "1px solid rgba(83, 192, 251, 0.25)",
+        }}
         whileHover={{ scale: 1.05 }}
       >
-        <Icon icon={tagIcon} className="text-indigo-500" width={20} height={20} />
-        <span className="text-indigo-600 dark:text-indigo-400 text-sm font-medium">
+        <Icon icon={tagIcon} className="text-[#296b8d] dark:text-[#53c0fb]" width={20} height={20} />
+        <span className="text-sm font-medium text-[#296b8d] dark:text-[#53c0fb]">
           {tagText}
         </span>
       </motion.div>
@@ -55,34 +59,35 @@ export default function SectionHeader({
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        <span className="bg-gradient-to-l from-indigo-600 via-purple-600 to-violet-600 dark:from-indigo-400 dark:via-purple-400 dark:to-violet-400 bg-clip-text text-transparent">
+        {/* Dark mode: white-to-skyblue gives real contrast. Light mode: deep navy text — readable on white */}
+        <span className="dark:hidden bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(90deg, #061825, #296b8d, #0f2d40)" }}>
+          {heading}
+        </span>
+        <span className="hidden dark:inline bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(90deg, #f1f5f9, #53c0fb, #cbd5e1)" }}>
           {heading}
         </span>
       </motion.h2>
 
       {/* Underline */}
-      {
-        showUnderline && (
-          <motion.div
-            className={`h-1 md:h-1.5 lg:h-2 bg-gradient-to-l from-indigo-600 via-purple-600 to-violet-600 dark:from-indigo-400 dark:via-purple-400 dark:to-violet-400 rounded-full mb-3 md:mb-4 lg:mb-6 ${centered ? 'mx-auto' : ''}`}
-            initial={{ width: 0 }}
-            whileInView={{ width: 80 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          />
-        )
-      }
+      {showUnderline && (
+        <motion.div
+          className={`h-1 md:h-1.5 lg:h-2 rounded-full mb-3 md:mb-4 lg:mb-6 ${centered ? 'mx-auto' : ''}`}
+          style={{ background: "linear-gradient(90deg, #4bbcff, #53c0fb)" }}
+          initial={{ width: 0 }}
+          whileInView={{ width: 80 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+        />
+      )}
 
       {/* Description */}
-      {
-        description && (
-          <motion.p
-            className={`text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl ${centered ? 'mx-auto' : ''}`}
-            variants={itemVariants}
-          >
-            {description}
-          </motion.p>
-        )
-      }
-    </motion.div >
+      {description && (
+        <motion.p
+          className={`text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl ${centered ? 'mx-auto' : ''}`}
+          variants={itemVariants}
+        >
+          {description}
+        </motion.p>
+      )}
+    </motion.div>
   );
-} 
+}
