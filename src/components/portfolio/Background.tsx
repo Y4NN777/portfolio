@@ -58,7 +58,7 @@ export default function Background() {
       {/* Animated gradient orbs */}
       <motion.div
         className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full -z-10 ${isMobile ? 'blur-xl' : 'blur-3xl'}`}
-        style={{ background: "radial-gradient(circle, rgba(83,192,251,0.18) 0%, rgba(41,107,141,0.10) 100%)" }}
+        style={{ background: "radial-gradient(circle, rgba(83,192,251,0.18) 0%, rgba(41,107,141,0.10) 100%)", willChange: 'transform' }}
         animate={isMobile ? {
           x: [0, 50, 0],
           y: [0, -25, 0],
@@ -72,12 +72,11 @@ export default function Background() {
           repeat: Infinity,
           repeatType: "reverse",
         }}
-        style={{ willChange: 'transform' }}
       />
 
       <motion.div
         className={`absolute top-3/4 right-1/4 w-80 h-80 rounded-full ${isMobile ? 'blur-lg' : 'blur-3xl'}`}
-        style={{ background: "radial-gradient(circle, rgba(75,188,255,0.15) 0%, rgba(83,192,251,0.08) 100%)" }}
+        style={{ background: "radial-gradient(circle, rgba(75,188,255,0.15) 0%, rgba(83,192,251,0.08) 100%)", willChange: 'transform' }}
         animate={isMobile ? {
           x: [0, -40, 0],
           y: [0, 30, 0],
@@ -92,13 +91,12 @@ export default function Background() {
           repeatType: "reverse",
           ease: animationConfig.ease,
         }}
-        style={{ willChange: 'transform' }}
       />
 
       {!isMobile && (
         <motion.div
           className="absolute top-1/2 right-1/3 w-72 h-72 rounded-full blur-3xl"
-          style={{ background: "radial-gradient(circle, rgba(41,107,141,0.15) 0%, rgba(31,77,103,0.10) 100%)" }}
+          style={{ background: "radial-gradient(circle, rgba(41,107,141,0.15) 0%, rgba(31,77,103,0.10) 100%)", willChange: 'transform' }}
           animate={{
             x: [0, 120, 0],
             y: [0, -80, 0],
@@ -109,7 +107,6 @@ export default function Background() {
             repeat: Infinity,
             repeatType: "reverse",
           }}
-          style={{ willChange: 'transform' }}
         />
       )}
 
