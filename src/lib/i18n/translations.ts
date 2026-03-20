@@ -119,7 +119,7 @@ export const translations = {
           achievements: [],
         },
         y7labs: {
-          role: "Co-Founder & CTO",
+          role: "Founder",
           company: "Y7 Labs",
           period: "August 2025 — Present",
           description:
@@ -385,14 +385,14 @@ export const translations = {
       },
       items: {
         aïobi: {
-          role: "Développeur IA Full-Stack",
+          role: "Développeur Full-Stack IA",
           company: "Aïobi",
           period: "Mars 2026 — Aujourd'hui",
           description: "Travail sur des systèmes logiciels propulsés par l'IA et contribution au développement de produits numériques innovants. Mon travail se concentre sur le développement full-stack, l'intégration de l'IA et la construction de solutions scalables pour les plateformes internes et les processus opérationnels.",
           achievements: [],
         },
         y7labs: {
-          role: "Co-Fondateur & CTO",
+          role: "Fondateur",
           company: "Y7 Labs",
           period: "Août 2025 — Aujourd'hui",
           description:
