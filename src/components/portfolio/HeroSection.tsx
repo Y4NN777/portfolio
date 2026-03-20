@@ -42,7 +42,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-4xl mx-auto px-6 text-center -mb-8"
+        className="relative z-10 max-w-4xl mx-auto px-6 text-center mb-10 md:-mb-8"
       >
 
         {/* Portrait */}
