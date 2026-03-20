@@ -11,6 +11,7 @@ export default function ContactSection() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [isResumeMenuOpen, setIsResumeMenuOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -260,14 +261,41 @@ export default function ContactSection() {
             </motion.div>
 
             {/* Download CV — outlined with dark-mode-safe background */}
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/CV.pdf"
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
+              <button
+                type="button"
+                onClick={() => setIsResumeMenuOpen((prev) => !prev)}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#53c0fb] bg-white/90 dark:bg-[#1f4d67]/60 border-2 border-[#296b8d] dark:border-[#53c0fb]"
+                aria-haspopup="menu"
+                aria-expanded={isResumeMenuOpen}
               >
                 <Icon icon="solar:download-bold" width={18} height={18} />
                 Download CV
-              </Link>
+                <Icon icon="solar:alt-arrow-down-linear" width={16} height={16} />
+              </button>
+
+              {isResumeMenuOpen && (
+                <div className="absolute top-full mt-2 right-0 min-w-[180px] rounded-xl shadow-lg bg-white/95 dark:bg-[#1f4d67]/95 border border-[#296b8d]/40 dark:border-[#53c0fb]/30 backdrop-blur-sm z-20 overflow-hidden">
+                  <Link
+                    href="/RESUME_EN.pdf"
+                    download
+                    onClick={() => setIsResumeMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-[#0f2d40] dark:text-[#c9e9ff] hover:bg-[#53c0fb]/10 dark:hover:bg-[#53c0fb]/20 transition-colors"
+                  >
+                    <Icon icon="solar:file-download-linear" width={16} height={16} />
+                    Resume EN
+                  </Link>
+                  <Link
+                    href="/RESUME_FR.pdf"
+                    download
+                    onClick={() => setIsResumeMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-[#0f2d40] dark:text-[#c9e9ff] hover:bg-[#53c0fb]/10 dark:hover:bg-[#53c0fb]/20 transition-colors border-t border-[#296b8d]/20 dark:border-[#53c0fb]/20"
+                  >
+                    <Icon icon="solar:file-download-linear" width={16} height={16} />
+                    CV FR
+                  </Link>
+                </div>
+              )}
             </motion.div>
           </div>
         </motion.div>
