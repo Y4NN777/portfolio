@@ -39,7 +39,7 @@ export default function HeroSection() {
       </div>
 
       <motion.section
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         className="relative z-10 max-w-4xl mx-auto px-6 text-center mb-10 md:-mb-8"
@@ -49,7 +49,7 @@ export default function HeroSection() {
         <motion.div
           className="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-2xl bg-[#f0f7ff]/80 dark:bg-[#0f2d40]/80"
           style={{ border: "1px solid rgba(83, 192, 251, 0.3)" }}
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
         >
@@ -64,8 +64,8 @@ export default function HeroSection() {
 
         {/* Name */}
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-5xl md:text-6xl font-bold mb-6"
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
@@ -74,34 +74,32 @@ export default function HeroSection() {
             className="dark:hidden bg-clip-text text-transparent"
             style={{ backgroundImage: "linear-gradient(90deg, #061825, #296b8d, #53c0fb, #296b8d, #061825)" }}
           >
-            Ragnang-Newende Yanis Axel DABO
+            The Y4NN
           </span>
           {/* Dark: white-to-skyblue-to-white so the accent shimmers through */}
           <span
             className="hidden dark:inline bg-clip-text text-transparent"
             style={{ backgroundImage: "linear-gradient(90deg, #f1f5f9, #53c0fb, #4bbcff, #53c0fb, #f1f5f9)" }}
           >
-            Ragnang-Newende Yanis Axel DABO
-          </span>
-        </motion.h1>
+            The Y4NN
+          </span>        </motion.h1>
+
+        {/* Headline */}
+        <motion.p
+          className="text-base md:text-lg text-[#296b8d] dark:text-[#94a3b8] mb-4 max-w-2xl mx-auto leading-relaxed"
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+        >
+          {t("hero.headline")}
+        </motion.p>
 
         {/* Typewriter Role Component */}
         <TypewriterRole />
 
-        {/* Tagline */}
-        <motion.p
-          className="text-lg md:text-xl text-[#296b8d] dark:text-[#94a3b8] mb-10 max-w-2xl mx-auto leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-        >
-          {t("hero.tagline")}
-        </motion.p>
-
-        {/* Social Links */}
         <motion.div
           className="flex flex-wrap gap-3 justify-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0 }}
         >
@@ -113,7 +111,7 @@ export default function HeroSection() {
             <motion.div key={link.label} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={link.href}
-                className={`inline-flex items-center gap-2 px-4 py-2 backdrop-blur-sm rounded-full text-sm transition-all duration-300 shadow-lg hover:shadow-xl text-[#0f2d40] dark:text-[#94a3b8] bg-white/80 dark:bg-[#1f4d67]/60 border border-[#296b8d]/40 dark:border-[#53c0fb]/25 ${link.hoverClass}`}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#94a3b8] bg-white dark:bg-[#1f4d67] border border-[#296b8d]/40 dark:border-[#53c0fb]/25 ${link.hoverClass}`}
               >
                 <Icon icon={link.icon} width={18} height={18} />
                 {link.label}
@@ -122,59 +120,8 @@ export default function HeroSection() {
           ))}
         </motion.div>
 
-        {/* Status */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.4 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-sm"
-          style={{
-            background: "rgba(220, 252, 231, 0.6)",
-            border: "1px solid rgba(134, 239, 172, 0.4)",
-          }}
-        >
-          <motion.div
-            className="w-2 h-2 bg-green-500 rounded-full"
-            animate={{ scale: [1, 1.4, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-          <Link href="#contact">
-            <span className="text-green-700 dark:text-green-300 text-sm font-medium">
-              {t("hero.status")}
-            </span>
-          </Link>
-        </motion.div>
       </motion.section>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.6, duration: 0.6 }}
-        className="hidden md:flex absolute  bottom-10 left-0 right-0 justify-center pb-8 z-10"
-      >
-        <motion.button
-          onClick={() => {
-            const overviewSection = document.getElementById('overview');
-            if (overviewSection) {
-              overviewSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }}
-          className="flex flex-col items-center gap-2 text-[#296b8d] dark:text-[#94a3b8] cursor-pointer hover:text-[#53c0fb] dark:hover:text-[#53c0fb] transition-colors duration-300"
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span className="text-sm font-medium tracking-wide">{t("hero.scrollPrompt")}</span>
-          <motion.div
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Icon icon="mdi:chevron-down" width={24} height={24} />
-          </motion.div>
-        </motion.button>
-      </motion.div>
-    </div>
+      </div>
   );
 }

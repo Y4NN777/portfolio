@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 
 interface SectionHeaderProps {
-  tagText: string;
+  tagText?: string;
   tagIcon: string;
   heading: string;
   description?: string;
@@ -39,19 +39,21 @@ export default function SectionHeader({
       className={`mb-8 md:mb-12 lg:mb-16 px-4 ${centered ? 'text-center' : ''}`}
     >
       {/* Tag Badge */}
-      <motion.div
-        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 md:mb-6 ${centered ? 'justify-center' : ''}`}
-        style={{
-          background: "rgba(83, 192, 251, 0.1)",
-          border: "1px solid rgba(83, 192, 251, 0.25)",
-        }}
-        whileHover={{ scale: 1.05 }}
-      >
-        <Icon icon={tagIcon} className="text-[#296b8d] dark:text-[#53c0fb]" width={20} height={20} />
-        <span className="text-sm font-medium text-[#296b8d] dark:text-[#53c0fb]">
-          {tagText}
-        </span>
-      </motion.div>
+      {tagText && (
+        <motion.div
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-4 md:mb-6 ${centered ? 'justify-center' : ''}`}
+          style={{
+            background: "rgba(83, 192, 251, 0.1)",
+            border: "1px solid rgba(83, 192, 251, 0.25)",
+          }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <Icon icon={tagIcon} className="text-[#296b8d] dark:text-[#53c0fb]" width={20} height={20} />
+          <span className="text-sm font-medium text-[#296b8d] dark:text-[#53c0fb]">
+            {tagText}
+          </span>
+        </motion.div>
+      )}
 
       {/* Heading */}
       <motion.h2
@@ -59,7 +61,7 @@ export default function SectionHeader({
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        {/* Dark mode: white-to-skyblue gives real contrast. Light mode: deep navy text — readable on white */}
+        {/* Dark mode: white-to-skyblue gives real contrast. Light mode: deep navy text, readable on white */}
         <span className="dark:hidden bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(90deg, #061825, #296b8d, #0f2d40)" }}>
           {heading}
         </span>

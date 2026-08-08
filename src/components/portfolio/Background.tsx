@@ -40,7 +40,7 @@ export default function Background() {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Base gradient — light: sky tints / dark: navy scale */}
+      {/* Base gradient, light: sky tints / dark: navy scale */}
       <div className="absolute inset-0 bg-[#f0f7ff] dark:bg-[#061825]" />
       <div
         className="absolute inset-0 opacity-60 dark:opacity-100"
@@ -135,7 +135,7 @@ export default function Background() {
         />
       ))}
 
-      {/* Grid pattern overlay — desktop only */}
+      {/* Grid pattern overlay, desktop only */}
       {!isMobile && (
         <div className="absolute inset-0 opacity-[0.04] dark:opacity-[0.07]">
           <div
@@ -159,7 +159,7 @@ export default function Background() {
         }}
       />
 
-      {/* Noise texture — desktop only */}
+      {/* Noise texture, desktop only */}
       {!isMobile && (
         <div
           className="absolute inset-0 opacity-[0.01] mix-blend-overlay pointer-events-none"

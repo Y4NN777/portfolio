@@ -20,14 +20,16 @@ export default function TypewriterRole() {
         if (displayText.length < currentRole.length) {
           setDisplayText(currentRole.slice(0, displayText.length + 1));
         } else {
-          setTimeout(() => setIsDeleting(true), 2000);
+          setTimeout(() => setIsDeleting(true), 3500);
         }
       } else {
         if (displayText.length > 0) {
           setDisplayText(displayText.slice(0, -1));
         } else {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+          setTimeout(() => {
+            setIsDeleting(false);
+            setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+          }, 400);
         }
       }
     }, isDeleting ? 50 : 120);
@@ -37,12 +39,12 @@ export default function TypewriterRole() {
 
   return (
     <motion.div
-      className="relative text-xl md:text-2xl mb-6 h-16 flex items-center justify-center"
-      initial={{ opacity: 0 }}
+      className="relative text-base md:text-xl mb-6 flex items-center justify-center"
+      initial={false}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.4 }}
     >
-      {/* Orbital accents — sky blue only */}
+      {/* Orbital accents, sky blue only */}
       <motion.div
         className="absolute top-0 right-16 w-2 h-2 rounded-full shadow-lg"
         style={{ background: "linear-gradient(135deg, #4bbcff, #53c0fb)", transformOrigin: "-60px 30px" }}
@@ -71,7 +73,7 @@ export default function TypewriterRole() {
 
       {/* Role text container */}
       <motion.div
-        className="relative overflow-hidden rounded-2xl px-6 py-3 min-w-[280px]"
+        className="relative overflow-hidden rounded-2xl px-5 py-2 w-fit max-w-full whitespace-nowrap"
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
@@ -113,7 +115,7 @@ export default function TypewriterRole() {
         {/* Role Text */}
         <div className="relative z-10 text-center">
           <motion.span
-            className="text-white font-semibold text-left inline-block min-w-[200px]"
+            className="text-white font-semibold text-left inline-block whitespace-nowrap"
             animate={{
               textShadow: [
                 "0 0 10px rgba(255,255,255,0.3)",

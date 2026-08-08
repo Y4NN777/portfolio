@@ -8,8 +8,8 @@ import "./globals.css";
 const inter = Space_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"] });
 
 export const metadata: Metadata = {
-  title: "TheY4NN, the777th Dev",
-  description: "Portfolio of the Y4NN, a curious backend/full-stack developer specializing in modern software engineering, AI engineering.",
+  title: "The Y4NN, the777th Dev",
+  description: "Portfolio of The Y4NN, a curious backend/full-stack developer specializing in modern software engineering, AI engineering.",
   keywords: "Ragnang-Newende Yanis Axel DABO, Backend Developer, GenIA, AgenticAI, Web3, Software Engineer, Systems Engineer, Portfolio, AI Engineering, Secure, performant",
   authors: [{ name: "Ragnang-Newende Yanis Axel DABO" }],
   icons: {
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Ragnang-Newende Yanis Axel DABO - Backend Developer, GenIA & AgenticAI Enthusiast, Web3 Enthusiast, Aspiring Software and Systems Engineer",
-    description: "Portfolio site of the Y4NN, a curious developer specializing in secured and performant smart systems building.",
+    description: "Portfolio site of The Y4NN, a curious developer specializing in secured and performant smart systems building.",
     type: "website",
   },
 };

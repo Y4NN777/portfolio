@@ -16,7 +16,6 @@ export default function Navigation() {
     { id: "stack", labelKey: "navigation.links.stack" },
     { id: "experience", labelKey: "navigation.links.experience" },
     { id: "projects", labelKey: "navigation.links.projects" },
-    { id: "certifications", labelKey: "navigation.links.certifications" },
     { id: "contact", labelKey: "navigation.links.contact" },
   ];
 
@@ -38,7 +37,7 @@ export default function Navigation() {
       >
         <div className="flex justify-between items-center gap-10">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={false}
             animate={{ opacity: 1, x: 0 }}
             className="text-xl font-bold bg-clip-text text-transparent"
             style={{ backgroundImage: "linear-gradient(90deg, #296b8d, #53c0fb, #4bbcff)" }}
@@ -73,7 +72,7 @@ export default function Navigation() {
                     event.preventDefault();
                     handleScroll(item.id);
                   }}
-                  initial={{ opacity: 0, y: -20 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className="transition-colors duration-300 text-sm font-medium"
@@ -88,7 +87,7 @@ export default function Navigation() {
 
             {/* Theme Toggle */}
             <motion.button
-              initial={{ opacity: 0, scale: 0.5 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

@@ -104,7 +104,6 @@ export default function OverviewSection() {
         className="relative z-10"
       >
         <SectionHeader
-          tagText={overviewCopy.tagText}
           tagIcon="solar:user-heart-bold"
           heading={overviewCopy.heading}
           description={overviewCopy.description}
@@ -119,7 +118,9 @@ export default function OverviewSection() {
             <div className="space-y-6 md:space-y-8">
 
               {/* Introduction Card */}
-              <div
+              <motion.div
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.3 }}
                 className="relative p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl backdrop-blur-xl shadow-2xl bg-white/85 dark:bg-[#0f2d40]/90"
                 style={{ border: "1px solid rgba(83, 192, 251, 0.15)" }}
               >
@@ -152,85 +153,44 @@ export default function OverviewSection() {
                   </div>
 
                   <div className="space-y-3 md:space-y-4 border-t pt-4 md:pt-6" style={{ borderColor: "rgba(83, 192, 251, 0.15)" }}>
-                    <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {overviewCopy.introParagraph1}
-                    </p>
-                    <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-                      {overviewCopy.introParagraph2}
-                    </p>
+                    {overviewCopy.introParagraphs.map((paragraph, index) => (
+                      <p key={index} className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
                   </div>
 
-                  {/* Skills Highlight */}
+                  {/* Engineering Focus */}
                   <div className="border-t pt-4 md:pt-6" style={{ borderColor: "rgba(83, 192, 251, 0.15)" }}>
-                    <h4 className="font-bold text-gray-900 dark:text-white mb-3 md:mb-4 flex items-center gap-2">
+                    <h4 className="font-bold text-gray-900 dark:text-white mb-4 md:mb-6 flex items-center gap-2">
                       <Icon icon="solar:lightning-bold" className="text-amber-500 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
                       {overviewCopy.coreSkillsTitle}
                     </h4>
-                    <div className="flex flex-wrap gap-2 md:gap-3">
+                    <div className="grid md:grid-cols-2 gap-3 md:gap-4">
                       {overviewCopy.coreSkills.map((skill, index) => (
-                        <motion.span
-                          key={skill}
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 1.2 + index * 0.1 }}
-                          whileHover={{ scale: 1.05, y: -1 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-medium text-[#296b8d] dark:text-[#62b6e2] rounded-lg md:rounded-xl hover:shadow-lg transition-all duration-300"
+                        <motion.div
+                          key={skill.title}
+                          initial={{ opacity: 0, y: 16 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
+                          whileHover={{ scale: 1.03, y: -3 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="p-3 md:p-4 rounded-xl backdrop-blur-sm transition-colors duration-300"
                           style={{
-                            background: "rgba(83, 192, 251, 0.08)",
-                            border: "1px solid rgba(83, 192, 251, 0.2)",
+                            background: "rgba(83, 192, 251, 0.06)",
+                            border: "1px solid rgba(83, 192, 251, 0.18)",
                           }}
                         >
-                          {skill}
-                        </motion.span>
+                          <div className="font-semibold text-gray-900 dark:text-white text-sm md:text-base mb-1">{skill.title}</div>
+                          <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
                 </div>
+              </motion.div>
               </div>
-
-              {/* Professional Roles Grid */}
-              <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-                {professionalRoleCards.map((card) => {
-                  const copy = overviewCopy.roles?.[card.id];
-                  if (!copy) return null;
-                  return (
-                    <motion.div
-                      key={card.id}
-                      variants={itemVariants}
-                      whileHover={{ scale: 1.02, y: -5 }}
-                      className={card.containerClass}
-                      style={{
-                        background: "rgba(83, 192, 251, 0.05)",
-                        border: "1px solid rgba(83, 192, 251, 0.15)",
-                      }}
-                    >
-                      <div className="flex items-start gap-3 md:gap-4 mb-3 md:mb-4">
-                        <div
-                          className={card.iconWrapper}
-                          style={{ background: "linear-gradient(135deg, #296b8d, #53c0fb)" }}
-                        >
-                          <Icon icon={card.icon} className="text-white w-5 md:w-6 h-5 md:h-6" width={24} height={24} />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-gray-900 dark:text-white text-base md:text-lg">{copy.title}</h4>
-                          <p className="font-medium text-sm md:text-base" style={{ color: "#53c0fb" }}>{copy.company}</p>
-                          <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 mt-1">{copy.period}</p>
-                        </div>
-                      </div>
-                      <p className="text-gray-700 dark:text-gray-300 text-xs md:text-sm leading-relaxed mb-2 md:mb-3 flex-1">
-                        {copy.description}
-                      </p>
-                      <div className="flex items-center gap-2 text-xs md:text-sm mt-auto">
-                        <Icon icon={card.badgeIcon} className={`${card.badgeColor} w-3 md:w-4 h-3 md:h-4`} width={16} height={16} />
-                        <span className={`font-semibold ${card.highlightColor}`}>{copy.badge}</span>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
           {/* Sidebar */}
           <motion.div variants={itemVariants} className="lg:col-span-4 space-y-6 mt-6 lg:mt-0">
@@ -290,7 +250,7 @@ export default function OverviewSection() {
               </div>
             </div>
 
-            {/* Achievement Highlights */}
+            {/* Roles (compact) */}
             <div
               className="p-6 rounded-2xl backdrop-blur-sm shadow-xl"
               style={{
@@ -298,59 +258,32 @@ export default function OverviewSection() {
                 border: "1px solid rgba(83, 192, 251, 0.15)",
               }}
             >
-              <h4 className="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                <Icon icon="solar:cup-star-bold" className="text-amber-500 w-5 h-5" width={20} height={20} />
-                {overviewCopy.achievementsTitle}
+              <h4 className="font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
+                <Icon icon="solar:briefcase-bold" style={{ color: "#53c0fb" }} className="w-5 h-5" width={20} height={20} />
+                Experience at a Glance
               </h4>
               <div className="space-y-4">
-                {[
-                  { icon: "solar:star-bold", text: overviewCopy.achievements[0], color: "text-amber-500" },
-                  { icon: "solar:cpu-bolt-bold-duotone", text: overviewCopy.achievements[1], color: "text-[#53c0fb]" },
-                  { icon: "solar:code-square-bold", text: overviewCopy.achievements[2], color: "text-[#4bbcff]" },
-                ].map((achievement, index) => (
+                {Object.values(translations[locale].experience.items).map((exp, index) => (
                   <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1.5 + index * 0.2 }}
-                    className="flex items-center gap-3 p-3 rounded-lg transition-all duration-300 group"
-                    style={{ background: "rgba(83, 192, 251, 0.06)", border: "1px solid rgba(83,192,251,0.1)" }}
-                  >
-                    <Icon icon={achievement.icon} className={`${achievement.color} w-5 h-5`} width={20} height={20} />
-                    <span className="text-sm font-medium text-gray-800 dark:text-gray-300">{achievement.text}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Available for Hire */}
-            <div
-              className="p-6 rounded-2xl backdrop-blur-sm shadow-xl"
-              style={{
-                background: "rgba(83, 192, 251, 0.05)",
-                border: "1px solid rgba(83, 192, 251, 0.15)",
-              }}
-            >
-              <h4 className="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                <Icon icon="solar:rocket-bold" style={{ color: "#53c0fb" }} className="w-5 h-5" width={20} height={20} />
-                {overviewCopy.availabilityTitle}
-              </h4>
-              <div className="space-y-3.5">
-                {[
-                  { icon: "solar:check-circle-bold", text: overviewCopy.availability[0], color: "text-green-600" },
-                  { icon: "solar:planet-2-bold", text: overviewCopy.availability[1], color: "text-[#53c0fb]" },
-                  { icon: "solar:clock-circle-bold", text: overviewCopy.availability[2], color: "text-[#4bbcff]" },
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
+                    key={exp.company}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2.0 + i * 0.2 }}
-                    className="flex items-center gap-3 p-3 rounded-lg transition-all duration-300 group"
-                    style={{ background: "rgba(83, 192, 251, 0.06)", border: "1px solid rgba(83,192,251,0.1)" }}
+                    transition={{ delay: 2.0 + index * 0.1 }}
+                    whileHover={{ x: 4, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex items-start gap-3 cursor-pointer"
                   >
-                    <Icon icon={item.icon} className={`${item.color} w-5 h-5`} width={20} height={20} />
-                    <span className="text-sm font-medium text-gray-800 dark:text-gray-300">{item.text}</span>
+                    <div
+                      className="p-2 rounded-lg shrink-0"
+                      style={{ background: "linear-gradient(135deg, #296b8d, #53c0fb)" }}
+                    >
+                      <Icon icon="solar:case-minimalistic-bold" className="text-white w-4 h-4" width={16} height={16} />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-semibold text-gray-900 dark:text-white text-sm leading-snug">{exp.company}</div>
+                      <div className="text-xs font-medium mt-0.5" style={{ color: "#53c0fb" }}>{exp.role}</div>
+                      <div className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{exp.period}</div>
+                    </div>
                   </motion.div>
                 ))}
               </div>

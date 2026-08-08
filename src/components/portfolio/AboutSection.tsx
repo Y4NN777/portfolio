@@ -15,7 +15,7 @@ export default function AboutSection() {
       <h2 className="text-2xl font-bold mb-6">About</h2>
       <div className="max-w-none">
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-          Hello, World! I am Yanis Axel — a passionate Software Developer & innovation enthusiast
+          Hello, World! I am Ragnang-Newende Yanis Axel DABO, a passionate Software Developer & innovation enthusiast
           dedicated to creating scalable and high-performance, user-centric software solutionsUI/UX with intuitive and engaging designs.
         </p>
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">

@@ -13,6 +13,8 @@ export default function ContactSection() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [isResumeMenuOpen, setIsResumeMenuOpen] = useState(false);
 
+  const availability = "Open to New Remote Opportunities";
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -66,6 +68,26 @@ export default function ContactSection() {
           tagText='Contact'
           centered={true}
         />
+
+        {/* Availability badge */}
+        <motion.div
+          className="flex justify-center mb-8"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+            style={{
+              background: "rgba(134, 239, 172, 0.15)",
+              border: "1px solid rgba(134, 239, 172, 0.4)",
+            }}
+          >
+            <Icon icon="solar:check-circle-bold" className="text-green-600 dark:text-green-400 w-4 h-4" width={16} height={16} />
+            <span className="text-sm font-medium text-green-700 dark:text-green-300">{availability}</span>
+          </div>
+        </motion.div>
 
         {/* Contact Form */}
         <motion.div
@@ -165,7 +187,6 @@ export default function ContactSection() {
                 className="inline-flex items-center gap-2 px-8 py-4 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   background: "linear-gradient(135deg, #296b8d, #53c0fb)",
-                  boxShadow: "0 0 20px rgba(83, 192, 251, 0.3)",
                 }}
               >
                 {isSubmitting ? (
@@ -245,14 +266,13 @@ export default function ContactSection() {
         >
           <p className="text-[#296b8d] dark:text-[#94a3b8] mb-6">Or reach out directly:</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {/* Send Email — filled primary */}
+            {/* Send Email, filled primary */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="mailto:y4nn.dev@gmail.com"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl"
                 style={{
                   background: "linear-gradient(135deg, #296b8d, #53c0fb)",
-                  boxShadow: "0 0 16px rgba(83, 192, 251, 0.35)",
                 }}
               >
                 <Icon icon="solar:mailbox-bold-duotone" width={18} height={18} />
@@ -260,12 +280,12 @@ export default function ContactSection() {
               </Link>
             </motion.div>
 
-            {/* Download CV — outlined with dark-mode-safe background */}
+            {/* Download CV, outlined with dark-mode-safe background */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="relative">
               <button
                 type="button"
                 onClick={() => setIsResumeMenuOpen((prev) => !prev)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#53c0fb] bg-white/90 dark:bg-[#1f4d67]/60 border-2 border-[#296b8d] dark:border-[#53c0fb]"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 text-[#296b8d] dark:text-[#53c0fb] bg-white dark:bg-[#1f4d67] border-2 border-[#53c0fb]/50 hover:border-[#53c0fb] shadow-md hover:shadow-lg active:scale-95"
                 aria-haspopup="menu"
                 aria-expanded={isResumeMenuOpen}
               >
@@ -275,7 +295,7 @@ export default function ContactSection() {
               </button>
 
               {isResumeMenuOpen && (
-                <div className="absolute top-full mt-2 right-0 min-w-[180px] rounded-xl shadow-lg bg-white/95 dark:bg-[#1f4d67]/95 border border-[#296b8d]/40 dark:border-[#53c0fb]/30 backdrop-blur-sm z-20 overflow-hidden">
+                <div className="absolute top-full mt-2 right-0 min-w-[180px] rounded-xl shadow-lg bg-white dark:bg-[#1f4d67] border border-[#296b8d]/40 dark:border-[#53c0fb]/30 z-20 overflow-hidden">
                   <Link
                     href="/RESUME_EN.pdf"
                     download

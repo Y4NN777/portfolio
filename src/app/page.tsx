@@ -2,7 +2,6 @@
 
 import {
   Background,
-  CertificationsSection,
   ContactSection,
   ExperienceSection,
   Footer,
@@ -10,6 +9,7 @@ import {
   Navigation,
   OverviewSection,
   ProjectsSection,
+  ScrollControl,
   TechStackSection,
   // TestimonialsSection
 } from "@/components/portfolio";
@@ -23,6 +23,9 @@ export default function Portfolio() {
       {/* Navigation */}
       <Navigation />
 
+      {/* Position-aware scroll control */}
+      <ScrollControl />
+
       <div className="max-w-6xl mx-auto px-6 pt-24">
         {/* Hero Section */}
         <HeroSection />
@@ -30,17 +33,14 @@ export default function Portfolio() {
         {/* Overview Section */}
         <OverviewSection />
 
-        {/* Tech Stack Section */}
-        <TechStackSection />
-
         {/* Experience Section */}
         <ExperienceSection />
 
+        {/* Tech Stack Section */}
+        <TechStackSection />
+
         {/* Projects Section */}
         <ProjectsSection />
-
-        {/* Certifications Section */}
-        <CertificationsSection />
 
         {/* Contact Section */}
         <ContactSection />
