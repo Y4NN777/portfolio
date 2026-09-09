@@ -59,7 +59,7 @@ module.exports = {
 				},
 			},
 			fontFamily: {
-				sans: ["Inter", "sans-serif"],
+				sans: ["var(--font-space-grotesk)", "ui-sans-serif", "system-ui", "sans-serif"],
 			},
 			animation: {
 				"pulse-glow": "pulse-glow 2s ease-in-out infinite",
