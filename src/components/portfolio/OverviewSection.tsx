@@ -173,8 +173,6 @@ export default function OverviewSection() {
                           initial={{ opacity: 0, y: 16 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
-                          whileHover={{ scale: 1.03, y: -3 }}
-                          whileTap={{ scale: 0.98 }}
                           className="p-3 md:p-4 rounded-xl backdrop-blur-sm transition-colors duration-300"
                           style={{
                             background: "rgba(83, 192, 251, 0.06)",
@@ -269,9 +267,7 @@ export default function OverviewSection() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2.0 + index * 0.1 }}
-                    whileHover={{ x: 4, scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="flex items-start gap-3 cursor-pointer"
+                    className="flex items-start gap-3"
                   >
                     <div
                       className="p-2 rounded-lg shrink-0"

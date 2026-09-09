@@ -259,9 +259,7 @@ function TechCard({ tech, index }: { tech: TechItem; index: number }) {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.35, delay: index * 0.02 }}
       viewport={{ once: true }}
-      whileHover={{ y: -3, scale: 1.06 }}
-      whileTap={{ scale: 0.94 }}
-      className="group flex items-center gap-2.5 w-fit rounded-full px-5 py-2.5 border cursor-pointer transition-all duration-300 bg-white dark:bg-[#1f4d67]"
+      className="group flex items-center gap-2.5 w-fit rounded-full px-5 py-2.5 border transition-colors duration-300 bg-white dark:bg-[#1f4d67]"
       style={{
         borderColor: "rgba(83, 192, 251, 0.2)",
       }}
