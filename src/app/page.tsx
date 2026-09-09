@@ -11,7 +11,6 @@ import {
   ProjectsSection,
   ScrollControl,
   TechStackSection,
-  // TestimonialsSection
 } from "@/components/portfolio";
 
 export default function Portfolio() {

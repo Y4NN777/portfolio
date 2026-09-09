@@ -44,7 +44,6 @@ export default function RootLayout({
           <ThemeProvider>
             <TranslationProvider>
               <MotionProvider>
-                {/* <AnimatedBackground /> */}
                 {children}
               </MotionProvider>
             </TranslationProvider>
