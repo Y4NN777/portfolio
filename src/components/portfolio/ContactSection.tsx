@@ -48,8 +48,9 @@ export default function ContactSection() {
     }
   };
 
-  const inputClass = "w-full px-4 py-3 rounded-xl transition-all duration-300 text-gray-900 dark:text-gray-100 bg-white dark:bg-[#0f2d40] outline-none";
-  const inputStyle = { border: "1px solid rgba(83, 192, 251, 0.2)" };
+  // Focus is left to the global :focus-visible rule in globals.css, so
+  // keyboard users get the same ring here as everywhere else on the site.
+  const inputClass = "w-full px-4 py-3 rounded-xl transition-colors duration-300 text-gray-900 dark:text-gray-100 bg-white dark:bg-[#0f2d40] border border-[#53c0fb]/20 focus-visible:border-[#53c0fb]";
 
   return (
     <motion.section
@@ -116,10 +117,7 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleInputChange}
                   className={inputClass}
-                  style={inputStyle}
                   placeholder="Your full name"
-                  onFocus={(e) => { e.currentTarget.style.borderColor = "#53c0fb"; e.currentTarget.style.boxShadow = "0 0 0 2px rgba(83,192,251,0.15)"; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(83, 192, 251, 0.2)"; e.currentTarget.style.boxShadow = "none"; }}
                 />
               </motion.div>
 
@@ -140,10 +138,7 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleInputChange}
                   className={inputClass}
-                  style={inputStyle}
                   placeholder="your.email@example.com"
-                  onFocus={(e) => { e.currentTarget.style.borderColor = "#53c0fb"; e.currentTarget.style.boxShadow = "0 0 0 2px rgba(83,192,251,0.15)"; }}
-                  onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(83, 192, 251, 0.2)"; e.currentTarget.style.boxShadow = "none"; }}
                 />
               </motion.div>
             </div>
@@ -165,10 +160,7 @@ export default function ContactSection() {
                 value={formData.message}
                 onChange={handleInputChange}
                 className={inputClass + " resize-none"}
-                style={inputStyle}
                 placeholder="Tell me about your project or idea..."
-                onFocus={(e) => { e.currentTarget.style.borderColor = "#53c0fb"; e.currentTarget.style.boxShadow = "0 0 0 2px rgba(83,192,251,0.15)"; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(83, 192, 251, 0.2)"; e.currentTarget.style.boxShadow = "none"; }}
               />
             </motion.div>
 
