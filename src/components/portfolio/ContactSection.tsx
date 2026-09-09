@@ -5,12 +5,13 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import posthog from "posthog-js";
 import SectionHeader from './SectionHeader';
 import { useTranslations } from "@/contexts/TranslationContext";
-import { contactForm } from "@/lib/config";
+import { analytics, contactForm } from "@/lib/config";
 
 export default function ContactSection() {
-  const { t } = useTranslations();
+  const { t, locale } = useTranslations();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -43,13 +44,21 @@ export default function ContactSection() {
     }
 
     try {
+      // These four names are the contract with the EmailJS template:
+      // {{from_name}} {{from_email}} {{message}} {{time}} {{to_email}}.
+      // A variable the template references but this object omits renders empty.
       await emailjs.send(contactForm.serviceId!, contactForm.templateId!, {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
+        time: new Date().toLocaleString(locale === "fr" ? "fr-FR" : "en-GB", {
+          dateStyle: "medium",
+          timeStyle: "short",
+        }),
         to_email: 'y4nn.dev@gmail.com',
       }, contactForm.publicKey!);
 
+      if (analytics.enabled) posthog.capture("contact_form_submitted");
       setSubmitStatus('success');
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
@@ -281,6 +290,9 @@ export default function ContactSection() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="mailto:y4nn.dev@gmail.com"
+                onClick={() => {
+                  if (analytics.enabled) posthog.capture("contact_email_clicked");
+                }}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl"
                 style={{
                   background: "linear-gradient(135deg, #296b8d, #53c0fb)",
@@ -310,7 +322,12 @@ export default function ContactSection() {
                   <Link
                     href="/RESUME_EN.pdf"
                     download
-                    onClick={() => setIsResumeMenuOpen(false)}
+                    onClick={() => {
+                      if (analytics.enabled) {
+                        posthog.capture("resume_downloaded", { locale: "en" });
+                      }
+                      setIsResumeMenuOpen(false);
+                    }}
                     className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-[#0f2d40] dark:text-[#c9e9ff] hover:bg-[#53c0fb]/10 dark:hover:bg-[#53c0fb]/20 transition-colors"
                   >
                     <Icon icon="solar:file-download-linear" width={16} height={16} />
@@ -319,7 +336,12 @@ export default function ContactSection() {
                   <Link
                     href="/RESUME_FR.pdf"
                     download
-                    onClick={() => setIsResumeMenuOpen(false)}
+                    onClick={() => {
+                      if (analytics.enabled) {
+                        posthog.capture("resume_downloaded", { locale: "fr" });
+                      }
+                      setIsResumeMenuOpen(false);
+                    }}
                     className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-[#0f2d40] dark:text-[#c9e9ff] hover:bg-[#53c0fb]/10 dark:hover:bg-[#53c0fb]/20 transition-colors border-t border-[#296b8d]/20 dark:border-[#53c0fb]/20"
                   >
                     <Icon icon="solar:file-download-linear" width={16} height={16} />
