@@ -167,7 +167,7 @@ export default function ExperienceSection() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
-                      className="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed"
+                      className="text-gray-700 dark:text-gray-300 text-base leading-relaxed"
                     >
                       {copy.description}
                     </motion.p>
@@ -178,7 +178,7 @@ export default function ExperienceSection() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.55 }}
-                        className="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed"
+                        className="text-gray-700 dark:text-gray-300 text-base leading-relaxed"
                       >
                         {copy.additionalContext}
                       </motion.p>
@@ -208,7 +208,7 @@ export default function ExperienceSection() {
                             <div className={`flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-gradient-to-br ${exp.accentGradient} flex items-center justify-center mt-0.5 shadow-md md:shadow-lg group-hover/achievement:scale-110 transition-transform duration-300`}>
                               <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full" />
                             </div>
-                            <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
+                            <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
                               {achievement}
                             </span>
                           </motion.div>
@@ -232,7 +232,7 @@ export default function ExperienceSection() {
                         {exp.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed"
+                            className="text-gray-700 dark:text-gray-300 text-base leading-relaxed"
                           >
                             {tech}
                             {techIndex < exp.technologies.length - 1 && (

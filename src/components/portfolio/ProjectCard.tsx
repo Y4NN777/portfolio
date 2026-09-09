@@ -83,10 +83,10 @@ export default function ProjectCard({
               />
             </span>
           </div>
-          <p className="text-sm sm:text-base md:text-lg text-white/90 font-medium mb-3">
+          <p className="text-base md:text-lg text-white/90 font-medium mb-3">
             {copy.subtitle}
           </p>
-          <p className="text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl">
+          <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-4xl">
             {copy.description}
           </p>
           {project.tech.length > 0 && (

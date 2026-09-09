@@ -154,7 +154,7 @@ export default function OverviewSection() {
 
                   <div className="space-y-3 md:space-y-4 border-t pt-4 md:pt-6" style={{ borderColor: "rgba(83, 192, 251, 0.15)" }}>
                     {overviewCopy.introParagraphs.map((paragraph, index) => (
-                      <p key={index} className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                      <p key={index} className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
                         {paragraph}
                       </p>
                     ))}
@@ -180,7 +180,7 @@ export default function OverviewSection() {
                           }}
                         >
                           <div className="font-semibold text-gray-900 dark:text-white text-sm md:text-base mb-1">{skill.title}</div>
-                          <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
+                          <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
                         </motion.div>
                       ))}
                     </div>
