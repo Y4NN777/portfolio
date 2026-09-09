@@ -48,8 +48,8 @@ export const translations = {
       },
       introParagraphs: [
         "I could describe myself by the technologies I use, but I'm more interested in understanding why things work, where they break, and how to build them better.",
-        "My work focuses on software design, backend engineering, AI systems, and infrastructure. I build the systems behind products: reliable APIs, performant backend services, intelligent workflows, and the infrastructure that helps software remain secure, observable, and maintainable over time.",
-        "Beyond software engineering, I explore AI, open-source tools, system experiments, competitive programming, and game development. I also enjoy sharing knowledge, mentoring developers, and contributing to technology communities.",
+        "My work sits at the intersection of software design, backend & platform engineering, and AI systems. I build the systems behind products: reliable APIs, performant backend services, intelligent workflows, and the infrastructure that keeps software secure, observable, and maintainable over time.",
+        "Beyond engineering, I explore open-source tools, competitive programming, and game development. I enjoy mentoring developers and contributing to tech communities.",
       ],
       coreSkillsTitle: "Engineering Focus",
       coreSkills: [
@@ -340,8 +340,8 @@ fikasso: {
       },
       introParagraphs: [
         "Je pourrais me décrire par les technologies que j'utilise, mais ce qui m'intéresse, c'est de comprendre pourquoi les choses fonctionnent, où elles cassent et comment les construire mieux.",
-        "Mon travail se concentre sur la conception logicielle, l'ingénierie backend, les systèmes d'IA et l'infrastructure. Je construis les systèmes qui se cachent derrière les produits : des API fiables, des services backend performants, des flux de travail intelligents, et l'infrastructure qui aide le logiciel à rester sûr, observable et maintenable dans le temps.",
-        "Au-delà de l'ingénierie logicielle, j'explore l'IA, les outils open source, les expérimentations système, la programmation compétitive et le développement de jeux. J'aime aussi partager le savoir, encadrer des développeurs et contribuer aux communautés technologiques.",
+        "Mon travail se situe à l'intersection de la conception logicielle, de l'ingénierie backend et plateforme, et des systèmes d'IA. Je construis les systèmes derrière les produits : des API fiables, des services backend performants, des workflows intelligents, et l'infrastructure qui garde le logiciel sûr, observable et maintenable dans le temps.",
+        "Au-delà de l'ingénierie, j'explore les outils open source, la programmation compétitive et le développement de jeux. J'aime encadrer des développeurs et contribuer aux communautés tech.",
       ],
       coreSkillsTitle: "Focus ingénierie",
       coreSkills: [
