@@ -71,80 +71,17 @@ export default function TypewriterRole() {
         }}
       />
 
-      {/* Role text container */}
-      <motion.div
-        className="relative overflow-hidden rounded-2xl px-5 py-2 w-fit max-w-full whitespace-nowrap"
-        initial={{ scale: 0.8 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
-      >
-        {/* Animated sky-blue gradient background */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl"
-          animate={{
-            background: [
-              "linear-gradient(135deg, #1f4d67 0%, #296b8d 50%, #53c0fb 100%)",
-              "linear-gradient(135deg, #296b8d 0%, #53c0fb 50%, #4bbcff 100%)",
-              "linear-gradient(135deg, #53c0fb 0%, #4bbcff 50%, #1f4d67 100%)",
-              "linear-gradient(135deg, #1f4d67 0%, #296b8d 50%, #53c0fb 100%)"
-            ]
-          }}
-          transition={{ duration: 8, repeat: Infinity }}
-        />
-
-        {/* Shimmer */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl"
-          style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)" }}
-          animate={{ x: ["-100%", "100%"] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Dot pattern overlay */}
-        <motion.div
-          className="absolute inset-0 opacity-20 rounded-2xl"
-          animate={{ rotate: [0, 360] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        >
-          <div className="absolute top-1 left-2 w-1 h-1 bg-white rounded-full" />
-          <div className="absolute top-3 right-3 w-0.5 h-0.5 bg-white rounded-full" />
-          <div className="absolute bottom-2 left-4 w-1 h-1 bg-white rounded-full" />
-          <div className="absolute bottom-1 right-1 w-0.5 h-0.5 bg-white rounded-full" />
-        </motion.div>
-
-        {/* Role Text */}
-        <div className="relative z-10 text-center">
+      {/* Role text — deliberately not button-shaped: this is a label, not a control */}
+      <div className="px-1 py-2 w-fit max-w-full whitespace-nowrap">
+        <span className="text-primary font-semibold text-left inline-block whitespace-nowrap text-lg md:text-xl">
+          {displayText}
           <motion.span
-            className="text-white font-semibold text-left inline-block whitespace-nowrap"
-            animate={{
-              textShadow: [
-                "0 0 10px rgba(255,255,255,0.3)",
-                "0 0 20px rgba(255,255,255,0.6)",
-                "0 0 10px rgba(255,255,255,0.3)"
-              ]
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            {displayText}
-            <motion.span
-              className="inline-block w-0.5 h-6 bg-white/80 ml-1"
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ duration: 1, repeat: Infinity }}
-            />
-          </motion.span>
-        </div>
-
-        {/* Pulse border */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl"
-          style={{ border: "1px solid rgba(83, 192, 251, 0.3)" }}
-          animate={{
-            scale: [1, 1.05, 1],
-            opacity: [0.3, 0.6, 0.3]
-          }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
+            className="inline-block w-0.5 h-5 bg-primary/70 ml-1 align-middle"
+            animate={{ opacity: [0, 1, 0] }}
+            transition={{ duration: 1, repeat: Infinity }}
+          />
+        </span>
+      </div>
     </motion.div>
   );
 }

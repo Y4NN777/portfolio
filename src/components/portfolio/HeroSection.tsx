@@ -97,6 +97,22 @@ export default function HeroSection() {
         {/* Typewriter Role Component */}
         <TypewriterRole />
 
+        {/* Primary action — the one thing this page wants a visitor to do */}
+        <motion.div
+          className="mb-8"
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+        >
+          <Link
+            href="#projects"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold text-white bg-[#296b8d] dark:bg-[#53c0fb] dark:text-[#061825] shadow-lg hover:shadow-xl hover:bg-[#1f4d67] dark:hover:bg-[#4bbcff] transition-colors duration-300"
+          >
+            {t("hero.cta")}
+            <Icon icon="solar:arrow-right-outline" width={20} height={20} aria-hidden />
+          </Link>
+        </motion.div>
+
         <motion.div
           className="flex flex-wrap gap-3 justify-center mb-12"
           initial={false}

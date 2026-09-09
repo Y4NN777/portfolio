@@ -18,6 +18,7 @@ export const translations = {
       basedIn: "Based in Burkina Faso 🇧🇫",
       status: "Available for projects",
       scrollPrompt: "Scroll for more",
+      cta: "See my work",
       social: {
         github: "GitHub",
         linkedin: "LinkedIn",
@@ -283,6 +284,7 @@ fikasso: {
       basedIn: "Basé au Burkina Faso 🇧🇫",
       status: "Disponible pour des projets",
       scrollPrompt: "Faites défiler pour explorer",
+      cta: "Voir mon travail",
       social: {
         github: "GitHub",
         linkedin: "LinkedIn",
