@@ -141,9 +141,10 @@ export default function OverviewSection() {
                 <Icon icon="solar:lightning-bold" className="text-amber-600 dark:text-amber-400 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
                 {overviewCopy.coreSkillsTitle}
               </h4>
-              {/* A list, not cards: each item is one sentence, and the card
-                  chrome cost more height than the words did. */}
-              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
+              {/* Cards, but `items-start` so each sizes to its own content.
+                  Stretching them to the tallest in the row was what made six
+                  eleven-word items cost 140px each. */}
+              <div className="grid sm:grid-cols-2 gap-3 md:gap-4 items-start">
                 {overviewCopy.coreSkills.map((skill, index) => (
                   <motion.div
                     key={skill.title}
@@ -151,6 +152,11 @@ export default function OverviewSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.06, duration: 0.5 }}
+                    className="p-3 md:p-4 rounded-xl backdrop-blur-sm"
+                    style={{
+                      background: "rgba(83, 192, 251, 0.06)",
+                      border: "1px solid rgba(83, 192, 251, 0.18)",
+                    }}
                   >
                     <div className="font-semibold text-gray-900 dark:text-white text-base mb-0.5">{skill.title}</div>
                     <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
