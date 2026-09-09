@@ -131,39 +131,6 @@ export default function OverviewSection() {
                 </div>
               </motion.div>
               </div>
-            {/* Engineering Focus — below the bio card, not inside it.
-                It was a card within a card. */}
-            <motion.div
-              className="mt-6 md:mt-8 pt-6 md:pt-8 border-t"
-              style={{ borderColor: "rgba(83, 192, 251, 0.15)" }}
-            >
-              <h4 className="font-bold text-gray-900 dark:text-white mb-4 md:mb-6 flex items-center gap-2">
-                <Icon icon="solar:lightning-bold" className="text-amber-600 dark:text-amber-400 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
-                {overviewCopy.coreSkillsTitle}
-              </h4>
-              {/* Cards, but `items-start` so each sizes to its own content.
-                  Stretching them to the tallest in the row was what made six
-                  eleven-word items cost 140px each. */}
-              <div className="grid sm:grid-cols-2 gap-3 md:gap-4 items-start">
-                {overviewCopy.coreSkills.map((skill, index) => (
-                  <motion.div
-                    key={skill.title}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.06, duration: 0.5 }}
-                    className="p-3 md:p-4 rounded-xl backdrop-blur-sm"
-                    style={{
-                      background: "rgba(83, 192, 251, 0.06)",
-                      border: "1px solid rgba(83, 192, 251, 0.18)",
-                    }}
-                  >
-                    <div className="font-semibold text-gray-900 dark:text-white text-base mb-0.5">{skill.title}</div>
-                    <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
             </motion.div>
 
           {/* Sidebar */}
@@ -223,11 +190,50 @@ export default function OverviewSection() {
                 </motion.div>
               </div>
             </div>
-
-            {/* Reading list — "how I think" belongs next to the bio, not inside
-                the tools list where it only showed under the All filter. */}
-            <BooksCard books={translations[locale].overview.books} />
           </motion.div>
+
+          {/* Full-width row below the grid, opened by a rule and sitting
+              directly before Featured Projects. Engineering Focus takes the
+              8-track and the reading list the 4-track, which shortens the
+              sidebar enough for the bio to be the taller column — that is
+              what closes the gap 7ff3452 opened. */}
+          <div
+            className="lg:col-span-12 mt-8 md:mt-10 pt-6 md:pt-8 border-t grid lg:grid-cols-12 gap-6 md:gap-8 items-start"
+            style={{ borderColor: "rgba(83, 192, 251, 0.15)" }}
+          >
+            <motion.div variants={itemVariants} className="lg:col-span-8">
+              <h4 className="font-bold text-gray-900 dark:text-white mb-4 md:mb-6 flex items-center gap-2">
+                <Icon icon="solar:lightning-bold" className="text-amber-600 dark:text-amber-400 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
+                {overviewCopy.coreSkillsTitle}
+              </h4>
+              {/* Cards, but `items-start` so each sizes to its own content.
+                  Stretching them to the tallest in the row was what made six
+                  eleven-word items cost 140px each. */}
+              <div className="grid sm:grid-cols-2 gap-3 md:gap-4 items-start">
+                {overviewCopy.coreSkills.map((skill, index) => (
+                  <motion.div
+                    key={skill.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.06, duration: 0.5 }}
+                    className="p-3 md:p-4 rounded-xl backdrop-blur-sm"
+                    style={{
+                      background: "rgba(83, 192, 251, 0.06)",
+                      border: "1px solid rgba(83, 192, 251, 0.18)",
+                    }}
+                  >
+                    <div className="font-semibold text-gray-900 dark:text-white text-base mb-0.5">{skill.title}</div>
+                    <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="lg:col-span-4">
+              <BooksCard books={translations[locale].overview.books} />
+            </motion.div>
+          </div>
 
         </div>
       </motion.div>
