@@ -7,14 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import SectionHeader from './SectionHeader';
 import { useTranslations } from "@/contexts/TranslationContext";
-
-// Inlined at build time. Missing values mean the form cannot send, which the
-// submit handler surfaces instead of calling EmailJS with placeholders.
-const EMAILJS = {
-  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-};
+import { contactForm } from "@/lib/config";
 
 export default function ContactSection() {
   const { t } = useTranslations();
@@ -35,7 +28,7 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    if (!EMAILJS.serviceId || !EMAILJS.templateId || !EMAILJS.publicKey) {
+    if (!contactForm.enabled) {
       // Fail fast rather than sending placeholder credentials to EmailJS and
       // waiting for the round trip to reject them.
       if (process.env.NODE_ENV === "development") {
@@ -50,14 +43,12 @@ export default function ContactSection() {
     }
 
     try {
-      const { serviceId, templateId, publicKey } = EMAILJS;
-
-      await emailjs.send(serviceId, templateId, {
+      await emailjs.send(contactForm.serviceId!, contactForm.templateId!, {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
         to_email: 'y4nn.dev@gmail.com',
-      }, publicKey);
+      }, contactForm.publicKey!);
 
       setSubmitStatus('success');
       setFormData({ name: "", email: "", message: "" });

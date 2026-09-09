@@ -57,6 +57,7 @@ export default function HeroSection() {
             src="/they4nn.jpeg"
             alt="Ragnang-Newende Yanis Axel DABO portrait"
             fill
+            sizes="(min-width: 768px) 192px, 160px"
             priority
             className="object-cover"
           />

@@ -78,10 +78,7 @@ export default function Navigation() {
                   initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="transition-colors duration-300 text-sm font-medium py-3 px-1"
-                  style={{ color: isDark ? "#94a3b8" : "#296b8d" }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#53c0fb"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = isDark ? "#94a3b8" : "#296b8d"; }}
+                  className="transition-colors duration-300 text-sm font-medium py-3 px-1 text-[#296b8d] dark:text-[#cbd5e1] hover:text-[#1f4d67] dark:hover:text-[#8ed3fc] focus-visible:text-[#1f4d67] dark:focus-visible:text-[#8ed3fc]"
                 >
                   {t(item.labelKey)}
                 </motion.a>
@@ -133,10 +130,7 @@ export default function Navigation() {
                   setIsMobileMenuOpen(false);
                   handleScroll(item.id);
                 }}
-                className="py-3 px-6 text-sm font-medium transition-colors"
-                style={{ color: isDark ? "#94a3b8" : "#296b8d" }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#53c0fb"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = isDark ? "#94a3b8" : "#296b8d"; }}
+                className="py-3 px-6 text-sm font-medium transition-colors text-[#296b8d] dark:text-[#cbd5e1] hover:text-[#1f4d67] dark:hover:text-[#8ed3fc] focus-visible:text-[#1f4d67] dark:focus-visible:text-[#8ed3fc]"
               >
                 {t(item.labelKey)}
               </a>
