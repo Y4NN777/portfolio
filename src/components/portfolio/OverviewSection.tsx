@@ -7,41 +7,8 @@ import { translations } from "@/lib/i18n/translations";
 import SectionHeader from "./SectionHeader";
 import BooksCard from "./BooksCard";
 
-type OverviewRoleKey = keyof typeof translations.en.overview.roles;
-
-const professionalRoleCards: Array<{
-  id: OverviewRoleKey;
-  containerClass: string;
-  iconWrapper: string;
-  icon: string;
-  badgeIcon: string;
-  badgeColor: string;
-  highlightColor: string;
-}> = [
-  {
-    id: "freelance",
-    containerClass:
-      "p-4 md:p-6 rounded-xl md:rounded-2xl backdrop-blur-sm shadow-xl flex flex-col",
-    iconWrapper: "p-2 md:p-3 rounded-lg md:rounded-xl shadow-lg",
-    icon: "solar:code-bold",
-    badgeIcon: "solar:star-bold",
-    badgeColor: "text-amber-600 dark:text-amber-400",
-    highlightColor: "text-primary",
-  },
-  {
-    id: "matrix",
-    containerClass:
-      "p-4 md:p-6 rounded-xl md:rounded-2xl backdrop-blur-sm shadow-xl flex flex-col",
-    iconWrapper: "p-2 md:p-3 rounded-lg md:rounded-xl shadow-lg",
-    icon: "solar:hospital-bold",
-    badgeIcon: "solar:shield-check-bold",
-    badgeColor: "text-primary",
-    highlightColor: "text-primary",
-  },
-];
-
 export default function OverviewSection() {
-  const { locale } = useTranslations();
+  const { t, locale } = useTranslations();
   const overviewCopy = translations[locale].overview as typeof translations.en.overview;
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -259,7 +226,7 @@ export default function OverviewSection() {
             >
               <h4 className="font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
                 <Icon icon="solar:briefcase-bold" style={{ color: "hsl(var(--primary))" }} className="w-5 h-5" width={20} height={20} />
-                Experience at a Glance
+                {t("overview.experienceAtAGlance")}
               </h4>
               <div className="space-y-4">
                 {Object.values(translations[locale].experience.items).map((exp, index) => (

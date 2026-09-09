@@ -91,6 +91,7 @@ export const translations = {
           badge: "Tech Leadership and Community",
         },
       },
+      experienceAtAGlance: "Experience at a Glance",
       books: {
         title: "Books",
         subtitle: "Ideas worth carrying into the code.",
@@ -357,6 +358,7 @@ fikasso: {
           badge: "Leadership tech & esprit d'équipe",
         },
       },
+      experienceAtAGlance: "Aperçu du parcours",
       books: {
         title: "Livres",
         subtitle: "Des idées à emporter dans le code.",

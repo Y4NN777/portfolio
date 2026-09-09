@@ -31,9 +31,12 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen text-gray-900 dark:text-white relative">
       <Background />
+
+      <a href="#main" className="skip-link">Skip to content</a>
+
       <Navigation />
 
-      <main className="max-w-6xl mx-auto px-6 pt-28 pb-20">
+      <main id="main" className="max-w-6xl mx-auto px-6 pt-28 pb-20">
         <motion.div variants={containerVariants} initial="hidden" animate="visible">
           {/* Page header */}
           <motion.div variants={itemVariants} className="mb-12 text-center">
@@ -51,11 +54,9 @@ export default function ProjectsPage() {
               </span>
             </motion.div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              <span className="dark:hidden bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(90deg, #061825, #296b8d, #0f2d40)" }}>
-                {t("projects.heading")}
-              </span>
-              <span className="hidden dark:inline bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(90deg, #f1f5f9, #53c0fb, #cbd5e1)" }}>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+              {/* One span; --heading-gradient carries the light/dark pair. */}
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--heading-gradient)" }}>
                 {t("projects.heading")}
               </span>
             </h1>
