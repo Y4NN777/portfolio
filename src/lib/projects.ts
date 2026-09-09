@@ -14,7 +14,7 @@ export const projectEntries: Array<{
 }> = [
   {
     id: "glexTalent",
-    gradient: "from-[#0a5c38] to-[#764e06]",
+    gradient: "from-[#06283a] to-[#0c5d75]",
     live: "https://glextalent.com",
     tech: ["React", "Vite", "PostgreSQL", "MinIO"],
     icons: [
@@ -26,7 +26,7 @@ export const projectEntries: Array<{
   },
   {
     id: "y7Jprompter",
-    gradient: "from-[#1e40af] to-[#055d72]",
+    gradient: "from-[#0b1f4d] to-[#1c5699]",
     github: "https://github.com/Y4NN777/y7-jprompter",
     live: "https://y7-jprompter.vercel.app",
     tech: ["Next.js", "TypeScript", "Gemini", "IndexedDB"],
@@ -39,7 +39,7 @@ export const projectEntries: Array<{
   },
   {
     id: "tenglaafi",
-    gradient: "from-[#0a2f24] to-[#1b6148]",
+    gradient: "from-[#062b2a] to-[#0e6059]",
     github: "https://github.com/Y4NN777/tenglaafi",
     live: "https://y7labs.studio/tenglaafi/",
     tech: ["Python", "FastAPI", "LangChain", "ChromaDB", "IndexedDB"],
@@ -53,7 +53,7 @@ export const projectEntries: Array<{
   },
   {
     id: "wisemoney",
-    gradient: "from-[#075985] to-[#015a87]",
+    gradient: "from-[#04283f] to-[#085b85]",
     github: "https://github.com/Y4NN777/wisemoney",
     live: "https://wisemoney.y7labs.studio/",
     tech: ["React", "TypeScript", "Go", "PostgreSQL"],
@@ -66,7 +66,7 @@ export const projectEntries: Array<{
   },
   {
     id: "7review",
-    gradient: "from-[#002088] to-[#284bbb]",
+    gradient: "from-[#101a45] to-[#3a4f9e]",
     github: "https://github.com/Y4NN777/7review",
     live: "https://y4nn777.github.io/7review/",
     tech: ["Go", "Docker"],
@@ -100,7 +100,7 @@ export const projectEntries: Array<{
   },
   {
     id: "piGeosint",
-    gradient: "from-[#1e5c79] to-[#4c586a]",
+    gradient: "from-[#0d3547] to-[#255c74]",
     github: "https://github.com/Y4NN777/pi-geosint-agent",
     tech: ["TypeScript", "Docker", "OpenAI", "Anthropic"],
     icons: [
@@ -112,7 +112,7 @@ export const projectEntries: Array<{
   },
   {
     id: "fikassoTech",
-    gradient: "from-[#3f5f15] to-[#000000]",
+    gradient: "from-[#04222c] to-[#145f5d]",
     live: "https://www.fikassotech.com",
     tech: ["React", "TypeScript", "Vite"],
     icons: [
@@ -123,7 +123,7 @@ export const projectEntries: Array<{
   },
   {
     id: "givemealiftCms",
-    gradient: "from-[#814613] to-[#0c604e]",
+    gradient: "from-[#0a2436] to-[#255c77]",
     live: "https://givemealift.org",
     tech: ["Laravel", "Vue", "MySQL"],
     icons: [
