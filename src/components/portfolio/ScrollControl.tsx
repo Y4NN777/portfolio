@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { scrollToId, scrollToTop } from "@/lib/scroll";
 
 export default function ScrollControl() {
   const [atTop, setAtTop] = useState(true);
@@ -16,9 +17,9 @@ export default function ScrollControl() {
 
   const handleClick = () => {
     if (atTop) {
-      document.getElementById("overview")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      scrollToId("overview");
     } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToTop();
     }
   };
 

@@ -5,6 +5,7 @@ import { useTranslations } from "@/contexts/TranslationContext";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useCallback, useState } from "react";
+import { scrollToId } from "@/lib/scroll";
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
@@ -20,8 +21,7 @@ export default function Navigation() {
   ];
 
   const handleScroll = useCallback((sectionId: string) => {
-    const el = document.getElementById(sectionId);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToId(sectionId);
   }, []);
 
   const isDark = theme === "dark";

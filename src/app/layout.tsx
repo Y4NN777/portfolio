@@ -1,3 +1,4 @@
+import MotionProvider from "@/components/MotionProvider";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { TranslationProvider } from "@/contexts/TranslationContext";
@@ -32,13 +33,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body className={inter.className}>
         <PostHogProvider>
           <ThemeProvider>
             <TranslationProvider>
-              {/* <AnimatedBackground /> */}
-              {children}
+              <MotionProvider>
+                {/* <AnimatedBackground /> */}
+                {children}
+              </MotionProvider>
             </TranslationProvider>
           </ThemeProvider>
         </PostHogProvider>
