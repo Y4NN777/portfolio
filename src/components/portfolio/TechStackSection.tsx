@@ -186,7 +186,7 @@ export default function TechStackSection() {
             }}
           >
             <div className="flex items-center gap-2 mb-3">
-              <Icon icon="solar:book-2-bold" width={22} height={22} style={{ color: "#f59e0b" }} />
+              <Icon icon="solar:book-2-bold" width={22} height={22} className="text-amber-600 dark:text-amber-400" />
               <h3 className="text-lg font-bold text-[#061825] dark:text-[#f1f5f9]">
                 {books.title}
               </h3>
@@ -218,7 +218,7 @@ export default function TechStackSection() {
                     <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-snug">
                       {book.title}
                     </p>
-                    <p className="text-xs mt-1 text-[#617b8d] dark:text-[#94a3b8] truncate">
+                    <p className="text-xs mt-1 text-[#4d6579] dark:text-[#94a3b8] truncate">
                       {book.author}
                     </p>
                   </span>

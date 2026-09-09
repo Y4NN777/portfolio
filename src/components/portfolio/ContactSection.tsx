@@ -86,7 +86,7 @@ export default function ContactSection() {
             }}
           >
             <Icon icon="solar:check-circle-bold" className="text-green-600 dark:text-green-400 w-4 h-4" width={16} height={16} />
-            <span className="text-sm font-medium text-green-700 dark:text-green-300">{availability}</span>
+            <span className="text-sm font-medium text-green-800 dark:text-green-300">{availability}</span>
           </div>
         </motion.div>
 
@@ -207,7 +207,7 @@ export default function ContactSection() {
                   animate={{ opacity: 1, y: 0 }}
                   className="relative mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl"
                 >
-                  <div className="flex items-center gap-2 text-green-700 dark:text-green-400">
+                  <div className="flex items-center gap-2 text-green-800 dark:text-green-400">
                     <Icon icon="solar:check-circle-bold" width={20} height={20} />
                     <span className="font-medium">Message sent successfully!</span>
                   </div>

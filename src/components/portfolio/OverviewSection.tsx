@@ -24,7 +24,7 @@ const professionalRoleCards: Array<{
     iconWrapper: "p-2 md:p-3 rounded-lg md:rounded-xl shadow-lg",
     icon: "solar:code-bold",
     badgeIcon: "solar:star-bold",
-    badgeColor: "text-amber-500",
+    badgeColor: "text-amber-600 dark:text-amber-400",
     highlightColor: "text-primary",
   },
   {
@@ -142,7 +142,7 @@ export default function OverviewSection() {
                         {overviewCopy.introHighlight.backend}
                       </span>
                       {overviewCopy.introHighlight.connector}
-                      <span className="font-bold text-amber-500">
+                      <span className="font-bold text-amber-600 dark:text-amber-400">
                         {overviewCopy.introHighlight.ai}
                       </span>
                       <span className="font-bold" style={{ color: "#296b8d" }} >
@@ -163,7 +163,7 @@ export default function OverviewSection() {
                   {/* Engineering Focus */}
                   <div className="border-t pt-4 md:pt-6" style={{ borderColor: "rgba(83, 192, 251, 0.15)" }}>
                     <h4 className="font-bold text-gray-900 dark:text-white mb-4 md:mb-6 flex items-center gap-2">
-                      <Icon icon="solar:lightning-bold" className="text-amber-500 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
+                      <Icon icon="solar:lightning-bold" className="text-amber-600 dark:text-amber-400 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
                       {overviewCopy.coreSkillsTitle}
                     </h4>
                     <div className="grid md:grid-cols-2 gap-3 md:gap-4">

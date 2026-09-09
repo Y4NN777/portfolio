@@ -192,7 +192,7 @@ export default function ExperienceSection() {
                       className="space-y-2.5 md:space-y-3"
                     >
                       <h4 className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                        <Icon icon="solar:cup-star-bold" className="text-amber-500" width={18} height={18} />
+                        <Icon icon="solar:cup-star-bold" className="text-amber-600 dark:text-amber-400" width={18} height={18} />
                         {t("experience.keyAchievementsTitle")}
                       </h4>
 
