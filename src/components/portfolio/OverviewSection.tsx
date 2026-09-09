@@ -134,20 +134,17 @@ export default function OverviewSection() {
                       <Icon icon="solar:lightning-bold" className="text-amber-600 dark:text-amber-400 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
                       {overviewCopy.coreSkillsTitle}
                     </h4>
-                    <div className="grid md:grid-cols-2 gap-3 md:gap-4">
+                    {/* A list, not cards: each item is one sentence, and the
+                        card chrome cost more height than the words did. */}
+                    <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
                       {overviewCopy.coreSkills.map((skill, index) => (
                         <motion.div
                           key={skill.title}
                           initial={{ opacity: 0, y: 16 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
-                          className="p-3 md:p-4 rounded-xl backdrop-blur-sm transition-colors duration-300"
-                          style={{
-                            background: "rgba(83, 192, 251, 0.06)",
-                            border: "1px solid rgba(83, 192, 251, 0.18)",
-                          }}
                         >
-                          <div className="font-semibold text-gray-900 dark:text-white text-sm md:text-base mb-1">{skill.title}</div>
+                          <div className="font-semibold text-gray-900 dark:text-white text-base mb-0.5">{skill.title}</div>
                           <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
                         </motion.div>
                       ))}
@@ -213,43 +210,6 @@ export default function OverviewSection() {
                     <div className="text-sm font-bold text-gray-900 dark:text-white">{overviewCopy.contactLocation}</div>
                   </div>
                 </motion.div>
-              </div>
-            </div>
-
-            {/* Roles (compact) */}
-            <div
-              className="p-6 rounded-2xl backdrop-blur-sm shadow-xl"
-              style={{
-                background: "rgba(83, 192, 251, 0.05)",
-                border: "1px solid rgba(83, 192, 251, 0.15)",
-              }}
-            >
-              <h4 className="font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
-                <Icon icon="solar:briefcase-bold" style={{ color: "hsl(var(--primary))" }} className="w-5 h-5" width={20} height={20} />
-                {t("overview.experienceAtAGlance")}
-              </h4>
-              <div className="space-y-4">
-                {Object.values(translations[locale].experience.items).map((exp, index) => (
-                  <motion.div
-                    key={exp.company}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2.0 + index * 0.1 }}
-                    className="flex items-start gap-3"
-                  >
-                    <div
-                      className="p-2 rounded-lg shrink-0"
-                      style={{ background: "linear-gradient(135deg, #296b8d, #53c0fb)" }}
-                    >
-                      <Icon icon="solar:case-minimalistic-bold" className="text-white w-4 h-4" width={16} height={16} />
-                    </div>
-                    <div className="min-w-0">
-                      <div className="font-semibold text-gray-900 dark:text-white text-sm leading-snug">{exp.company}</div>
-                      <div className="text-xs font-medium mt-0.5" style={{ color: "hsl(var(--primary))" }}>{exp.role}</div>
-                      <div className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{exp.period}</div>
-                    </div>
-                  </motion.div>
-                ))}
               </div>
             </div>
 
