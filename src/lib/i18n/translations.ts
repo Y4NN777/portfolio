@@ -91,6 +91,15 @@ export const translations = {
           badge: "Tech Leadership and Community",
         },
       },
+      books: {
+        title: "Books",
+        subtitle: "Ideas worth carrying into the code.",
+        items: [
+          { title: "AI Engineering", author: "Chip Huyen", cover: "https://covers.openlibrary.org/b/id/15091156-M.jpg" },
+          { title: "Software Architecture in Practice", author: "Len Bass · Paul Clements · Rick Kazman", cover: "https://covers.openlibrary.org/b/id/5544459-M.jpg" },
+          { title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", cover: "https://covers.openlibrary.org/b/id/8434671-M.jpg" },
+        ],
+      },
     },
     experience: {
       tagText: "Professional Journey",
@@ -254,15 +263,6 @@ fikasso: {
         devtools: "Developer Tools",
         design: "Design",
       },
-      books: {
-        title: "Books",
-        subtitle: "Ideas worth carrying into the code.",
-        items: [
-          { title: "AI Engineering", author: "Chip Huyen", cover: "https://covers.openlibrary.org/b/id/15091156-M.jpg" },
-          { title: "Software Architecture in Practice", author: "Len Bass · Paul Clements · Rick Kazman", cover: "https://covers.openlibrary.org/b/id/5544459-M.jpg" },
-          { title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", cover: "https://covers.openlibrary.org/b/id/8434671-M.jpg" },
-        ],
-      },
     },
   },
   fr: {
@@ -356,6 +356,15 @@ fikasso: {
             "Je porte la vision, la coordination et la croissance de l'écosystème d'apprentissage Matrix, en stimulant l'innovation, la maîtrise technique et le leadership collectif. Objectif : former des esprits qui réfléchissent en profondeur, construisent plus intelligemment et agissent avec méthode.",
           badge: "Leadership tech & esprit d'équipe",
         },
+      },
+      books: {
+        title: "Livres",
+        subtitle: "Des idées à emporter dans le code.",
+        items: [
+          { title: "AI Engineering", author: "Chip Huyen", cover: "https://covers.openlibrary.org/b/id/15091156-M.jpg" },
+          { title: "Software Architecture in Practice", author: "Len Bass · Paul Clements · Rick Kazman", cover: "https://covers.openlibrary.org/b/id/5544459-M.jpg" },
+          { title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", cover: "https://covers.openlibrary.org/b/id/8434671-M.jpg" },
+        ],
       },
     },
     experience: {
@@ -519,15 +528,6 @@ fikasso: {
         ai: "IA",
         devtools: "Outillage Développement",
         design: "Design",
-      },
-      books: {
-        title: "Livres",
-        subtitle: "Des idées à emporter dans le code.",
-        items: [
-          { title: "AI Engineering", author: "Chip Huyen", cover: "https://covers.openlibrary.org/b/id/15091156-M.jpg" },
-          { title: "Software Architecture in Practice", author: "Len Bass · Paul Clements · Rick Kazman", cover: "https://covers.openlibrary.org/b/id/5544459-M.jpg" },
-          { title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", cover: "https://covers.openlibrary.org/b/id/8434671-M.jpg" },
-        ],
       },
     },
   },

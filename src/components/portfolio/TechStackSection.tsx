@@ -4,7 +4,6 @@ import { Icon } from "@iconify/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useTranslations } from "@/contexts/TranslationContext";
-import { translations } from "@/lib/i18n/translations";
 import SectionHeader from "./SectionHeader";
 import { cn } from "@/lib/utils";
 
@@ -97,8 +96,7 @@ const categoryLabelKeys: Record<string, string> = {
 };
 
 export default function TechStackSection() {
-  const { t, locale } = useTranslations();
-  const books = translations[locale].techStack.books;
+  const { t } = useTranslations();
 
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const getCategoryLabel = (category: string) =>
@@ -178,58 +176,6 @@ export default function TechStackSection() {
             </div>
           </motion.div>
 
-          {/* Books */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="rounded-2xl overflow-hidden p-5 md:p-6 bg-white dark:bg-[#0f2d40]"
-            style={{
-              border: "1px solid rgba(245, 158, 11, 0.3)",
-            }}
-          >
-            <div className="flex items-center gap-2 mb-3">
-              <Icon icon="solar:book-2-bold" width={22} height={22} className="text-amber-600 dark:text-amber-400" />
-              <h3 className="text-lg font-bold text-[#061825] dark:text-[#f1f5f9]">
-                {books.title}
-              </h3>
-            </div>
-            <p className="text-sm mb-5 text-[#296b8d] dark:text-[#94a3b8] italic">
-              {books.subtitle}
-            </p>
-            <div className="space-y-3">
-              {books.items.map((book) => (
-                <div
-                  key={book.title}
-                  className="flex items-center gap-3.5 rounded-xl p-3"
-                  style={{
-                    border: "1px solid rgba(245, 158, 11, 0.2)",
-                    background: "rgba(245, 158, 11, 0.06)",
-                  }}
-                >
-                  <span className="shrink-0 rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-white/10">
-                    <img
-                      src={book.cover}
-                      alt={`${book.title} by ${book.author}`}
-                      width={40}
-                      height={54}
-                      loading="lazy"
-                      className="h-[54px] w-[40px] object-cover"
-                    />
-                  </span>
-                  <span className="min-w-0">
-                    <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-snug">
-                      {book.title}
-                    </p>
-                    <p className="text-xs mt-1 text-[#4d6579] dark:text-[#94a3b8] truncate">
-                      {book.author}
-                    </p>
-                  </span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       ) : (
         <AnimatePresence mode="wait" initial={false}>

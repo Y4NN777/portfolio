@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "@/contexts/TranslationContext";
 import { translations } from "@/lib/i18n/translations";
 import SectionHeader from "./SectionHeader";
+import BooksCard from "./BooksCard";
 
 type OverviewRoleKey = keyof typeof translations.en.overview.roles;
 
@@ -284,6 +285,10 @@ export default function OverviewSection() {
                 ))}
               </div>
             </div>
+
+            {/* Reading list — "how I think" belongs next to the bio, not inside
+                the tools list where it only showed under the All filter. */}
+            <BooksCard books={translations[locale].overview.books} />
           </motion.div>
         </div>
       </motion.div>
