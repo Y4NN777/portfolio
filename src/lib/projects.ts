@@ -14,7 +14,7 @@ export const projectEntries: Array<{
 }> = [
   {
     id: "glexTalent",
-    gradient: "from-[#0a5c38] to-[#c8840a]",
+    gradient: "from-[#0a5c38] to-[#764e06]",
     live: "https://glextalent.com",
     tech: ["React", "Vite", "PostgreSQL", "MinIO"],
     icons: [
@@ -26,7 +26,7 @@ export const projectEntries: Array<{
   },
   {
     id: "y7Jprompter",
-    gradient: "from-[#1e40af] to-[#0891b2]",
+    gradient: "from-[#1e40af] to-[#055d72]",
     github: "https://github.com/Y4NN777/y7-jprompter",
     live: "https://y7-jprompter.vercel.app",
     tech: ["Next.js", "TypeScript", "Gemini", "IndexedDB"],
@@ -39,7 +39,7 @@ export const projectEntries: Array<{
   },
   {
     id: "tenglaafi",
-    gradient: "from-[#0a2f24] to-[#1e6b4f]",
+    gradient: "from-[#0a2f24] to-[#1b6148]",
     github: "https://github.com/Y4NN777/tenglaafi",
     live: "https://y7labs.studio/tenglaafi/",
     tech: ["Python", "FastAPI", "LangChain", "ChromaDB", "IndexedDB"],
@@ -53,7 +53,7 @@ export const projectEntries: Array<{
   },
   {
     id: "wisemoney",
-    gradient: "from-[#075985] to-[#0284c7]",
+    gradient: "from-[#075985] to-[#015a87]",
     github: "https://github.com/Y4NN777/wisemoney",
     live: "https://wisemoney.y7labs.studio/",
     tech: ["React", "TypeScript", "Go", "PostgreSQL"],
@@ -66,7 +66,7 @@ export const projectEntries: Array<{
   },
   {
     id: "7review",
-    gradient: "from-[#002088] to-[#4f6fd9]",
+    gradient: "from-[#002088] to-[#284bbb]",
     github: "https://github.com/Y4NN777/7review",
     live: "https://y4nn777.github.io/7review/",
     tech: ["Go", "Docker"],
@@ -77,7 +77,7 @@ export const projectEntries: Array<{
   },
   {
     id: "malvision",
-    gradient: "from-[#0b2230] to-[#1f6f9e]",
+    gradient: "from-[#0b2230] to-[#195b82]",
     github: "https://github.com/Y4NN777/MalVision",
     tech: ["Python", "PyTorch", "scikit-learn"],
     icons: [
@@ -88,7 +88,7 @@ export const projectEntries: Array<{
   },
   {
     id: "docIntel",
-    gradient: "from-[#153447] to-[#64748b]",
+    gradient: "from-[#153447] to-[#4c586a]",
     github: "https://github.com/Y4NN777/doc-intel",
     tech: ["Go", "FAISS", "SQLite", "Tesseract"],
     icons: [
@@ -100,7 +100,7 @@ export const projectEntries: Array<{
   },
   {
     id: "piGeosint",
-    gradient: "from-[#2e8bb8] to-[#64748b]",
+    gradient: "from-[#1e5c79] to-[#4c586a]",
     github: "https://github.com/Y4NN777/pi-geosint-agent",
     tech: ["TypeScript", "Docker", "OpenAI", "Anthropic"],
     icons: [
@@ -112,7 +112,7 @@ export const projectEntries: Array<{
   },
   {
     id: "fikassoTech",
-    gradient: "from-[#5c8a1f] to-[#000000]",
+    gradient: "from-[#3f5f15] to-[#000000]",
     live: "https://www.fikassotech.com",
     tech: ["React", "TypeScript", "Vite"],
     icons: [
@@ -123,7 +123,7 @@ export const projectEntries: Array<{
   },
   {
     id: "givemealiftCms",
-    gradient: "from-[#c96e1e] to-[#0f7a63]",
+    gradient: "from-[#814613] to-[#0c604e]",
     live: "https://givemealift.org",
     tech: ["Laravel", "Vue", "MySQL"],
     icons: [
