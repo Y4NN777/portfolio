@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Locale, translations } from "@/lib/i18n/translations";
 
 type TranslationContextValue = {
@@ -8,6 +8,8 @@ type TranslationContextValue = {
   setLocale: (locale: Locale) => void;
   t: (key: string, fallback?: string) => string;
 };
+
+const LOCALE_STORAGE_KEY = "locale";
 
 const TranslationContext = createContext<TranslationContextValue | null>(null);
 
@@ -19,6 +21,24 @@ export function TranslationProvider({
   defaultLocale?: Locale;
 }) {
   const [locale, setLocale] = useState<Locale>(defaultLocale);
+
+  // Restore the saved choice, otherwise follow the browser. Read in an effect
+  // rather than in useState so the server and the first client render agree.
+  useEffect(() => {
+    const saved = localStorage.getItem(LOCALE_STORAGE_KEY);
+    if (saved && saved in translations) {
+      setLocale(saved as Locale);
+      return;
+    }
+    if (navigator.language?.toLowerCase().startsWith("fr")) {
+      setLocale("fr");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   const t = useCallback(
     (key: string, fallback?: string) => {

@@ -6,6 +6,7 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useCallback, useState } from "react";
 import { scrollToId } from "@/lib/scroll";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
@@ -86,6 +87,8 @@ export default function Navigation() {
                 </motion.a>
               ))}
             </div>
+
+            <LanguageToggle />
 
             {/* Theme Toggle */}
             <motion.button

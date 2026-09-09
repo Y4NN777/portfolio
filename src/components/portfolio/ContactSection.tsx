@@ -6,14 +6,16 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import SectionHeader from './SectionHeader';
+import { useTranslations } from "@/contexts/TranslationContext";
 
 export default function ContactSection() {
+  const { t } = useTranslations();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [isResumeMenuOpen, setIsResumeMenuOpen] = useState(false);
 
-  const availability = "Open to New Remote Opportunities";
+  const availability = t("contact.availability");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -63,10 +65,10 @@ export default function ContactSection() {
     >
       <div className="max-w-4xl mx-auto">
         <SectionHeader
-          heading="Let's Work Together"
-          description="Ready to bring your ideas to life? I'm always excited to work on interesting projects and collaborate with amazing people. Let's create something extraordinary together."
+          heading={t("contact.heading")}
+          description={t("contact.description")}
           tagIcon='solar:chat-line-bold'
-          tagText='Contact'
+          tagText={t("contact.tagText")}
           centered={true}
         />
 
@@ -107,7 +109,7 @@ export default function ContactSection() {
                 viewport={{ once: true }}
               >
                 <label htmlFor="name" className="block text-sm font-medium text-[#296b8d] dark:text-[#94a3b8] mb-2">
-                  Name *
+                  {t("contact.form.name")}
                 </label>
                 <input
                   type="text"
@@ -117,7 +119,7 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleInputChange}
                   className={inputClass}
-                  placeholder="Your full name"
+                  placeholder={t("contact.form.namePlaceholder")}
                 />
               </motion.div>
 
@@ -128,7 +130,7 @@ export default function ContactSection() {
                 viewport={{ once: true }}
               >
                 <label htmlFor="email" className="block text-sm font-medium text-[#296b8d] dark:text-[#94a3b8] mb-2">
-                  Email *
+                  {t("contact.form.email")}
                 </label>
                 <input
                   type="email"
@@ -138,7 +140,7 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleInputChange}
                   className={inputClass}
-                  placeholder="your.email@example.com"
+                  placeholder={t("contact.form.emailPlaceholder")}
                 />
               </motion.div>
             </div>
@@ -150,7 +152,7 @@ export default function ContactSection() {
               viewport={{ once: true }}
             >
               <label htmlFor="message" className="block text-sm font-medium text-[#296b8d] dark:text-[#94a3b8] mb-2">
-                Message *
+                {t("contact.form.message")}
               </label>
               <textarea
                 id="message"
@@ -160,7 +162,7 @@ export default function ContactSection() {
                 value={formData.message}
                 onChange={handleInputChange}
                 className={inputClass + " resize-none"}
-                placeholder="Tell me about your project or idea..."
+                placeholder={t("contact.form.messagePlaceholder")}
               />
             </motion.div>
 
@@ -184,12 +186,12 @@ export default function ContactSection() {
                 {isSubmitting ? (
                   <>
                     <Icon icon="solar:loading-outline" width={20} height={20} className="animate-spin" />
-                    Sending...
+                    {t("contact.form.submitting")}
                   </>
                 ) : (
                   <>
                     <Icon icon="solar:letter-outline" width={20} height={20} />
-                    Send Message
+                    {t("contact.form.submit")}
                     <motion.div
                       className="ml-2"
                       animate={{ x: [0, 4, 0] }}
@@ -209,7 +211,7 @@ export default function ContactSection() {
                 >
                   <div className="flex items-center gap-2 text-green-800 dark:text-green-400">
                     <Icon icon="solar:check-circle-bold" width={20} height={20} />
-                    <span className="font-medium">Message sent successfully!</span>
+                    <span className="font-medium">{t("contact.form.success")}</span>
                   </div>
                   <p className="text-green-600 text-left dark:text-green-500 text-sm mt-1">
                     Thank you for reaching out. I&apos;ll get back to you soon!
@@ -231,7 +233,7 @@ export default function ContactSection() {
                 >
                   <div className="flex items-center gap-2 text-red-700 dark:text-red-400">
                     <Icon icon="solar:close-circle-bold" width={20} height={20} />
-                    <span className="font-medium">Failed to send message</span>
+                    <span className="font-medium">{t("contact.form.error")}</span>
                   </div>
                   <p className="text-red-600 text-left dark:text-red-500 text-sm mt-1">
                     Please try again or contact me directly on linkedin
@@ -256,7 +258,7 @@ export default function ContactSection() {
           transition={{ duration: 0.8, delay: 1.1 }}
           viewport={{ once: true }}
         >
-          <p className="text-[#296b8d] dark:text-[#94a3b8] mb-6">Or reach out directly:</p>
+          <p className="text-[#296b8d] dark:text-[#94a3b8] mb-6">{t("contact.directTitle")}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {/* Send Email, filled primary */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -268,7 +270,7 @@ export default function ContactSection() {
                 }}
               >
                 <Icon icon="solar:mailbox-bold-duotone" width={18} height={18} />
-                Send Email
+                {t("contact.sendEmail")}
               </Link>
             </motion.div>
 
@@ -282,7 +284,7 @@ export default function ContactSection() {
                 aria-expanded={isResumeMenuOpen}
               >
                 <Icon icon="solar:download-bold" width={18} height={18} />
-                Download CV
+                {t("contact.downloadCv")}
                 <Icon icon="solar:alt-arrow-down-linear" width={16} height={16} />
               </button>
 
@@ -295,7 +297,7 @@ export default function ContactSection() {
                     className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-[#0f2d40] dark:text-[#c9e9ff] hover:bg-[#53c0fb]/10 dark:hover:bg-[#53c0fb]/20 transition-colors"
                   >
                     <Icon icon="solar:file-download-linear" width={16} height={16} />
-                    Resume EN
+                    {t("contact.resumeEn")}
                   </Link>
                   <Link
                     href="/RESUME_FR.pdf"
@@ -304,7 +306,7 @@ export default function ContactSection() {
                     className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-[#0f2d40] dark:text-[#c9e9ff] hover:bg-[#53c0fb]/10 dark:hover:bg-[#53c0fb]/20 transition-colors border-t border-[#296b8d]/20 dark:border-[#53c0fb]/20"
                   >
                     <Icon icon="solar:file-download-linear" width={16} height={16} />
-                    CV FR
+                    {t("contact.resumeFr")}
                   </Link>
                 </div>
               )}
