@@ -47,7 +47,7 @@ export default function Navigation() {
 
           <div className="flex items-center gap-4 md:gap-8">
             <button
-              className="md:hidden p-2 rounded-full transition-all duration-300"
+              className="md:hidden p-3 rounded-full transition-all duration-300"
               style={{
                 background: "rgba(83, 192, 251, 0.1)",
                 border: "1px solid rgba(83, 192, 251, 0.2)",
@@ -63,7 +63,7 @@ export default function Navigation() {
               />
             </button>
 
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.id}
@@ -75,7 +75,7 @@ export default function Navigation() {
                   initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="transition-colors duration-300 text-sm font-medium"
+                  className="transition-colors duration-300 text-sm font-medium py-3 px-1"
                   style={{ color: isDark ? "#94a3b8" : "#296b8d" }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = "#53c0fb"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = isDark ? "#94a3b8" : "#296b8d"; }}
@@ -92,7 +92,7 @@ export default function Navigation() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={toggleTheme}
-              className="p-2 rounded-full transition-all duration-300"
+              className="p-3 rounded-full transition-all duration-300"
               style={{
                 background: "rgba(83, 192, 251, 0.1)",
                 border: "1px solid rgba(83, 192, 251, 0.2)",
