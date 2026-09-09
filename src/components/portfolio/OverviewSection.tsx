@@ -131,6 +131,33 @@ export default function OverviewSection() {
                 </div>
               </motion.div>
               </div>
+            {/* Engineering Focus — below the bio card, not inside it.
+                It was a card within a card. */}
+            <motion.div
+              className="mt-6 md:mt-8 pt-6 md:pt-8 border-t"
+              style={{ borderColor: "rgba(83, 192, 251, 0.15)" }}
+            >
+              <h4 className="font-bold text-gray-900 dark:text-white mb-4 md:mb-6 flex items-center gap-2">
+                <Icon icon="solar:lightning-bold" className="text-amber-600 dark:text-amber-400 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
+                {overviewCopy.coreSkillsTitle}
+              </h4>
+              {/* A list, not cards: each item is one sentence, and the card
+                  chrome cost more height than the words did. */}
+              <div className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
+                {overviewCopy.coreSkills.map((skill, index) => (
+                  <motion.div
+                    key={skill.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.06, duration: 0.5 }}
+                  >
+                    <div className="font-semibold text-gray-900 dark:text-white text-base mb-0.5">{skill.title}</div>
+                    <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
             </motion.div>
 
           {/* Sidebar */}
@@ -196,34 +223,6 @@ export default function OverviewSection() {
             <BooksCard books={translations[locale].overview.books} />
           </motion.div>
 
-          {/* Engineering Focus — full width below the grid. It was nested
-              inside the bio card, which made it a card within a card. */}
-          <motion.div
-            variants={itemVariants}
-            className="lg:col-span-12 mt-8 md:mt-10 pt-6 md:pt-8 border-t"
-            style={{ borderColor: "rgba(83, 192, 251, 0.15)" }}
-          >
-            <h4 className="font-bold text-gray-900 dark:text-white mb-4 md:mb-6 flex items-center gap-2">
-              <Icon icon="solar:lightning-bold" className="text-amber-600 dark:text-amber-400 w-4 md:w-5 h-4 md:h-5" width={20} height={20} />
-              {overviewCopy.coreSkillsTitle}
-            </h4>
-            {/* A list, not cards: each item is one sentence, and the card
-                chrome cost more height than the words did. */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-5">
-              {overviewCopy.coreSkills.map((skill, index) => (
-                <motion.div
-                  key={skill.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.06, duration: 0.5 }}
-                >
-                  <div className="font-semibold text-gray-900 dark:text-white text-base mb-0.5">{skill.title}</div>
-                  <p className="text-base text-gray-600 dark:text-gray-400 leading-relaxed">{skill.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </motion.div>
     </motion.section>
