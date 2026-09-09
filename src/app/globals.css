@@ -191,12 +191,16 @@
 	color: white;
 }
 
-/* Smooth transitions for all interactive elements */
+/* Interactive elements get a colour transition only. `all` swept in layout
+   properties (width, padding, transform) and silently overrode every
+   per-element duration-* utility, since both resolve to the same property. */
 button,
 a,
 input,
 textarea {
-	transition: all 0.3s ease;
+	transition-property: color, background-color, border-color, box-shadow, opacity;
+	transition-duration: 0.3s;
+	transition-timing-function: ease;
 }
 
 /* Custom focus states */
