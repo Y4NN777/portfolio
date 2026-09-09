@@ -8,6 +8,14 @@ import { useState } from "react";
 import SectionHeader from './SectionHeader';
 import { useTranslations } from "@/contexts/TranslationContext";
 
+// Inlined at build time. Missing values mean the form cannot send, which the
+// submit handler surfaces instead of calling EmailJS with placeholders.
+const EMAILJS = {
+  serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+  templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+  publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+};
+
 export default function ContactSection() {
   const { t } = useTranslations();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -27,19 +35,30 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+    if (!EMAILJS.serviceId || !EMAILJS.templateId || !EMAILJS.publicKey) {
+      // Fail fast rather than sending placeholder credentials to EmailJS and
+      // waiting for the round trip to reject them.
+      if (process.env.NODE_ENV === "development") {
+        console.warn(
+          "[contact] EmailJS env vars are not set — the form cannot send. " +
+            "Copy env-example to .env.local and fill in NEXT_PUBLIC_EMAILJS_*."
+        );
+      }
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
 
-      const result = await emailjs.send(serviceId, templateId, {
+    try {
+      const { serviceId, templateId, publicKey } = EMAILJS;
+
+      await emailjs.send(serviceId, templateId, {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
         to_email: 'y4nn.dev@gmail.com',
       }, publicKey);
 
-      console.log('Email sent successfully:', result);
       setSubmitStatus('success');
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
@@ -207,18 +226,22 @@ export default function ContactSection() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
+                  role="status"
+                  aria-live="polite"
                   className="relative mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl"
                 >
                   <div className="flex items-center gap-2 text-green-800 dark:text-green-400">
                     <Icon icon="solar:check-circle-bold" width={20} height={20} />
                     <span className="font-medium">{t("contact.form.success")}</span>
                   </div>
-                  <p className="text-green-600 text-left dark:text-green-500 text-sm mt-1">
-                    Thank you for reaching out. I&apos;ll get back to you soon!
+                  <p className="text-green-700 text-left dark:text-green-400 text-sm mt-1">
+                    {t("contact.form.successDetail")}
                   </p>
                   <button
+                    type="button"
                     onClick={() => setSubmitStatus('idle')}
-                    className="absolute top-1 right-1 text-red-500 rounded-md"
+                    aria-label={t("contact.form.dismiss")}
+                    className="absolute top-1 right-1 inline-flex items-center justify-center min-w-[44px] min-h-[44px] text-red-600 dark:text-red-400 rounded-md"
                   >
                     <Icon icon="solar:close-circle-bold" width={20} height={20} />
                   </button>
@@ -229,18 +252,21 @@ export default function ContactSection() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl"
+                  role="alert"
+                  className="relative mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl"
                 >
                   <div className="flex items-center gap-2 text-red-700 dark:text-red-400">
                     <Icon icon="solar:close-circle-bold" width={20} height={20} />
                     <span className="font-medium">{t("contact.form.error")}</span>
                   </div>
-                  <p className="text-red-600 text-left dark:text-red-500 text-sm mt-1">
-                    Please try again or contact me directly on linkedin
+                  <p className="text-red-700 text-left dark:text-red-400 text-sm mt-1">
+                    {t("contact.form.errorDetail")}
                   </p>
                   <button
+                    type="button"
                     onClick={() => setSubmitStatus('idle')}
-                    className="absolute top-1 right-1 text-red-500 rounded-md"
+                    aria-label={t("contact.form.dismiss")}
+                    className="absolute top-1 right-1 inline-flex items-center justify-center min-w-[44px] min-h-[44px] text-red-600 dark:text-red-400 rounded-md"
                   >
                     <Icon icon="solar:close-circle-bold" width={20} height={20} />
                   </button>
