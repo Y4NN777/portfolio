@@ -107,7 +107,6 @@ export const translations = {
       heading: "Experience",
       description: "Where I've built, shipped, and learned across different environments",
       keyAchievementsTitle: "Highlights",
-      stackTitle: "Stack",
       viewAll: "View More",
       showLess: "Show Less",
       items: {
@@ -399,7 +398,6 @@ fikasso: {
       heading: "Expériences",
       description: "Où j'ai construit, livré et appris dans différents environnements",
       keyAchievementsTitle: "Points clés",
-      stackTitle: "Stack",
       viewAll: "Voir plus",
       showLess: "Voir moins",
       items: {

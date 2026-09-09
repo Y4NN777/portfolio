@@ -17,44 +17,36 @@ const experienceEntries: Array<{
   companyLogo: string;
   companyColor: string;
   accentGradient: string;
-  technologies: string[];
 }> = [
   {
     id: "aïobi",
     companyColor: "from-white via-gray-100 to-gray-200",
     accentGradient: "from-[#296b8d] to-[#53c0fb]",
     companyLogo: "/aiobi.jpeg",
-    technologies: ["TypeScript", "Python", "Go", "React", "FastAPI", "PostgreSQL", "IndexedDB", "Bash", "GitLab CI"],
   },
   {
     id: "y7labs",
     companyLogo: "/Y7Labs.png",
     companyColor: "from-[#061627] to-[#0770cf]",
     accentGradient: "from-[#296b8d] to-[#53c0fb]",
-    technologies: [
-      "TypeScript", "Python", "Go", "React", "Next.js", "FastAPI", "Docker", "GitHub Actions", "AI tooling",
-    ],
   },
   {
     id: "fikasso",
     companyColor: "from-[#e1f0fa] via-[#f0f7ff] to-[#c8e4f8]",
     accentGradient: "from-[#296b8d] to-[#53c0fb]",
     companyLogo: "/fikasso-security.jpeg",
-    technologies: ["TypeScript", "Laravel", "React", "Node.js", "MySQL", "Azure DevOps"],
   },
   {
     id: "bitSolutions",
     companyColor: "from-white via-white to-[#e1f0fa]",
     accentGradient: "from-[#1f4d67] to-[#53c0fb]",
     companyLogo: "/bit_solutions.png",
-    technologies: ["Python", "Flask", "Node.js", "Supabase", "Google AI", "GitHub Actions"],
   },
   {
     id: "freelance",
     companyColor: "from-white via-white to-[#e1f0fa]",
     accentGradient: "from-[#1f4d67] to-[#4bbcff]",
     companyLogo: "/freelance.png",
-    technologies: ["HTML", "CSS", "JavaScript", "React", "Laravel", "MySQL", "Figma"],
   },
 ];
 
@@ -216,32 +208,6 @@ export default function ExperienceSection() {
                       </div>
                     </motion.div>
 
-                    {/* Technologies */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.8 }}
-                      className="space-y-2.5 md:space-y-3"
-                    >
-                      <h4 className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                        <Icon icon="solar:programming-bold" style={{ color: "hsl(var(--primary))" }} width={16} height={16} />
-                        {t("experience.stackTitle")}
-                      </h4>
-
-                      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1.5">
-                        {exp.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="text-gray-700 dark:text-gray-300 text-base leading-relaxed"
-                          >
-                            {tech}
-                            {techIndex < exp.technologies.length - 1 && (
-                              <span className="text-primary mx-1.5">·</span>
-                            )}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
                   </div>
                 </div>
 
