@@ -71,7 +71,7 @@ export default function ExperienceSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
-      className="mb-16 relative overflow-hidden"
+      className="mb-16 md:mb-24 lg:mb-32 relative overflow-hidden"
     >      {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 rounded-full blur-3xl" style={{ background: "rgba(83,192,251,0.04)" }} />

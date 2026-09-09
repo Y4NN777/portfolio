@@ -115,7 +115,7 @@ export default function TechStackSection() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="mb-16"
+      className="mb-16 md:mb-24 lg:mb-32"
     >
       <SectionHeader
         tagText={t("techStack.tagText")}
