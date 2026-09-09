@@ -61,11 +61,8 @@ export default function SectionHeader({
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        {/* Dark mode: white-to-skyblue gives real contrast. Light mode: deep navy text, readable on white */}
-        <span className="dark:hidden bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(90deg, #061825, #296b8d, #0f2d40)" }}>
-          {heading}
-        </span>
-        <span className="hidden dark:inline bg-clip-text text-transparent" style={{ backgroundImage: "linear-gradient(90deg, #f1f5f9, #53c0fb, #cbd5e1)" }}>
+        {/* One span; --heading-gradient carries the light/dark pair. */}
+        <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--heading-gradient)" }}>
           {heading}
         </span>
       </motion.h2>

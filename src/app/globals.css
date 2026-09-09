@@ -29,6 +29,10 @@
 		--input: 204 72% 88%;
 		--ring: 202 95% 66%;                /* #53c0fb */
 		--radius: 0.5rem;
+		/* Heading gradients: one variable per theme, so a heading needs one
+		   span instead of a light copy plus a dark copy. */
+		--heading-gradient: linear-gradient(90deg, #061825, #296b8d, #0f2d40);
+		--name-gradient: linear-gradient(90deg, #061825, #296b8d, #53c0fb, #296b8d, #061825);
 	}
 
 	.dark {
@@ -52,6 +56,8 @@
 		--border: 200 55% 35%;             /* #296b8d */
 		--input: 202 65% 16%;
 		--ring: 202 95% 66%;               /* #53c0fb */
+		--heading-gradient: linear-gradient(90deg, #f1f5f9, #53c0fb, #cbd5e1);
+		--name-gradient: linear-gradient(90deg, #f1f5f9, #53c0fb, #4bbcff, #53c0fb, #f1f5f9);
 	}
 
 	body {

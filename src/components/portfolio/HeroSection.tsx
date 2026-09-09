@@ -69,20 +69,14 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          {/* Light: navy-to-accent so the name has color personality */}
+          {/* One span; --name-gradient carries the light/dark pair. */}
           <span
-            className="dark:hidden bg-clip-text text-transparent"
-            style={{ backgroundImage: "linear-gradient(90deg, #061825, #296b8d, #53c0fb, #296b8d, #061825)" }}
+            className="bg-clip-text text-transparent"
+            style={{ backgroundImage: "var(--name-gradient)" }}
           >
             The Y4NN
           </span>
-          {/* Dark: white-to-skyblue-to-white so the accent shimmers through */}
-          <span
-            className="hidden dark:inline bg-clip-text text-transparent"
-            style={{ backgroundImage: "linear-gradient(90deg, #f1f5f9, #53c0fb, #4bbcff, #53c0fb, #f1f5f9)" }}
-          >
-            The Y4NN
-          </span>        </motion.h1>
+        </motion.h1>
 
         {/* Headline */}
         <motion.p
