@@ -119,13 +119,13 @@ export default function HeroSection() {
           {([
             { href: "https://github.com/Y4NN777", icon: "simple-icons:github", label: t("hero.social.github"), hoverClass: "hover:text-[#061825] dark:hover:text-white", platform: "github" },
             { href: "https://www.linkedin.com/in/y4nnthedev777/", icon: "skill-icons:linkedin", label: t("hero.social.linkedin"), hoverClass: "hover:text-[#296b8d] dark:hover:text-[#53c0fb]", platform: "linkedin" },
-            { href: "mailto:y4nn.dev@gmail.com", icon: "material-symbols:mail-rounded", label: t("hero.social.email"), hoverClass: "hover:text-amber-600 dark:hover:text-amber-400" }
-          ] as Array<{ href: string; icon: string; label: string; hoverClass: string; platform?: string }>).map((link) => (
+            { href: "mailto:y4nn.dev@gmail.com", icon: "material-symbols:mail-rounded", label: t("hero.social.email"), hoverClass: "hover:text-amber-600 dark:hover:text-amber-400", platform: "email" }
+          ] as Array<{ href: string; icon: string; label: string; hoverClass: string; platform: string }>).map((link) => (
             <motion.div key={link.label} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={link.href}
                 onClick={() => {
-                  if (link.platform && analytics.enabled) {
+                  if (analytics.enabled) {
                     posthog.capture("social_profile_opened", { platform: link.platform });
                   }
                 }}
