@@ -14,9 +14,9 @@ export default function Navigation() {
 
   const navItems = [
     { id: "overview", labelKey: "navigation.links.overview" },
-    { id: "stack", labelKey: "navigation.links.stack" },
-    { id: "experience", labelKey: "navigation.links.experience" },
     { id: "projects", labelKey: "navigation.links.projects" },
+    { id: "experience", labelKey: "navigation.links.experience" },
+    { id: "stack", labelKey: "navigation.links.stack" },
     { id: "contact", labelKey: "navigation.links.contact" },
   ];
 

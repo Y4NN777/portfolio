@@ -34,14 +34,14 @@ export default function Portfolio() {
         {/* Overview Section */}
         <OverviewSection />
 
+        {/* Projects Section — the work comes first; everything below is evidence for it */}
+        <ProjectsSection />
+
         {/* Experience Section */}
         <ExperienceSection />
 
         {/* Tech Stack Section */}
         <TechStackSection />
-
-        {/* Projects Section */}
-        <ProjectsSection />
 
         {/* Contact Section */}
         <ContactSection />
