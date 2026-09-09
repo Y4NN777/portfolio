@@ -97,7 +97,7 @@ export const translations = {
         items: [
           { title: "AI Engineering", author: "Chip Huyen", cover: "https://covers.openlibrary.org/b/id/15091156-M.jpg" },
           { title: "Software Architecture in Practice", author: "Len Bass · Paul Clements · Rick Kazman", cover: "https://covers.openlibrary.org/b/id/5544459-M.jpg" },
-          { title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", cover: "https://covers.openlibrary.org/b/id/8434671-M.jpg" },
+          { title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", cover: "https://covers.openlibrary.org/b/isbn/9781449373320-M.jpg" },
         ],
       },
     },
@@ -389,7 +389,7 @@ fikasso: {
         items: [
           { title: "AI Engineering", author: "Chip Huyen", cover: "https://covers.openlibrary.org/b/id/15091156-M.jpg" },
           { title: "Software Architecture in Practice", author: "Len Bass · Paul Clements · Rick Kazman", cover: "https://covers.openlibrary.org/b/id/5544459-M.jpg" },
-          { title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", cover: "https://covers.openlibrary.org/b/id/8434671-M.jpg" },
+          { title: "Designing Data-Intensive Applications", author: "Martin Kleppmann", cover: "https://covers.openlibrary.org/b/isbn/9781449373320-M.jpg" },
         ],
       },
     },
