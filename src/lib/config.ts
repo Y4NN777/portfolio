@@ -9,7 +9,7 @@
  * development; the site itself never depends on any of them.
  */
 
-const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST;
 
 const emailjsServiceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
@@ -17,9 +17,16 @@ const emailjsTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
 const emailjsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 export const analytics = {
-  enabled: Boolean(posthogKey),
+  enabled: Boolean(posthogKey && posthogHost),
   key: posthogKey,
+  /** Ingest host, e.g. https://us.i.posthog.com — where events are sent. */
   host: posthogHost,
+  /**
+   * Dashboard host, e.g. https://us.posthog.com — where a human logs in.
+   * posthog-js wants this as ui_host; sending it the ingest host makes the
+   * toolbar's "view in PostHog" links point at the wrong domain.
+   */
+  uiHost: posthogHost?.replace("://us.i.", "://us.").replace("://eu.i.", "://eu."),
 } as const;
 
 export const contactForm = {
@@ -33,7 +40,7 @@ export const contactForm = {
 export function missingEnv(): string[] {
   return (
     [
-      ["NEXT_PUBLIC_POSTHOG_KEY", posthogKey],
+      ["NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN", posthogKey],
       ["NEXT_PUBLIC_POSTHOG_HOST", posthogHost],
       ["NEXT_PUBLIC_EMAILJS_SERVICE_ID", emailjsServiceId],
       ["NEXT_PUBLIC_EMAILJS_TEMPLATE_ID", emailjsTemplateId],
@@ -58,6 +65,6 @@ export function reportConfig(): void {
   console.info(
     `[config] ${missing.length} env var(s) unset: ${missing.join(", ")}.\n` +
       `         analytics: ${analytics.enabled ? "on" : "OFF"} · contact form: ${contactForm.enabled ? "on" : "OFF"}\n` +
-      `         Copy env-example to .env.local to enable them.`
+      `         Copy .env.example to .env.local to enable them.`
   );
 }

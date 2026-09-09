@@ -1,18 +1,24 @@
 import type { NextConfig } from "next";
 
+const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_HOST;
+const posthogAssetsHost = posthogHost?.replace(".i.posthog.com", "-assets.i.posthog.com");
+
 const nextConfig: NextConfig = {
-  // Analytics is reverse-proxied through /ingest so it is first-party and
-  // survives ad blockers. These point at PostHog's US cloud; on EU cloud the
-  // hosts become eu-assets.i.posthog.com and eu.i.posthog.com.
   async rewrites() {
+    if (!posthogHost || !posthogAssetsHost) return [];
+
     return [
       {
         source: "/ingest/static/:path*",
-        destination: "https://us-assets.i.posthog.com/static/:path*",
+        destination: `${posthogAssetsHost}/static/:path*`,
+      },
+      {
+        source: "/ingest/array/:path*",
+        destination: `${posthogAssetsHost}/array/:path*`,
       },
       {
         source: "/ingest/:path*",
-        destination: "https://us.i.posthog.com/:path*",
+        destination: `${posthogHost}/:path*`,
       },
     ];
   },

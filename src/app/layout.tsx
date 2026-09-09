@@ -1,5 +1,5 @@
 import MotionProvider from "@/components/MotionProvider";
-import { PostHogProvider } from "@/components/PostHogProvider";
+import { PostHogPageViewTracker } from "@/components/PostHogProvider";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { TranslationProvider } from "@/contexts/TranslationContext";
 import type { Metadata } from "next";
@@ -40,15 +40,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={spaceGrotesk.variable}>
       <body className="font-sans">
-        <PostHogProvider>
-          <ThemeProvider>
-            <TranslationProvider>
-              <MotionProvider>
-                {children}
-              </MotionProvider>
-            </TranslationProvider>
-          </ThemeProvider>
-        </PostHogProvider>
+        <PostHogPageViewTracker />
+        <ThemeProvider>
+          <TranslationProvider>
+            <MotionProvider>
+              {children}
+            </MotionProvider>
+          </TranslationProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

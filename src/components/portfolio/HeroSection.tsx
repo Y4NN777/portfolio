@@ -4,7 +4,9 @@ import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import posthog from "posthog-js";
 import { useTranslations } from "@/contexts/TranslationContext";
+import { analytics } from "@/lib/config";
 import TypewriterRole from "./TypewriterRole";
 
 export default function HeroSection() {
@@ -115,13 +117,18 @@ export default function HeroSection() {
           transition={{ delay: 1.0 }}
         >
           {([
-            { href: "https://github.com/Y4NN777", icon: "simple-icons:github", label: t("hero.social.github"), hoverClass: "hover:text-[#061825] dark:hover:text-white" },
-            { href: "https://www.linkedin.com/in/y4nnthedev777/", icon: "skill-icons:linkedin", label: t("hero.social.linkedin"), hoverClass: "hover:text-[#296b8d] dark:hover:text-[#53c0fb]" },
+            { href: "https://github.com/Y4NN777", icon: "simple-icons:github", label: t("hero.social.github"), hoverClass: "hover:text-[#061825] dark:hover:text-white", platform: "github" },
+            { href: "https://www.linkedin.com/in/y4nnthedev777/", icon: "skill-icons:linkedin", label: t("hero.social.linkedin"), hoverClass: "hover:text-[#296b8d] dark:hover:text-[#53c0fb]", platform: "linkedin" },
             { href: "mailto:y4nn.dev@gmail.com", icon: "material-symbols:mail-rounded", label: t("hero.social.email"), hoverClass: "hover:text-amber-600 dark:hover:text-amber-400" }
-          ] as Array<{ href: string; icon: string; label: string; hoverClass: string }>).map((link) => (
+          ] as Array<{ href: string; icon: string; label: string; hoverClass: string; platform?: string }>).map((link) => (
             <motion.div key={link.label} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={link.href}
+                onClick={() => {
+                  if (link.platform && analytics.enabled) {
+                    posthog.capture("social_profile_opened", { platform: link.platform });
+                  }
+                }}
                 className={`inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#cbd5e1] bg-white dark:bg-[#1f4d67] border border-[#296b8d]/40 dark:border-[#53c0fb]/25 ${link.hoverClass}`}
               >
                 <Icon icon={link.icon} width={18} height={18} />

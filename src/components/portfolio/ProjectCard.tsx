@@ -3,7 +3,9 @@
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import posthog from "posthog-js";
 import { useTranslations } from "@/contexts/TranslationContext";
+import { analytics } from "@/lib/config";
 import { translations } from "@/lib/i18n/translations";
 import { projectEntries, type ProjectItemKey } from "@/lib/projects";
 
@@ -44,6 +46,14 @@ export default function ProjectCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => {
+          if (analytics.enabled) {
+            posthog.capture("project_opened", {
+              project_id: project.id,
+              destination_type: project.live ? "live" : project.github ? "github" : "internal",
+            });
+          }
+        }}
         className={`relative block h-full bg-gradient-to-br ${project.gradient} p-5 sm:p-6 md:p-8`}
       >
         {/* Dotted pattern */}
