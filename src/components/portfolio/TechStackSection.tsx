@@ -148,31 +148,35 @@ export default function TechStackSection() {
         </div>
       </div>
 
+      {/* One panel, not one per category: the padding, border and shadow are
+          paid once instead of seven times, which is where the height went. */}
       {activeCategory === "All" ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
-          {Object.entries(techStackData).map(([categoryName, techs], groupIndex) => (
-            <motion.div
-              key={categoryName}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: groupIndex * 0.05 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -4 }}
-              className="rounded-2xl overflow-hidden p-5 md:p-6 bg-white dark:bg-[#0f2d40]"
-              style={{
-                border: "1px solid rgba(83, 192, 251, 0.15)",
-              }}
-            >
-              <h3 className="text-lg font-bold mb-4 text-[#061825] dark:text-[#f1f5f9]">
-                {getCategoryLabel(categoryName)}
-              </h3>
-              <div className="flex flex-wrap gap-3">
-                {techs.map((tech, index) => (
-                  <TechCard key={tech.name} tech={tech} index={index} />
-                ))}
-              </div>
-            </motion.div>
-          ))}
+        <div className="max-w-5xl mx-auto space-y-4 md:space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="rounded-2xl overflow-hidden p-5 md:p-6 bg-white dark:bg-[#0f2d40]"
+            style={{
+              border: "1px solid rgba(83, 192, 251, 0.15)",
+            }}
+          >
+            <div className="grid md:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-7">
+              {Object.entries(techStackData).map(([categoryName, techs]) => (
+                <div key={categoryName}>
+                  <h3 className="text-xs font-bold uppercase tracking-wider mb-3 text-[#4d6579] dark:text-[#94a3b8]">
+                    {getCategoryLabel(categoryName)}
+                  </h3>
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
+                    {techs.map((tech, index) => (
+                      <TechCard key={tech.name} tech={tech} index={index} />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
 
           {/* Books */}
           <motion.div
@@ -235,12 +239,12 @@ export default function TechStackSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="w-fit mx-auto rounded-2xl overflow-hidden p-5 md:p-6 border bg-white dark:bg-[#0f2d40]"
+            className="max-w-5xl mx-auto rounded-2xl overflow-hidden p-5 md:p-6 bg-white dark:bg-[#0f2d40]"
             style={{
               border: "1px solid rgba(83, 192, 251, 0.15)",
             }}
           >
-            <div className="flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
               {filteredTech.map((tech, index) => (
                 <TechCard key={tech.name} tech={tech} index={index} />
               ))}
@@ -259,7 +263,7 @@ function TechCard({ tech, index }: { tech: TechItem; index: number }) {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.35, delay: index * 0.02 }}
       viewport={{ once: true }}
-      className="group flex items-center gap-2.5 w-fit rounded-full px-5 py-2.5 border transition-colors duration-300 bg-white dark:bg-[#1f4d67]"
+      className="group flex items-center gap-2 sm:gap-2.5 w-fit rounded-full px-3.5 py-2 sm:px-5 sm:py-2.5 border transition-colors duration-300 bg-white dark:bg-[#1f4d67]"
       style={{
         borderColor: "rgba(83, 192, 251, 0.2)",
       }}
@@ -271,12 +275,12 @@ function TechCard({ tech, index }: { tech: TechItem; index: number }) {
       >
         <Icon
           icon={tech.icon}
-          className="shrink-0 text-[#296b8d] dark:text-[#53c0fb]"
+          className="shrink-0 w-[18px] h-[18px] sm:w-[21px] sm:h-[21px] text-[#296b8d] dark:text-[#53c0fb]"
           width={21}
           height={21}
         />
       </motion.span>
-      <span className="text-[15px] font-medium text-gray-800 dark:text-gray-100 leading-tight tracking-tight whitespace-nowrap">
+      <span className="text-sm sm:text-[15px] font-medium text-gray-800 dark:text-gray-100 leading-tight tracking-tight whitespace-nowrap">
         {tech.name}
       </span>
     </motion.div>
