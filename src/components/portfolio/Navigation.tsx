@@ -27,7 +27,7 @@ export default function Navigation() {
   const isDark = theme === "dark";
 
   return (
-    <nav className="fixed top-0 md:top-4 w-full z-50">
+    <nav aria-label="Main" className="fixed top-0 md:top-4 w-full z-50">
       <div
         className="md:max-w-fit mx-auto px-7 py-2 md:rounded-full backdrop-blur-3xl"
         style={{
@@ -53,6 +53,8 @@ export default function Navigation() {
                 border: "1px solid rgba(83, 192, 251, 0.2)",
               }}
               aria-label="Toggle navigation menu"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
               <Icon
@@ -111,6 +113,7 @@ export default function Navigation() {
 
       {isMobileMenuOpen && (
         <div
+          id="mobile-menu"
           className="md:hidden backdrop-blur-md"
           style={{
             background: isDark ? "rgba(6, 24, 37, 0.95)" : "rgba(240, 247, 255, 0.95)",

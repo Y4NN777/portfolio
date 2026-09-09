@@ -20,13 +20,15 @@ export default function Portfolio() {
       {/* Background */}
       <Background />
 
+      <a href="#main" className="skip-link">Skip to content</a>
+
       {/* Navigation */}
       <Navigation />
 
       {/* Position-aware scroll control */}
       <ScrollControl />
 
-      <div className="max-w-6xl mx-auto px-6 pt-24">
+      <main id="main" className="max-w-6xl mx-auto px-6 pt-24">
         {/* Hero Section */}
         <HeroSection />
 
@@ -45,7 +47,9 @@ export default function Portfolio() {
         {/* Contact Section */}
         <ContactSection />
 
-        {/* Footer */}
+      </main>
+
+      <div className="max-w-6xl mx-auto px-6">
         <Footer />
       </div>
     </div>

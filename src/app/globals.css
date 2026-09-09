@@ -85,6 +85,24 @@
 }
 
 @layer components {
+	/* Visible only when focused, so keyboard users can jump past the nav. */
+	.skip-link {
+		position: absolute;
+		left: 1rem;
+		top: -3rem;
+		z-index: 100;
+		padding: 0.75rem 1.25rem;
+		border-radius: 9999px;
+		font-weight: 600;
+		background-color: hsl(var(--primary));
+		color: hsl(var(--primary-foreground));
+		transition: top 0.2s ease;
+	}
+
+	.skip-link:focus-visible {
+		top: 1rem;
+	}
+
 	.gradient-text {
 		@apply bg-clip-text text-transparent;
 		background-image: linear-gradient(90deg, #4bbcff, #53c0fb);
