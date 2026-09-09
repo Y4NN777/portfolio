@@ -156,7 +156,7 @@ export default function ExperienceSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.4 }}
                         className="text-base font-medium"
-                        style={{ color: "#53c0fb" }}
+                        style={{ color: "hsl(var(--primary))" }}
                       >
                         {copy.company}
                       </motion.p>
@@ -224,7 +224,7 @@ export default function ExperienceSection() {
                       className="space-y-2.5 md:space-y-3"
                     >
                       <h4 className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                        <Icon icon="solar:programming-bold" style={{ color: "#53c0fb" }} width={16} height={16} />
+                        <Icon icon="solar:programming-bold" style={{ color: "hsl(var(--primary))" }} width={16} height={16} />
                         {t("experience.stackTitle")}
                       </h4>
 
@@ -236,7 +236,7 @@ export default function ExperienceSection() {
                           >
                             {tech}
                             {techIndex < exp.technologies.length - 1 && (
-                              <span className="text-[#53c0fb] mx-1.5">·</span>
+                              <span className="text-primary mx-1.5">·</span>
                             )}
                           </span>
                         ))}

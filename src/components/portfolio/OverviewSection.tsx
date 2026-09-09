@@ -25,7 +25,7 @@ const professionalRoleCards: Array<{
     icon: "solar:code-bold",
     badgeIcon: "solar:star-bold",
     badgeColor: "text-amber-500",
-    highlightColor: "text-[#53c0fb]",
+    highlightColor: "text-primary",
   },
   {
     id: "matrix",
@@ -34,8 +34,8 @@ const professionalRoleCards: Array<{
     iconWrapper: "p-2 md:p-3 rounded-lg md:rounded-xl shadow-lg",
     icon: "solar:hospital-bold",
     badgeIcon: "solar:shield-check-bold",
-    badgeColor: "text-[#53c0fb]",
-    highlightColor: "text-[#4bbcff]",
+    badgeColor: "text-primary",
+    highlightColor: "text-primary",
   },
 ];
 
@@ -138,7 +138,7 @@ export default function OverviewSection() {
                     <p className="text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-4 md:mb-6">
                       {overviewCopy.introHighlight.prefix}
                       {/* Three visually distinct highlights: bright sky, deep navy accent, amber warmth */}
-                      <span className="font-bold" style={{ color: "#53c0fb" }}>
+                      <span className="font-bold" style={{ color: "hsl(var(--primary))" }}>
                         {overviewCopy.introHighlight.backend}
                       </span>
                       {overviewCopy.introHighlight.connector}
@@ -203,7 +203,7 @@ export default function OverviewSection() {
               }}
             >
               <h4 className="font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-                <Icon icon="solar:chat-round-dots-bold" style={{ color: "#53c0fb" }} className="w-5 h-5" width={20} height={20} />
+                <Icon icon="solar:chat-round-dots-bold" style={{ color: "hsl(var(--primary))" }} className="w-5 h-5" width={20} height={20} />
                 {overviewCopy.contactTitle}
               </h4>
               <div className="space-y-3">
@@ -259,7 +259,7 @@ export default function OverviewSection() {
               }}
             >
               <h4 className="font-bold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
-                <Icon icon="solar:briefcase-bold" style={{ color: "#53c0fb" }} className="w-5 h-5" width={20} height={20} />
+                <Icon icon="solar:briefcase-bold" style={{ color: "hsl(var(--primary))" }} className="w-5 h-5" width={20} height={20} />
                 Experience at a Glance
               </h4>
               <div className="space-y-4">
@@ -281,7 +281,7 @@ export default function OverviewSection() {
                     </div>
                     <div className="min-w-0">
                       <div className="font-semibold text-gray-900 dark:text-white text-sm leading-snug">{exp.company}</div>
-                      <div className="text-xs font-medium mt-0.5" style={{ color: "#53c0fb" }}>{exp.role}</div>
+                      <div className="text-xs font-medium mt-0.5" style={{ color: "hsl(var(--primary))" }}>{exp.role}</div>
                       <div className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">{exp.period}</div>
                     </div>
                   </motion.div>

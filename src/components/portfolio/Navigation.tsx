@@ -59,7 +59,7 @@ export default function Navigation() {
                 icon={isMobileMenuOpen ? "solar:close-square-bold" : "solar:hamburger-menu-bold"}
                 width={20}
                 height={20}
-                style={{ color: "#53c0fb" }}
+                style={{ color: "hsl(var(--primary))" }}
               />
             </button>
 
@@ -100,7 +100,7 @@ export default function Navigation() {
               aria-label="Toggle theme"
             >
               {isDark ? (
-                <Icon icon="solar:sun-bold" style={{ color: "#53c0fb" }} width={20} height={20} />
+                <Icon icon="solar:sun-bold" style={{ color: "hsl(var(--primary))" }} width={20} height={20} />
               ) : (
                 <Icon icon="solar:moon-bold" style={{ color: "#296b8d" }} width={20} height={20} />
               )}
