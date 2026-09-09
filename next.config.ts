@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Analytics is reverse-proxied through /ingest so it is first-party and
+  // survives ad blockers. These point at PostHog's US cloud; on EU cloud the
+  // hosts become eu-assets.i.posthog.com and eu.i.posthog.com.
   async rewrites() {
     return [
       {
@@ -10,10 +13,6 @@ const nextConfig: NextConfig = {
       {
         source: "/ingest/:path*",
         destination: "https://us.i.posthog.com/:path*",
-      },
-      {
-        source: "/ingest/decide",
-        destination: "https://us.i.posthog.com/decide",
       },
     ];
   },
