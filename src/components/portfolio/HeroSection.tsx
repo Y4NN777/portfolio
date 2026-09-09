@@ -121,7 +121,7 @@ export default function HeroSection() {
             <motion.div key={link.label} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href={link.href}
-                className={`inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#94a3b8] bg-white dark:bg-[#1f4d67] border border-[#296b8d]/40 dark:border-[#53c0fb]/25 ${link.hoverClass}`}
+                className={`inline-flex items-center gap-2 px-5 py-3 rounded-full text-sm transition-all duration-300 shadow-md hover:shadow-lg text-[#0f2d40] dark:text-[#cbd5e1] bg-white dark:bg-[#1f4d67] border border-[#296b8d]/40 dark:border-[#53c0fb]/25 ${link.hoverClass}`}
               >
                 <Icon icon={link.icon} width={18} height={18} />
                 {link.label}

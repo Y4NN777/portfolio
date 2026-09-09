@@ -137,7 +137,7 @@ export default function TechStackSection() {
                 aria-pressed={active}
                 className={cn(
                   "px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 border-2 shadow-md hover:shadow-lg active:scale-95",
-                  "text-[#296b8d] dark:text-[#53c0fb] bg-white dark:bg-[#1f4d67] border-[#53c0fb]/50 hover:border-[#53c0fb]",
+                  "text-[#296b8d] dark:text-[#8ed3fc] bg-white dark:bg-[#1f4d67] border-[#53c0fb]/50 hover:border-[#53c0fb]",
                   active && "text-white dark:text-[#061825] bg-[#296b8d] dark:bg-[#53c0fb] border-[#296b8d] dark:border-[#53c0fb] shadow-lg"
                 )}
               >

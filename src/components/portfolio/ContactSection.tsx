@@ -277,7 +277,7 @@ export default function ContactSection() {
               <button
                 type="button"
                 onClick={() => setIsResumeMenuOpen((prev) => !prev)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 text-[#296b8d] dark:text-[#53c0fb] bg-white dark:bg-[#1f4d67] border-2 border-[#53c0fb]/50 hover:border-[#53c0fb] shadow-md hover:shadow-lg active:scale-95"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 text-[#296b8d] dark:text-[#8ed3fc] bg-white dark:bg-[#1f4d67] border-2 border-[#53c0fb]/50 hover:border-[#53c0fb] shadow-md hover:shadow-lg active:scale-95"
                 aria-haspopup="menu"
                 aria-expanded={isResumeMenuOpen}
               >
