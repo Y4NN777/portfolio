@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useTranslations } from "@/contexts/TranslationContext";
 import { translations } from "@/lib/i18n/translations";
 import SectionHeader from "./SectionHeader";
+import { cn } from "@/lib/utils";
 
 interface TechItem {
   name: string;
@@ -133,10 +134,12 @@ export default function TechStackSection() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 text-[#296b8d] dark:text-[#53c0fb] bg-white dark:bg-[#1f4d67] border-2 border-[#53c0fb]/50 hover:border-[#53c0fb] shadow-md hover:shadow-lg active:scale-95 ${
-                  active ? "text-gray-600 dark:text-gray-200 bg-[#dbeafe] dark:bg-[#274c63] border-[#53c0fb]" : ""
-                }`}
-                style={active ? undefined : undefined}
+                aria-pressed={active}
+                className={cn(
+                  "px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 border-2 shadow-md hover:shadow-lg active:scale-95",
+                  "text-[#296b8d] dark:text-[#53c0fb] bg-white dark:bg-[#1f4d67] border-[#53c0fb]/50 hover:border-[#53c0fb]",
+                  active && "text-white dark:text-[#061825] bg-[#296b8d] dark:bg-[#53c0fb] border-[#296b8d] dark:border-[#53c0fb] shadow-lg"
+                )}
               >
                 {getCategoryLabel(category)}
               </button>

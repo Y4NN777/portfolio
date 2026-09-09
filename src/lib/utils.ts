@@ -1,0 +1,11 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+/**
+ * Joins class names and resolves Tailwind conflicts so the last value wins,
+ * instead of leaving both in the class attribute and letting stylesheet
+ * order decide.
+ */
+export function cn(...inputs: ClassValue[]): string {
+  return twMerge(clsx(inputs));
+}
