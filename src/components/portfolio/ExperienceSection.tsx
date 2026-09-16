@@ -231,9 +231,7 @@ export default function ExperienceSection() {
                                           transition={{ delay: 0.15 + achIndex * 0.06, duration: 0.4 }}
                                           className="flex items-start gap-3 md:gap-3 group/achievement hover:translate-x-1 md:hover:translate-x-2 transition-transform duration-300"
                                         >
-                                          <div className={`flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-gradient-to-br ${group.accentGradient} flex items-center justify-center mt-0.5 shadow-md md:shadow-lg group-hover/achievement:scale-110 transition-transform duration-300`}>
-                                            <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full" />
-                                          </div>
+                                          <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[#296b8d] dark:bg-white mt-2 md:mt-2.5" />
                                           <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
                                             {achievement}
                                           </span>

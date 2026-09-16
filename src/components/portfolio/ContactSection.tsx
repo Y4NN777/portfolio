@@ -99,13 +99,7 @@ export default function ContactSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
-            style={{
-              background: "rgba(134, 239, 172, 0.15)",
-              border: "1px solid rgba(134, 239, 172, 0.4)",
-            }}
-          >
+          <div className="inline-flex items-center gap-2">
             <Icon icon="solar:check-circle-bold" className="text-green-600 dark:text-green-400 w-4 h-4" width={16} height={16} />
             <span className="text-sm font-medium text-green-800 dark:text-green-300">{availability}</span>
           </div>
