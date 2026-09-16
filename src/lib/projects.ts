@@ -6,6 +6,7 @@ export type ProjectIcon = { icon: string; label: string };
 
 export const projectEntries: Array<{
   id: ProjectItemKey;
+  thumbnail?: string;
   gradient: string;
   github?: string;
   live?: string;
@@ -13,6 +14,7 @@ export const projectEntries: Array<{
   icons: ProjectIcon[];
 }> = [
   {
+    thumbnail: "/projects/glexTalent.jpg",
     id: "glexTalent",
     gradient: "from-[#06283a] to-[#0c5d75]",
     live: "https://glextalent.com",
@@ -25,6 +27,7 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/y7Jprompter.jpg",
     id: "y7Jprompter",
     gradient: "from-[#0b1f4d] to-[#1c5699]",
     github: "https://github.com/Y4NN777/y7-jprompter",
@@ -38,10 +41,10 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/tenglaafi.png",
     id: "tenglaafi",
     gradient: "from-[#062b2a] to-[#0e6059]",
     github: "https://github.com/Y4NN777/tenglaafi",
-    live: "https://y7labs.studio/tenglaafi/",
     tech: ["Python", "FastAPI", "LangChain", "ChromaDB", "IndexedDB"],
     icons: [
       { icon: "logos:python", label: "Python" },
@@ -52,6 +55,7 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/wisemoney.jpg",
     id: "wisemoney",
     gradient: "from-[#04283f] to-[#085b85]",
     github: "https://github.com/Y4NN777/wisemoney",
@@ -65,10 +69,11 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/7review.jpg",
     id: "7review",
     gradient: "from-[#101a45] to-[#3a4f9e]",
     github: "https://github.com/Y4NN777/7review",
-    live: "https://y4nn777.github.io/7review/",
+    live: "https://y7-labs.github.io/7review/",
     tech: ["Go", "Docker"],
     icons: [
       { icon: "logos:go", label: "Go" },
@@ -76,6 +81,7 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/malvision.png",
     id: "malvision",
     gradient: "from-[#0b2230] to-[#195b82]",
     github: "https://github.com/Y4NN777/MalVision",
@@ -87,6 +93,7 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/docIntel.png",
     id: "docIntel",
     gradient: "from-[#153447] to-[#4c586a]",
     github: "https://github.com/Y4NN777/doc-intel",
@@ -99,6 +106,7 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/piGeosint.png",
     id: "piGeosint",
     gradient: "from-[#0d3547] to-[#255c74]",
     github: "https://github.com/Y4NN777/pi-geosint-agent",
@@ -111,6 +119,7 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/fikassoTech.jpg",
     id: "fikassoTech",
     gradient: "from-[#04222c] to-[#145f5d]",
     live: "https://www.fikassotech.com",
@@ -122,6 +131,7 @@ export const projectEntries: Array<{
     ],
   },
   {
+    thumbnail: "/projects/givemealiftCms.jpg",
     id: "givemealiftCms",
     gradient: "from-[#0a2436] to-[#255c77]",
     live: "https://givemealift.org",

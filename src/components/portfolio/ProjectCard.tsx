@@ -2,6 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import posthog from "posthog-js";
 import { useTranslations } from "@/contexts/TranslationContext";
@@ -54,31 +55,47 @@ export default function ProjectCard({
             });
           }
         }}
-        className={`relative block h-full bg-gradient-to-br ${project.gradient} p-5 sm:p-6 md:p-8`}
+        className={`relative block h-full bg-gradient-to-br ${project.gradient} overflow-hidden`}
       >
+        {/* Project thumbnail */}
+        {project.thumbnail && (
+          <div className="relative h-40 sm:h-44 md:h-52 w-full overflow-hidden">
+            <Image
+              src={project.thumbnail}
+              alt={`Preview of ${copy.title}`}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          </div>
+        )}
+
         {/* Dotted pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.3)_1px,transparent_1px)] bg-[length:20px_20px] md:bg-[length:30px_30px]" />
         </div>
 
-        {/* Floating tech icons per project real stack */}
-        <div className="hidden md:block absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-          {project.icons.map((item, i) => (
-            <motion.div
-              key={item.label}
-              className="absolute text-white text-2xl md:text-3xl"
-              style={iconSlots[i]}
-              animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
-              transition={{ duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
-              aria-hidden
-            >
-              <Icon icon={item.icon} width={24} height={24} className="md:w-8 md:h-8" />
-            </motion.div>
-          ))}
-        </div>
+        {/* Floating tech icons — only on cards without a real screenshot */}
+        {!project.thumbnail && (
+          <div className="hidden md:block absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+            {project.icons.map((item, i) => (
+              <motion.div
+                key={item.label}
+                className="absolute text-white text-2xl md:text-3xl"
+                style={iconSlots[i]}
+                animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
+                transition={{ duration: 4 + i * 0.5, repeat: Infinity, ease: "easeInOut" }}
+                aria-hidden
+              >
+                <Icon icon={item.icon} width={24} height={24} className="md:w-8 md:h-8" />
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         {/* Content */}
-        <div className="relative z-10">
+        <div className={`relative z-10 ${project.thumbnail ? "p-5 sm:p-6 md:p-8" : ""}`}>
           <div className="flex items-start justify-between gap-4">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 leading-snug">
               {copy.title}
