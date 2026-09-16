@@ -2,7 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useTranslations } from "@/contexts/TranslationContext";
 import SectionHeader from "./SectionHeader";
@@ -12,49 +12,64 @@ type ExperienceItemKey = keyof typeof translations.en.experience.items;
 
 const INITIAL_VISIBLE = 3;
 
-const experienceEntries: Array<{
-  id: ExperienceItemKey;
+const experienceGroups: Array<{
+  id: string;
   companyLogo: string;
   companyColor: string;
   accentGradient: string;
+  roles: ExperienceItemKey[];
 }> = [
   {
-    id: "aïobi",
+    id: "aiobi",
+    companyLogo: "/aiobi.jpeg",
     companyColor: "from-white via-gray-100 to-gray-200",
     accentGradient: "from-[#296b8d] to-[#53c0fb]",
-    companyLogo: "/aiobi.jpeg",
+    roles: ["aïobiSystems", "aïobi"],
   },
   {
     id: "y7labs",
     companyLogo: "/Y7Labs.png",
     companyColor: "from-[#061627] to-[#0770cf]",
     accentGradient: "from-[#296b8d] to-[#53c0fb]",
+    roles: ["y7labs"],
   },
   {
     id: "fikasso",
+    companyLogo: "/fikasso-security.jpeg",
     companyColor: "from-[#e1f0fa] via-[#f0f7ff] to-[#c8e4f8]",
     accentGradient: "from-[#296b8d] to-[#53c0fb]",
-    companyLogo: "/fikasso-security.jpeg",
+    roles: ["fikasso"],
   },
   {
     id: "bitSolutions",
+    companyLogo: "/bit_solutions.png",
     companyColor: "from-white via-white to-[#e1f0fa]",
     accentGradient: "from-[#1f4d67] to-[#53c0fb]",
-    companyLogo: "/bit_solutions.png",
+    roles: ["bitSolutions"],
   },
   {
     id: "freelance",
+    companyLogo: "/freelance.png",
     companyColor: "from-white via-white to-[#e1f0fa]",
     accentGradient: "from-[#1f4d67] to-[#4bbcff]",
-    companyLogo: "/freelance.png",
+    roles: ["freelance"],
   },
 ];
 
 export default function ExperienceSection() {
   const { t, locale } = useTranslations();
   const [showAll, setShowAll] = useState(false);
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(() => new Set());
   const experienceCopy = translations[locale].experience.items as typeof translations.en.experience.items;
-  const visibleEntries = showAll ? experienceEntries : experienceEntries.slice(0, INITIAL_VISIBLE);
+  const visibleGroups = showAll ? experienceGroups : experienceGroups.slice(0, INITIAL_VISIBLE);
+
+  const toggleExpanded = (id: string) =>
+    setExpandedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
 
   return (
     <motion.section
@@ -84,12 +99,12 @@ export default function ExperienceSection() {
         <motion.div
           className="max-w-5xl mx-auto space-y-6 md:space-y-12 px-4 md:px-6"
         >
-          {visibleEntries.map((exp, index) => {
-            const copy = experienceCopy[exp.id];
-            if (!copy) return null;
+          {visibleGroups.map((group, index) => {
+            const firstCopy = experienceCopy[group.roles[0]];
+            if (!firstCopy) return null;
             return (
               <motion.div
-                key={exp.id}
+                key={group.id}
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -105,114 +120,139 @@ export default function ExperienceSection() {
                       transition={{ type: "spring", stiffness: 200, damping: 15 }}
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br ${exp.companyColor} flex items-center justify-center shadow-lg md:shadow-xl mb-2 md:mb-3 relative overflow-hidden transition-all duration-500`}
+                      className={`w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br ${group.companyColor} flex items-center justify-center shadow-lg md:shadow-xl mb-2 md:mb-3 relative overflow-hidden transition-all duration-500`}
                       style={{ boxShadow: "0 4px 24px rgba(0, 33, 76, 0.3)" }}
                     >
                       <Image
-                        src={exp.companyLogo}
-                        alt={`${copy.company} logo`}
+                        src={group.companyLogo}
+                        alt={`${firstCopy.company} logo`}
                         fill
                         sizes="56px"
                         priority={index === 0}
                         className="object-contain p-0.5 sm:p-1"
                       />
-                      <div className={`absolute inset-0 bg-gradient-to-br ${exp.companyColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${group.companyColor} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
                     </motion.div>
                   </div>
 
-                  {/* Content */}
-                  <div className="flex-1 space-y-4 md:space-y-6 min-w-0">
-                    {/* Header */}
-                    <div className="space-y-1 md:space-y-2">
-                      <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="flex items-center gap-2 md:gap-3 text-[#296b8d] dark:text-[#94a3b8] text-xs md:text-sm font-medium"
-                      >
-                        <Icon icon="solar:calendar-outline" width={14} height={14} className="md:w-4 md:h-4" />
-                        <span>{copy.period}</span>
-                      </motion.div>
+                  {/* Content: company shown once, roles stacked underneath */}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-base md:text-lg font-semibold" style={{ color: "hsl(var(--primary))" }}>
+                      {firstCopy.company}
+                    </p>
 
-                      <motion.h3
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white leading-tight"
-                      >
-                        {copy.role}
-                      </motion.h3>
+                    {group.roles.map((roleId, roleIndex) => {
+                      const copy = experienceCopy[roleId];
+                      if (!copy) return null;
+                      const isOpen = expandedIds.has(roleId);
+                      return (
+                        <div
+                          key={roleId}
+                          className={`${group.roles.length >= 2 ? "relative pl-5 sm:pl-6" : ""} ${roleIndex === 0 ? "mt-3 md:mt-4" : "mt-6 md:mt-8"}`}
+                        >
+                          {/* Timeline dot — only when the company has multiple roles */}
+                          {group.roles.length >= 2 && (
+                            <span
+                              className={`absolute left-0 top-1.5 w-2.5 h-2.5 rounded-full bg-gradient-to-br ${group.accentGradient} shadow-md`}
+                            />
+                          )}
+                          {/* Connecting line to the next role */}
+                          {roleIndex < group.roles.length - 1 && (
+                            <span
+                              className="absolute left-[4.5px] top-6 -bottom-8 md:-bottom-10 w-px"
+                              style={{ background: "linear-gradient(180deg, rgba(83,192,251,0.5), rgba(83,192,251,0.15))" }}
+                            />
+                          )}
 
-                      <motion.p
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4 }}
-                        className="text-base font-medium"
-                        style={{ color: "hsl(var(--primary))" }}
-                      >
-                        {copy.company}
-                      </motion.p>
-                    </div>
-
-                    {/* Description */}
-                    <motion.p
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 }}
-                      className="text-gray-700 dark:text-gray-300 text-base leading-relaxed"
-                    >
-                      {copy.description}
-                    </motion.p>
-
-                    {/* Additional Context */}
-                    {"additionalContext" in copy && copy.additionalContext && (
-                      <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.55 }}
-                        className="text-gray-700 dark:text-gray-300 text-base leading-relaxed"
-                      >
-                        {copy.additionalContext}
-                      </motion.p>
-                    )}
-
-                    {/* Achievements */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 }}
-                      className="space-y-2.5 md:space-y-3"
-                    >
-                      <h4 className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                        <Icon icon="solar:cup-star-bold" className="text-amber-600 dark:text-amber-400" width={18} height={18} />
-                        {t("experience.keyAchievementsTitle")}
-                      </h4>
-
-                      <div className="space-y-2 md:space-y-2.5">
-                        {copy.achievements.map((achievement: string, achIndex: number) => (
-                          <motion.div
-                            key={achIndex}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.7 + achIndex * 0.1 }}
-                            className="flex items-start gap-3 md:gap-3 group/achievement hover:translate-x-1 md:hover:translate-x-2 transition-transform duration-300"
+                          {/* Role header — toggle for the highlights */}
+                          <button
+                            type="button"
+                            onClick={() => toggleExpanded(roleId)}
+                            aria-expanded={isOpen}
+                            aria-controls={`experience-details-${roleId}`}
+                            className="w-full text-left space-y-1 md:space-y-2 cursor-pointer group/header rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#53c0fb]"
                           >
-                            <div className={`flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-gradient-to-br ${exp.accentGradient} flex items-center justify-center mt-0.5 shadow-md md:shadow-lg group-hover/achievement:scale-110 transition-transform duration-300`}>
-                              <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full" />
-                            </div>
-                            <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
-                              {achievement}
+                            <span className="flex items-center gap-2 md:gap-3 text-[#296b8d] dark:text-[#94a3b8] text-xs md:text-sm font-medium">
+                              <Icon icon="solar:calendar-outline" width={14} height={14} className="md:w-4 md:h-4" />
+                              <span>{copy.period}</span>
                             </span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
 
+                            <span className="block text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white leading-tight">
+                              {copy.role}
+                            </span>
+
+                            <span className="mt-1 inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-[#296b8d] dark:text-[#8ed3fc]">
+                              {isOpen ? t("experience.hideHighlights") : t("experience.showHighlights")}
+                              <Icon
+                                icon="solar:alt-arrow-down-linear"
+                                width={16}
+                                height={16}
+                                className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""} group-hover/header:translate-y-0.5`}
+                              />
+                            </span>
+                          </button>
+
+                          {/* Description */}
+                          <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 }}
+                            className="mt-3 md:mt-4 text-gray-700 dark:text-gray-300 text-base leading-relaxed"
+                          >
+                            {copy.description}
+                          </motion.p>
+
+                          {/* Expandable details: additional context + achievements */}
+                          <AnimatePresence initial={false}>
+                            {isOpen && (
+                              <motion.div
+                                id={`experience-details-${roleId}`}
+                                key="details"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                                className="overflow-hidden"
+                              >
+                                <div className="space-y-4 md:space-y-6 pt-3">
+                                  {/* Achievements */}
+                                  <div className="space-y-2.5 md:space-y-3">
+                                    <h4 className="text-sm md:text-base font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                                      <Icon icon="solar:cup-star-bold" className="text-amber-600 dark:text-amber-400" width={18} height={18} />
+                                      {t("experience.keyAchievementsTitle")}
+                                    </h4>
+
+                                    <div className="space-y-2 md:space-y-2.5">
+                                      {copy.achievements.map((achievement: string, achIndex: number) => (
+                                        <motion.div
+                                          key={achIndex}
+                                          initial={{ opacity: 0, x: -20 }}
+                                          animate={{ opacity: 1, x: 0 }}
+                                          transition={{ delay: 0.15 + achIndex * 0.06, duration: 0.4 }}
+                                          className="flex items-start gap-3 md:gap-3 group/achievement hover:translate-x-1 md:hover:translate-x-2 transition-transform duration-300"
+                                        >
+                                          <div className={`flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full bg-gradient-to-br ${group.accentGradient} flex items-center justify-center mt-0.5 shadow-md md:shadow-lg group-hover/achievement:scale-110 transition-transform duration-300`}>
+                                            <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full" />
+                                          </div>
+                                          <span className="text-gray-700 dark:text-gray-300 leading-relaxed text-base">
+                                            {achievement}
+                                          </span>
+                                        </motion.div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
 
                 {/* Divider */}
-                {index < visibleEntries.length - 1 && (
+                {index < visibleGroups.length - 1 && (
                   <motion.div
                     initial={{ opacity: 0, scaleX: 0 }}
                     whileInView={{ opacity: 1, scaleX: 1 }}
@@ -226,7 +266,7 @@ export default function ExperienceSection() {
           })}
         </motion.div>
 
-        {experienceEntries.length > INITIAL_VISIBLE && (
+        {experienceGroups.length > INITIAL_VISIBLE && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}

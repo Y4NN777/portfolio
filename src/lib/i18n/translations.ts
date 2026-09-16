@@ -108,11 +108,26 @@ export const translations = {
       keyAchievementsTitle: "Highlights",
       viewAll: "View More",
       showLess: "Show Less",
+      showHighlights: "Show highlights",
+      hideHighlights: "Hide highlights",
       items: {
+        aïobiSystems: {
+          role: "Software Engineer, Systems & Platform",
+          company: "Aïobi",
+          period: "September 2026 - Present · Ouagadougou, Burkina Faso · Hybrid",
+          description: "Designing, building, and evolving software systems and internal platform components that support development teams and production applications.",
+          achievements: [
+            "Design and development of reliable, secure, and scalable backend services and software components.",
+            "Development of internal platform components and tools that reduce friction for development teams.",
+            "Automation of development, deployment, and operational workflows.",
+            "Contribution to system architecture, reliability, observability, and long term evolution.",
+            "Integration of DevSecOps practices across the software development and delivery lifecycle.",
+          ],
+        },
         aïobi: {
           role: "AI Full-Stack Developer",
           company: "Aïobi",
-          period: "March 2026 - Present · Ouagadougou, Burkina Faso",
+          period: "March 2026 - September 2026 · Ouagadougou, Burkina Faso",
           description: "I work across application development, AI integration, and software delivery, contributing to products from implementation to deployment.",
           achievements: [
             "Develop and evolve applications integrating AI capabilities into real product workflows.",
@@ -122,18 +137,13 @@ export const translations = {
           ],
         },
 y7labs: {
-          role: "Founder",
+          role: "Junior Researcher",
           company: "Y7 Labs",
           period: "August 2025 - Present",
           description:
-            "Building Y7 Labs as an applied R&D studio focused on exploring and building useful software systems.",
-          additionalContext:
-            "I work across system architecture, AI, backend engineering, infrastructure, and developer tooling, turning ideas into working systems and experiments.",
+            "Leading Y7 Labs, an applied R&D studio currently in development, I focus on deeply understanding and building AI-native systems and resilient digital products.",
           achievements: [
             "AI-native and intelligent software systems",
-            "Software architecture and backend engineering",
-            "DevSecOps, infrastructure, and reliability",
-            "Developer tools and automation",
             "Applied R&D and open-source experimentation",
           ],
         },
@@ -400,11 +410,26 @@ fikasso: {
       keyAchievementsTitle: "Points clés",
       viewAll: "Voir plus",
       showLess: "Voir moins",
+      showHighlights: "Afficher les points clés",
+      hideHighlights: "Masquer les points clés",
       items: {
+        aïobiSystems: {
+          role: "Ingénieur Logiciel, Systèmes & Plateforme",
+          company: "Aïobi",
+          period: "Septembre 2026 - Aujourd'hui · Ouagadougou, Burkina Faso · Hybride",
+          description: "Conception, construction et évolution de systèmes logiciels et de composants de plateforme interne qui soutiennent les équipes de développement et les applications en production.",
+          achievements: [
+            "Conception et développement de services backend et de composants logiciels fiables, sécurisés et évolutifs.",
+            "Développement de composants et d'outils de plateforme interne qui réduisent les frictions pour les équipes de développement.",
+            "Automatisation des workflows de développement, de déploiement et d'opérations.",
+            "Contribution à l'architecture des systèmes, à la fiabilité, à l'observabilité et à l'évolution à long terme.",
+            "Intégration des pratiques DevSecOps sur l'ensemble du cycle de développement et de livraison logicielle.",
+          ],
+        },
         aïobi: {
           role: "Développeur Full-Stack IA",
           company: "Aïobi",
-          period: "Mars 2026 - Aujourd'hui · Ouagadougou, Burkina Faso",
+          period: "Mars 2026 - Septembre 2026 · Ouagadougou, Burkina Faso",
           description: "Je travaille sur le développement d'applications, l'intégration de l'IA et la livraison de logiciels, en contribuant aux produits de l'implémentation jusqu'au déploiement.",
           achievements: [
             "Développe et fait évoluer des applications intégrant des capacités d'IA dans de vrais flux de travail.",
@@ -414,18 +439,13 @@ fikasso: {
           ],
         },
         y7labs: {
-          role: "Fondateur",
+          role: "Chercheur Junior",
           company: "Y7 Labs",
           period: "Août 2025 - Aujourd'hui",
           description:
-            "Je construis Y7 Labs, un studio de R&D appliqué axé sur l'exploration et la création de systèmes logiciels utiles.",
-          additionalContext:
-            "Je travaille sur l'architecture des systèmes, le design, l'IA, l'ingénierie backend, l'infrastructure et les outils de développement, en transformant les idées en systèmes fonctionnels et en expérimentations.",
+            "À la tête de Y7 Labs, un studio de R&D appliqué en cours de développement, je me concentre sur la compréhension approfondie et la construction de systèmes natifs IA et de produits numériques résilients.",
           achievements: [
             "Systèmes logiciels intelligents et natifs IA",
-            "Architecture logicielle et ingénierie backend",
-            "DevSecOps, infrastructure et fiabilité",
-            "Outils de développement et automatisation",
             "R&D appliquée et expérimentation open source",
           ],
         },
