@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import posthog from "posthog-js";
+import { useTheme } from "@/components/ThemeProvider";
 import { useTranslations } from "@/contexts/TranslationContext";
 import { analytics } from "@/lib/config";
 import { translations, type Locale } from "@/lib/i18n/translations";
@@ -21,9 +22,9 @@ const editorialCopy = {
     },
     brandCaption: "Yanis Axel Dabo · Software Engineer",
     availability: "Software engineer · Ouagadougou, Burkina Faso",
-    heroTitle: "I build the systems behind ambitious software.",
+    heroTitle: "Reliable software, from first idea to production.",
     heroBody:
-      "Backend services, developer platforms, and applied AI—designed with clear trade-offs and built to remain reliable in production.",
+      "I design backend services, developer platforms, and applied AI systems with clear architecture, honest trade-offs, and production reliability in mind.",
     viewWork: "View selected work",
     contactMe: "Start a conversation",
     location: "Based in Ouagadougou · Working globally",
@@ -54,9 +55,9 @@ const editorialCopy = {
     },
     brandCaption: "Yanis Axel Dabo · Ingénieur logiciel",
     availability: "Ingénieur logiciel · Ouagadougou, Burkina Faso",
-    heroTitle: "Je construis les systèmes derrière des logiciels ambitieux.",
+    heroTitle: "Des logiciels fiables, de la première idée à la production.",
     heroBody:
-      "Services backend, plateformes développeur et IA appliquée—conçus avec des choix techniques clairs et pensés pour rester fiables en production.",
+      "Je conçois des services backend, des plateformes développeur et des systèmes d’IA appliquée avec une architecture claire, des choix assumés et une vraie attention à la fiabilité.",
     viewWork: "Voir mes travaux",
     contactMe: "Démarrer une conversation",
     location: "Basé à Ouagadougou · Collaboration internationale",
@@ -85,6 +86,7 @@ const experienceIds = ["aïobiSystems", "y7labs", "fikasso", "bitSolutions"] as 
 
 export default function EditorialPortfolio() {
   const { locale, setLocale } = useTranslations();
+  const { theme, toggleTheme } = useTheme();
   const copy = editorialCopy[locale];
   const localized = translations[locale];
   const projectCopy = localized.projects.items as typeof translations.en.projects.items;
@@ -112,7 +114,10 @@ export default function EditorialPortfolio() {
 
       <header className="editorial-header">
         <Link href="#top" className="editorial-brand" aria-label="Yanis Axel Dabo — home">
-          <span className="editorial-wordmark">y4nn<span>.</span></span>
+          <span className="y4nn-logo">
+            <span>Y4NN</span>
+            <b>777</b>
+          </span>
           <span className="editorial-brand-caption">{copy.brandCaption}</span>
         </Link>
 
@@ -131,6 +136,14 @@ export default function EditorialPortfolio() {
             aria-label={locale === "en" ? "Passer en français" : "Switch to English"}
           >
             {locale.toUpperCase()}
+          </button>
+          <button
+            type="button"
+            className="editorial-theme-toggle"
+            onClick={toggleTheme}
+            aria-label={theme === "dark" ? "Use light theme" : "Use dark theme"}
+          >
+            <Icon icon={theme === "dark" ? "solar:sun-2-linear" : "solar:moon-linear"} width={18} height={18} aria-hidden />
           </button>
           <Link href="mailto:y4nn.dev@gmail.com" className="editorial-header-cta">
             {copy.contactMe}
@@ -165,7 +178,7 @@ export default function EditorialPortfolio() {
           </div>
 
           <div className="editorial-portrait">
-            <div className="editorial-portrait-label">YAD / 2026</div>
+            <div className="editorial-portrait-label">THE Y4NN · 777</div>
             <Image
               src="/they4nn.jpeg"
               alt="Yanis Axel Dabo"
@@ -309,7 +322,10 @@ export default function EditorialPortfolio() {
 
       <footer className="editorial-footer">
         <div className="editorial-footer-brand">
-          <span className="editorial-wordmark">y4nn<span>.</span></span>
+          <span className="y4nn-logo">
+            <span>Y4NN</span>
+            <b>777</b>
+          </span>
           <p>Backend systems · Platforms · Applied AI</p>
         </div>
         <div className="editorial-footer-links">
