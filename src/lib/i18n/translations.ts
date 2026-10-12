@@ -55,10 +55,10 @@ export const translations = {
       coreSkills: [
         { title: "Software Design", description: "Designing systems with clear structure, honest trade-offs, and room to evolve." },
         { title: "Backend Engineering", description: "Building APIs and services that stay reliable as they grow and under load." },
-        { title: "AI Engineering", description: "Bringing LLMs, agents, and automation into software that people actually use." },
+        { title: "Platform Engineering", description: "Building the internal platforms, delivery paths, and foundations that help teams ship confidently." },
         { title: "DevSecOps & Infrastructure", description: "Shipping securely, deploying reliably, and keeping things observable and stable." },
+        { title: "AI Engineering", description: "Bringing LLMs, agents, and automation into software that people actually use." },
         { title: "Developer Tools & Automation", description: "Reducing friction so developers can spend time on what matters." },
-        { title: "Security-minded Development", description: "Considering security, reliability, and constraints throughout the software lifecycle." },
       ],
       contactTitle: "Let's Connect",
       contactWebsites: "y4nn.dev, writing.y4nn.dev (soon), y7labs.studio (very soon)",
@@ -111,6 +111,17 @@ export const translations = {
       showHighlights: "Show highlights",
       hideHighlights: "Hide highlights",
       items: {
+        africanAmericanAcademy: {
+          role: "IT Specialist and Instructor",
+          company: "African American Academy",
+          period: "September 2026 - Present · Ouagadougou, Burkina Faso · Part-time",
+          description: "Maintaining the school's IT systems while teaching ICT, Computer Science, and Robotics to students in Grades 6 to 12.",
+          achievements: [
+            "Monitor and maintain the school's IT systems and software.",
+            "Promote digital literacy and artificial intelligence awareness among staff and students.",
+            "Teach ICT, Computer Science, and Robotics to students in Grades 6 to 12.",
+          ],
+        },
         aïobiSystems: {
           role: "Software Engineer, Systems & Platform",
           company: "Aïobi",
@@ -125,7 +136,7 @@ export const translations = {
           ],
         },
         aïobi: {
-          role: "AI Full-Stack Developer",
+          role: "Full Stack / AI Developer",
           company: "Aïobi",
           period: "March 2026 - September 2026 · Ouagadougou, Burkina Faso",
           description: "I work across application development, AI integration, and software delivery, contributing to products from implementation to deployment.",
@@ -163,7 +174,7 @@ fikasso: {
         bitSolutions: {
           role: "Software Engineer Intern",
           company: "BiT Solutions",
-          period: "April 2025 - June 2025 · Bavaria, Germany",
+          period: "May 2025 - June 2025 · Bavaria, Germany",
           description:
             "Worked with the engineering team on backend development, automation, and early AI integrations for internal workflows and partner use cases.",
           achievements: [
@@ -196,65 +207,77 @@ fikasso: {
       viewAll: "View More",
       backHome: "Back to home",
       items: {
+        mishkan: {
+          title: "Mishkan",
+          subtitle: "Autonomous agentic software development system",
+          description:
+            "A local-first system of persistent AI agents that plans, executes, and independently reviews complete engineering missions under human control.",
+        },
         glexTalent: {
           title: "GlexTalent",
-          subtitle: "Ethical & inclusive recruitment platform",
+          subtitle: "Recruitment built around demonstrated skills",
           description:
-            "Burkina Faso's first recruitment platform that connects local talent with global opportunities. Employers verify skills through live tests and CV scoring, so a strong profile means something real before a single interview.",
+            "A recruitment platform connecting talent in Burkina Faso with employers through structured profiles, skills testing, and CV evaluation.",
         },
         y7Jprompter: {
           title: "Y7-Jprompter",
-          subtitle: "Structured prompt builder powered by Gemini",
+          subtitle: "Clearer prompts, built from plain language",
           description:
-            "Writing good AI prompts is harder than it looks. This tool turns plain language into clean, structured JSON prompts, with a template library and built-in validation so anyone can ship reliable prompt workflows.",
+            "Turns plain-language intent into structured JSON prompts, with reusable templates and validation for more consistent AI workflows.",
         },
         tenglaafi: {
           title: "TengLaafi",
-          subtitle: "Conversational AI for tropical health and medicinal plants",
+          subtitle: "Bilingual health answers grounded in local knowledge",
           description:
-            "Health questions in French-speaking Africa rarely get trustworthy answers. TengLaafi is a bilingual assistant grounded in curated research and local medicinal-plant knowledge, so people can ask about health in their own language and get sourced answers.",
+            "A bilingual assistant for tropical health and medicinal plants, grounded in curated research and local knowledge.",
         },
         wisemoney: {
           title: "Wisemoney",
-          subtitle: "Local-first finance PWA with an AI financial coach",
+          subtitle: "Personal finance, designed to keep data local",
           description:
-            "Most people track money in one app, learn in another, and get advice from nowhere. Wisemoney brings tracking, an AI financial coach, and adaptive education into one local-first app: your data stays on your device and lessons adapt to the habits it actually finds.",
+            "A local-first personal finance application combining expense tracking, adaptive learning, and contextual guidance while keeping core data on the user's device.",
+        },
+        y7Feedback: {
+          title: "Y7 Feedback",
+          subtitle: "A continuous feedback loop for product teams",
+          description:
+            "A product feedback system connecting public submissions, evidence, maintainer conversations, internal triage, and resolution across isolated workspaces.",
         },
         "7review": {
           title: "7Review",
-          subtitle: "Local-first agent for code review",
+          subtitle: "Private code review, directly in the terminal",
           description:
-            "Code review feedback usually ends up scattered across tabs and remote servers. 7Review runs review directly in your terminal, keeping analysis on your machine and out of the cloud.",
+            "A terminal-native review agent that analyzes code locally and keeps source context out of remote review services.",
         },
         malvision: {
           title: "MalVision",
-          subtitle: "Deep-learning malware detection via binary visualization",
+          subtitle: "Malware classification beyond signature matching",
           description:
-            "Analysts triage thousands of new malware binaries a week, and signature-based tools miss obfuscated families. MalVision renders binaries as images and trains a CNN to learn each family's visual fingerprint, catching what signature scans can't.",
+            "A research project that converts binaries into images and uses convolutional models to identify malware families beyond signature matching.",
         },
         docIntel: {
           title: "Doc-Intel",
-          subtitle: "Terminal-native document intelligence",
+          subtitle: "Private document search, entirely local",
           description:
-            "Ask questions about your private PDFs in English or French. Fully local, zero network calls, with grounded answers and source citations, so your documents never leave your machine.",
+            "A local CLI for searching and questioning private PDFs in English or French, with grounded answers, citations, and no network dependency.",
         },
         piGeosint: {
           title: "Pi Geosint Agent",
-          subtitle: "Browser-based geo-OSINT investigation pipeline",
+          subtitle: "Contribution to a street-level OSINT pipeline",
           description:
-            "Street-level OSINT is tedious to gather by hand. This agent automates geo-investigation pipelines: discover, capture, and store street-level imagery on a Pi.",
+            "Contributed to a browser-controlled pipeline for discovering, capturing, and storing street-level imagery on a Raspberry Pi.",
         },
         fikassoTech: {
           title: "Fikasso Tech",
-          subtitle: "Company website",
+          subtitle: "A clearer digital home for a technology studio",
           description:
-            "Fikasso Tech needed a site that actually reflects the studio. This is the company website: services, work, and the projects it ships, built for the team to maintain.",
+            "A maintainable company website presenting the studio's services, work, and shipped products.",
         },
         givemealiftCms: {
           title: "Give Me A Lift",
-          subtitle: "Website for an education charity in Burkina Faso",
+          subtitle: "A publishing platform for an education charity",
           description:
-            "An education charity in Burkina Faso needed more than a brochure site. This is the website and content platform that lets the team publish, share, and grow support for the children they help.",
+            "A website and content platform enabling the team to publish updates, explain its work, and grow support for education programs in Burkina Faso.",
         },
       },
     },
@@ -357,10 +380,10 @@ fikasso: {
       coreSkills: [
         { title: "Conception logicielle", description: "Concevoir des systèmes avec une structure claire, des arbitrages honnêtes et de la marge d'évolution." },
         { title: "Ingénierie backend", description: "Construire des API et des services qui restent fiables quand ils grandissent et montent en charge." },
-        { title: "Ingénierie IA", description: "Amener les LLM, les agents et l'automatisation dans des logiciels que les gens utilisent vraiment." },
+        { title: "Ingénierie plateforme", description: "Construire les plateformes internes, les chaînes de livraison et les fondations qui permettent aux équipes de livrer avec confiance." },
         { title: "DevSecOps & Infrastructure", description: "Livrer en toute sécurité, déployer de manière fiable, et garder le tout observable et stable." },
+        { title: "Ingénierie IA", description: "Amener les LLM, les agents et l'automatisation dans des logiciels que les gens utilisent vraiment." },
         { title: "Outils développeur & Automatisation", description: "Réduire la friction pour que les développeurs se concentrent sur l'essentiel." },
-        { title: "Développement orienté sécurité", description: "Tenir compte de la sécurité, de la fiabilité et des contraintes à chaque étape du cycle de vie logiciel." },
       ],
       contactTitle: "Restons en contact",
       contactWebsites: "y4nn.dev, writing.y4nn.dev (bientôt), y7labs.studio (très bientôt)",
@@ -413,6 +436,17 @@ fikasso: {
       showHighlights: "Afficher les points clés",
       hideHighlights: "Masquer les points clés",
       items: {
+        africanAmericanAcademy: {
+          role: "Spécialiste IT et enseignant",
+          company: "African American Academy",
+          period: "Septembre 2026 - Aujourd'hui · Ouagadougou, Burkina Faso · Temps partiel",
+          description: "Maintenance des systèmes informatiques de l'école et enseignement des TIC, de l'informatique et de la robotique aux élèves des Grades 6 à 12.",
+          achievements: [
+            "Suivi et maintenance des systèmes informatiques et des logiciels de l'école.",
+            "Promotion de la culture numérique et de l'intelligence artificielle auprès du personnel et des élèves.",
+            "Enseignement des TIC, de l'informatique et de la robotique aux élèves des Grades 6 à 12.",
+          ],
+        },
         aïobiSystems: {
           role: "Ingénieur Logiciel, Systèmes & Plateforme",
           company: "Aïobi",
@@ -427,7 +461,7 @@ fikasso: {
           ],
         },
         aïobi: {
-          role: "Développeur Full-Stack IA",
+          role: "Développeur Full Stack / IA",
           company: "Aïobi",
           period: "Mars 2026 - Septembre 2026 · Ouagadougou, Burkina Faso",
           description: "Je travaille sur le développement d'applications, l'intégration de l'IA et la livraison de logiciels, en contribuant aux produits de l'implémentation jusqu'au déploiement.",
@@ -465,7 +499,7 @@ fikasso: {
         bitSolutions: {
           role: "Stagiaire Ingénieur Logiciel",
           company: "BiT Solutions",
-          period: "Avril 2025 - Juin 2025 · Bavière, Allemagne",
+          period: "Mai 2025 - Juin 2025 · Bavière, Allemagne",
           description:
             "J'ai travaillé avec l'équipe d'ingénierie sur le développement backend, l'automatisation et les premières intégrations IA pour des workflows internes et des cas d'usage partenaires.",
           achievements: [
@@ -498,65 +532,77 @@ fikasso: {
       viewAll: "Voir tous les projets",
       backHome: "Retour à l'accueil",
       items: {
+        mishkan: {
+          title: "Mishkan",
+          subtitle: "Système agentique autonome de développement logiciel",
+          description:
+            "Un système local-first d’agents IA persistants qui planifie, exécute et évalue indépendamment des missions d’ingénierie complètes, sous contrôle humain.",
+        },
         glexTalent: {
           title: "GlexTalent",
-          subtitle: "Plateforme de recrutement éthique et inclusif",
+          subtitle: "Le recrutement fondé sur les compétences démontrées",
           description:
-            "La première plateforme de recrutement au Burkina Faso qui connecte les talents locaux aux opportunités mondiales. Les employeurs vérifient les compétences par tests et scoring de CV, pour qu'un bon profil parle de lui-même avant même le premier entretien.",
+            "Une plateforme qui connecte les talents du Burkina Faso aux employeurs grâce à des profils structurés, des tests de compétences et l'évaluation des CV.",
         },
         y7Jprompter: {
           title: "Y7-Jprompter",
-          subtitle: "Assistant de prompts structurés propulsé par Gemini",
+          subtitle: "Des prompts plus clairs, à partir du langage naturel",
           description:
-            "Écrire de bons prompts IA est plus dur qu'il n'y paraît. Cet outil transforme le langage naturel en prompts JSON propres et structurés, avec une bibliothèque de modèles et une validation intégrée, pour produire des workflows IA fiables.",
+            "Transforme une intention exprimée simplement en prompts JSON structurés, avec des modèles réutilisables et une validation pour des workflows IA plus cohérents.",
         },
         tenglaafi: {
           title: "TengLaafi",
-          subtitle: "IA conversationnelle pour la santé tropicale et les plantes médicinales",
+          subtitle: "Des réponses de santé bilingues ancrées dans le savoir local",
           description:
-            "Les questions de santé en Afrique francophone trouvent rarement des réponses fiables. TengLaafi est un assistant bilingue fondé sur des recherches validées et les savoirs locaux sur les plantes médicinales, pour se renseigner dans sa propre langue avec des réponses sourcées.",
+            "Un assistant bilingue consacré à la santé tropicale et aux plantes médicinales, fondé sur des recherches sélectionnées et les savoirs locaux.",
         },
         wisemoney: {
           title: "Wisemoney",
-          subtitle: "PWA finance local-first avec un coach IA",
+          subtitle: "Des finances personnelles conçues pour garder les données locales",
           description:
-            "La plupart des gens suivent leur argent dans une app, apprennent dans une autre et ne reçoivent de conseils nulle part. Wisemoney réunit suivi, coach financier IA et éducation adaptative dans une seule app local-first : vos données restent sur votre appareil et les leçons s'adaptent aux habitudes réelles.",
+            "Une application de finances personnelles local-first qui réunit suivi des dépenses, apprentissage adaptatif et conseils contextuels, tout en conservant les données principales sur l'appareil.",
+        },
+        y7Feedback: {
+          title: "Y7 Feedback",
+          subtitle: "Une boucle de feedback continue pour les équipes produit",
+          description:
+            "Un système de feedback produit qui relie soumissions publiques, preuves, échanges avec les mainteneurs, triage interne et résolution dans des espaces isolés.",
         },
         "7review": {
           title: "7Review",
-          subtitle: "Agent local-first pour la revue de code",
+          subtitle: "La revue de code privée, directement dans le terminal",
           description:
-            "Les revues de code finissent souvent éparpillées entre onglets et serveurs distants. 7Review fait la revue directement dans votre terminal, en gardant l'analyse sur votre machine, hors du cloud.",
+            "Un agent de revue natif du terminal qui analyse le code localement et garde son contexte hors des services distants.",
         },
         malvision: {
           title: "MalVision",
-          subtitle: "Détection de malwares par deep learning via visualisation binaire",
+          subtitle: "Classifier les malwares au-delà des signatures",
           description:
-            "Les analystes trient des milliers de binaires malveillants par semaine, et les outils à signatures manquent les familles obfusquées. MalVision transforme les binaires en images et entraîne un CNN à reconnaître l'empreinte visuelle de chaque famille, pour attraper ce que les signatures ne voient pas.",
+            "Un projet de recherche qui transforme les binaires en images et utilise des modèles convolutifs pour identifier les familles de malwares au-delà des signatures.",
         },
         docIntel: {
           title: "Doc-Intel",
-          subtitle: "Intelligence documentaire native terminal",
+          subtitle: "La recherche documentaire privée et entièrement locale",
           description:
-            "Posez des questions sur vos PDF privés en français ou en anglais. 100 % local, zéro appel réseau, avec réponses sourcées et citations : vos documents ne quittent jamais votre machine.",
+            "Un outil en ligne de commande pour rechercher et interroger des PDF privés en français ou en anglais, avec réponses sourcées, citations et sans dépendance réseau.",
         },
         piGeosint: {
           title: "Pi Geosint Agent",
-          subtitle: "Pipeline d'investigation géographique OSINT",
+          subtitle: "Contribution à un pipeline OSINT de terrain",
           description:
-            "L'OSINT au niveau de la rue est fastidieux à collecter à la main. Cet agent automatise les pipelines d'investigation géographique : découvrez, capturez et stockez des images de rue depuis un Pi.",
+            "Contribution à un pipeline piloté depuis le navigateur pour découvrir, capturer et stocker des images de rue sur un Raspberry Pi.",
         },
         fikassoTech: {
           title: "Fikasso Tech",
-          subtitle: "Site web de l'entreprise",
+          subtitle: "Une présence numérique plus claire pour un studio technologique",
           description:
-            "Fikasso Tech avait besoin d'un site à la hauteur du studio. Voici le site web de l'entreprise : services, réalisations et projets livrés, pensé pour être maintenu facilement par l'équipe.",
+            "Un site d'entreprise maintenable qui présente les services, les réalisations et les produits livrés par le studio.",
         },
         givemealiftCms: {
           title: "Give Me A Lift",
-          subtitle: "Site web d'une association éducative au Burkina Faso",
+          subtitle: "Une plateforme éditoriale pour une association éducative",
           description:
-            "Une association éducative au Burkina Faso méritait plus qu'un site vitrine. C'est la plateforme web et de contenu qui permet à l'équipe de publier, partager et faire grandir le soutien aux enfants qu'elle accompagne.",
+            "Un site et une plateforme de contenu qui permettent à l'équipe de publier ses actualités, présenter son action et développer le soutien aux programmes éducatifs au Burkina Faso.",
         },
       },
     },
