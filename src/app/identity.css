@@ -155,14 +155,15 @@
 .flow-footer { width: min(calc(100% - 3rem), 78rem); margin-inline: auto; }
 
 .flow-home-hero {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(16rem, .48fr);
-  gap: clamp(3rem, 7vw, 6.5rem);
+  grid-template-columns: minmax(0, 1.08fr) minmax(19rem, .58fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
   align-items: center;
   min-height: 0;
-  padding: clamp(4rem, 7vw, 6rem) 0;
+  padding: clamp(4rem, 7vw, 6rem) 0 clamp(3.25rem, 5vw, 4.5rem);
 }
-.flow-home-copy { max-width: 48rem; }
+.flow-home-copy { position: relative; z-index: 2; max-width: 48rem; }
 .flow-eyebrow { display: flex; align-items: center; gap: .7rem; color: var(--flow-accent); font-size: var(--flow-type-label); font-weight: 600; }
 .flow-eyebrow span { width: .46rem; height: .46rem; border-radius: 50%; background: var(--flow-accent); }
 .flow-home-copy h1 {
@@ -180,7 +181,15 @@
 @keyframes flow-cursor { 50% { opacity: 0; } }
 .flow-actions { display: flex; align-items: center; gap: 1.25rem; margin-top: 1.8rem; }
 
-.flow-portrait-wrap { position: relative; justify-self: end; width: min(100%, 20rem); padding-bottom: 2.5rem; }
+.flow-portrait-wrap { position: relative; z-index: 2; justify-self: end; width: min(100%, 22rem); padding-bottom: 2rem; }
+.flow-portrait-wrap::before {
+  position: absolute;
+  inset: -8% -12% -5% -72%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 78% 46%, rgba(83, 192, 251, .19), rgba(22, 121, 167, .07) 38%, transparent 70%);
+  filter: blur(22px);
+  content: "";
+}
 .flow-portrait {
   position: relative;
   z-index: 1;
@@ -188,6 +197,7 @@
   overflow: hidden;
   border-radius: 48% 48% 1.4rem 1.4rem / 28% 28% 1.4rem 1.4rem;
   background: var(--flow-soft);
+  box-shadow: 0 1.8rem 4.5rem rgba(2, 20, 30, .2);
 }
 .flow-portrait img { object-fit: cover; filter: saturate(.88) contrast(1.03); }
 .flow-portrait-line {
@@ -202,7 +212,7 @@
   transform: rotate(8deg);
 }
 .flow-portrait-line::after { position: absolute; right: -.3rem; bottom: -.25rem; width: .6rem; height: .6rem; border-radius: 50%; background: var(--flow-accent); content: ""; }
-.flow-portrait-wrap > p { position: absolute; z-index: 2; right: -3.5rem; bottom: 1rem; width: 15.5rem; padding: .8rem 1rem; border-radius: 1rem 0 1rem 1rem; background: var(--flow-surface); font-size: var(--flow-type-small); font-weight: 600; box-shadow: 0 1rem 2.5rem rgba(3, 24, 35, .15); }
+.flow-portrait-wrap > p { position: absolute; z-index: 2; right: -1.75rem; bottom: .25rem; width: 15.5rem; padding: .8rem 1rem; border: 1px solid var(--flow-line); border-radius: 1rem 0 1rem 1rem; background: color-mix(in srgb, var(--flow-surface) 94%, transparent); font-size: var(--flow-type-small); font-weight: 600; box-shadow: 0 1rem 2.5rem rgba(3, 24, 35, .18); backdrop-filter: blur(14px); }
 .flow-portrait-wrap > p span { color: var(--flow-muted); font-size: .75rem; font-weight: 500; }
 
 .flow-home-experience {
@@ -399,7 +409,7 @@
   .flow-project-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .flow-header { grid-template-columns: 1fr auto; }
   .flow-nav { order: 3; grid-column: 1 / -1; justify-content: center; padding-top: .65rem; }
-  .flow-home-hero { grid-template-columns: 1fr minmax(15rem, .5fr); gap: 3rem; min-height: 0; }
+  .flow-home-hero { grid-template-columns: 1fr minmax(17rem, .55fr); gap: 2rem; min-height: 0; }
   .flow-project-rows article { grid-template-columns: 1fr .85fr auto; }
   .flow-row-tech { display: none; }
   .flow-case-content { grid-template-columns: minmax(8rem, .35fr) repeat(2, 1fr); }
