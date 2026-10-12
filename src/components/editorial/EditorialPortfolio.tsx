@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import posthog from "posthog-js";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/components/ThemeProvider";
 import { useTranslations } from "@/contexts/TranslationContext";
 import { analytics } from "@/lib/config";
@@ -22,22 +23,23 @@ const editorialCopy = {
     },
     brandCaption: "Yanis Axel Dabo · Software Engineer",
     availability: "Software engineer · Ouagadougou, Burkina Faso",
-    heroTitle: "Reliable software, from first idea to production.",
+    heroTitle: "From thoughtful design to continuous improvement.",
     heroBody:
       "I design backend services, developer platforms, and applied AI systems with clear architecture, honest trade-offs, and production reliability in mind.",
     viewWork: "View selected work",
     contactMe: "Start a conversation",
     location: "Based in Ouagadougou · Working globally",
     focus: ["Backend systems", "Platform engineering", "Applied AI", "Developer tools"],
+    process: "Understand. Design. Build. Ship. Observe. Improve.",
     workLabel: "Selected work",
-    workTitle: "Products and systems I have designed, built, and shipped.",
+    workTitle: "Selected systems, tools, and products.",
     openProject: "Open project",
     capabilitiesLabel: "Capabilities",
-    capabilitiesTitle: "Engineering from first principles to production.",
+    capabilitiesTitle: "What I design and build.",
     experienceLabel: "Experience",
-    experienceTitle: "Recent roles and responsibilities.",
+    experienceTitle: "Where I have worked and what I owned.",
     profileLabel: "Profile",
-    profileTitle: "Curious across layers. Precise about the fundamentals.",
+    profileTitle: "How I approach software engineering.",
     profileBody:
       "My work sits at the intersection of software design, backend and platform engineering, and applied AI. I care about understanding why systems work, where they fail, and how to make them easier to operate and evolve.",
     profileLink: "Read my résumé",
@@ -55,22 +57,23 @@ const editorialCopy = {
     },
     brandCaption: "Yanis Axel Dabo · Ingénieur logiciel",
     availability: "Ingénieur logiciel · Ouagadougou, Burkina Faso",
-    heroTitle: "Des logiciels fiables, de la première idée à la production.",
+    heroTitle: "De la conception réfléchie à l’amélioration continue.",
     heroBody:
       "Je conçois des services backend, des plateformes développeur et des systèmes d’IA appliquée avec une architecture claire, des choix assumés et une vraie attention à la fiabilité.",
     viewWork: "Voir mes travaux",
     contactMe: "Démarrer une conversation",
     location: "Basé à Ouagadougou · Collaboration internationale",
     focus: ["Systèmes backend", "Platform engineering", "IA appliquée", "Outils développeur"],
+    process: "Comprendre. Concevoir. Construire. Livrer. Observer. Améliorer.",
     workLabel: "Travaux sélectionnés",
-    workTitle: "Des produits et systèmes que j’ai conçus, développés et livrés.",
+    workTitle: "Systèmes, outils et produits sélectionnés.",
     openProject: "Voir le projet",
     capabilitiesLabel: "Expertise",
-    capabilitiesTitle: "De la réflexion initiale à la mise en production.",
+    capabilitiesTitle: "Ce que je conçois et développe.",
     experienceLabel: "Parcours",
-    experienceTitle: "Rôles et responsabilités récents.",
+    experienceTitle: "Mes expériences et responsabilités.",
     profileLabel: "Profil",
-    profileTitle: "Curieux à travers les couches. Rigoureux sur les fondamentaux.",
+    profileTitle: "Ma manière d’aborder l’ingénierie logicielle.",
     profileBody:
       "Mon travail se situe à l’intersection de la conception logicielle, du backend, des plateformes et de l’IA appliquée. Je cherche à comprendre pourquoi les systèmes fonctionnent, où ils échouent et comment les rendre plus simples à exploiter et à faire évoluer.",
     profileLink: "Lire mon CV",
@@ -161,6 +164,7 @@ export default function EditorialPortfolio() {
             </p>
             <h1>{copy.heroTitle}</h1>
             <p className="editorial-hero-body">{copy.heroBody}</p>
+            <EditorialTypewriter text={copy.process} />
             <div className="editorial-hero-actions">
               <Link href="#work" className="editorial-button editorial-button-primary">
                 {copy.viewWork}
@@ -261,21 +265,8 @@ export default function EditorialPortfolio() {
           </div>
         </section>
 
-        <section className="editorial-section" id="capabilities">
-          <SectionIntro index="02" label={copy.capabilitiesLabel} title={copy.capabilitiesTitle} />
-          <div className="editorial-capabilities">
-            {capabilities.map((capability, index) => (
-              <article key={capability.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{capability.title}</h3>
-                <p>{capability.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className="editorial-section" id="experience">
-          <SectionIntro index="03" label={copy.experienceLabel} title={copy.experienceTitle} />
+          <SectionIntro index="02" label={copy.experienceLabel} title={copy.experienceTitle} />
           <div className="editorial-experience-list">
             {experienceIds.map((id, index) => {
               const role = experienceCopy[id];
@@ -295,7 +286,7 @@ export default function EditorialPortfolio() {
         </section>
 
         <section className="editorial-section editorial-profile" id="profile">
-          <SectionIntro index="04" label={copy.profileLabel} title={copy.profileTitle} />
+          <SectionIntro index="03" label={copy.profileLabel} title={copy.profileTitle} />
           <div className="editorial-profile-grid">
             <p className="editorial-profile-lead">{copy.profileBody}</p>
             <div className="editorial-profile-details">
@@ -307,6 +298,19 @@ export default function EditorialPortfolio() {
                 <Icon icon="solar:arrow-right-up-linear" width={18} height={18} aria-hidden />
               </Link>
             </div>
+          </div>
+          <div className="editorial-capabilities-heading">
+            <p>{copy.capabilitiesLabel}</p>
+            <h3>{copy.capabilitiesTitle}</h3>
+          </div>
+          <div className="editorial-capabilities">
+            {capabilities.map((capability, index) => (
+              <article key={capability.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{capability.title}</h3>
+                <p>{capability.description}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -348,5 +352,35 @@ function SectionIntro({ index, label, title }: { index: string; label: string; t
       </div>
       <h2>{title}</h2>
     </div>
+  );
+}
+
+function EditorialTypewriter({ text }: { text: string }) {
+  const [visibleText, setVisibleText] = useState("");
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setVisibleText(text);
+      return;
+    }
+
+    setVisibleText("");
+    let characterIndex = 0;
+    const interval = window.setInterval(() => {
+      characterIndex += 1;
+      setVisibleText(text.slice(0, characterIndex));
+      if (characterIndex >= text.length) {
+        window.clearInterval(interval);
+      }
+    }, 52);
+
+    return () => window.clearInterval(interval);
+  }, [text]);
+
+  return (
+    <p className="editorial-process" aria-label={text}>
+      <span aria-hidden="true">{visibleText}</span>
+      <span className="editorial-process-cursor" aria-hidden="true" />
+    </p>
   );
 }
