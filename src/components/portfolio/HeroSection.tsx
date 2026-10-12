@@ -56,7 +56,7 @@ export default function HeroSection() {
           transition={{ delay: 0.1, duration: 0.5 }}
         >
           <Image
-            src="/they4nn.jpeg"
+            src="/yanis-axel-dabo-portrait.png"
             alt="Ragnang-Newende Yanis Axel DABO portrait"
             fill
             sizes="(min-width: 768px) 192px, 160px"

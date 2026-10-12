@@ -16,8 +16,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Yanis Axel Dabo — Software Engineer",
-  description: "Software engineer working across backend systems, developer platforms, and applied AI from Ouagadougou, Burkina Faso.",
-  keywords: "Yanis Axel Dabo, Software Engineer, Backend Engineering, Platform Engineering, Applied AI, Burkina Faso",
+  description: "Software engineer working across backend systems, platform engineering, DevSecOps, and applied AI from Ouagadougou, Burkina Faso.",
+  keywords: "Yanis Axel Dabo, Software Engineer, Backend Engineering, Platform Engineering, DevSecOps, Applied AI, Burkina Faso",
   authors: [{ name: "Ragnang-Newende Yanis Axel DABO" }],
   icons: {
     icon: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Yanis Axel Dabo — Software Engineer",
-    description: "Backend systems, developer platforms, and applied AI designed and built from Ouagadougou, Burkina Faso.",
+    description: "Backend systems, platform engineering, DevSecOps, and applied AI from Ouagadougou, Burkina Faso.",
     type: "website",
   },
 };

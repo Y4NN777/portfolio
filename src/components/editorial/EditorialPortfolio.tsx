@@ -3,359 +3,165 @@
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
-import posthog from "posthog-js";
 import { useEffect, useState } from "react";
-import { useTheme } from "@/components/ThemeProvider";
 import { useTranslations } from "@/contexts/TranslationContext";
-import { analytics } from "@/lib/config";
-import { translations, type Locale } from "@/lib/i18n/translations";
+import { experienceGroups, periodOnly } from "@/lib/experience";
+import { translations } from "@/lib/i18n/translations";
 import { projectEntries } from "@/lib/projects";
+import { FlowShell } from "./SiteChrome";
+import { ProjectVisual } from "./ProjectVisual";
 
-const NEXT_LOCALE: Record<Locale, Locale> = { en: "fr", fr: "en" };
-
-const editorialCopy = {
+const copyByLocale = {
   en: {
-    nav: {
-      work: "Work",
-      experience: "Experience",
-      profile: "Profile",
-      contact: "Contact",
-    },
-    brandCaption: "Yanis Axel Dabo · Software Engineer",
-    availability: "Software engineer · Ouagadougou, Burkina Faso",
-    heroTitle: "From thoughtful design to continuous improvement.",
-    heroBody:
-      "I design backend services, developer platforms, and applied AI systems with clear architecture, honest trade-offs, and production reliability in mind.",
-    viewWork: "View selected work",
-    contactMe: "Start a conversation",
-    location: "Based in Ouagadougou · Working globally",
-    focus: ["Backend systems", "Platform engineering", "Applied AI", "Developer tools"],
+    eyebrow: "Software Engineer · Ouagadougou, Burkina Faso",
+    titleBefore: "From thoughtful design to",
+    titleAccent: "continuous improvement.",
+    intro: "I design, ship, and evolve reliable software and applied AI systems.",
     process: "Understand. Design. Build. Ship. Observe. Improve.",
-    workLabel: "Selected work",
-    workTitle: "Selected systems, tools, and products.",
-    openProject: "Open project",
-    capabilitiesLabel: "Capabilities",
-    capabilitiesTitle: "What I design and build.",
-    experienceLabel: "Experience",
-    experienceTitle: "Where I have worked and what I owned.",
-    profileLabel: "Profile",
-    profileTitle: "How I approach software engineering.",
-    profileBody:
-      "My work sits at the intersection of software design, backend and platform engineering, and applied AI. I care about understanding why systems work, where they fail, and how to make them easier to operate and evolve.",
-    profileLink: "Read my résumé",
-    contactLabel: "Contact",
-    contactTitle: "Have a difficult software problem? Let’s talk.",
+    explore: "Explore my work",
+    selected: "Selected work",
+    selectedIntro: "Products shaped by real constraints.",
+    caseStudy: "View case study",
+    allProjects: "See all projects",
+    now: "Currently",
+    currentTitle: "Building reliable software from Ouagadougou.",
+    about: "About my work",
     email: "Email me",
-    copyright: "Yanis Axel Dabo",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    experience: "Professional experience",
+    roles: "roles",
+    fullExperience: "View full experience",
   },
   fr: {
-    nav: {
-      work: "Travaux",
-      experience: "Parcours",
-      profile: "Profil",
-      contact: "Contact",
-    },
-    brandCaption: "Yanis Axel Dabo · Ingénieur logiciel",
-    availability: "Ingénieur logiciel · Ouagadougou, Burkina Faso",
-    heroTitle: "De la conception réfléchie à l’amélioration continue.",
-    heroBody:
-      "Je conçois des services backend, des plateformes développeur et des systèmes d’IA appliquée avec une architecture claire, des choix assumés et une vraie attention à la fiabilité.",
-    viewWork: "Voir mes travaux",
-    contactMe: "Démarrer une conversation",
-    location: "Basé à Ouagadougou · Collaboration internationale",
-    focus: ["Systèmes backend", "Platform engineering", "IA appliquée", "Outils développeur"],
+    eyebrow: "Ingénieur logiciel · Ouagadougou, Burkina Faso",
+    titleBefore: "De la conception réfléchie à",
+    titleAccent: "l’amélioration continue.",
+    intro: "Je conçois, livre et fais évoluer des logiciels fiables et des systèmes d’IA appliquée.",
     process: "Comprendre. Concevoir. Construire. Livrer. Observer. Améliorer.",
-    workLabel: "Travaux sélectionnés",
-    workTitle: "Systèmes, outils et produits sélectionnés.",
-    openProject: "Voir le projet",
-    capabilitiesLabel: "Expertise",
-    capabilitiesTitle: "Ce que je conçois et développe.",
-    experienceLabel: "Parcours",
-    experienceTitle: "Mes expériences et responsabilités.",
-    profileLabel: "Profil",
-    profileTitle: "Ma manière d’aborder l’ingénierie logicielle.",
-    profileBody:
-      "Mon travail se situe à l’intersection de la conception logicielle, du backend, des plateformes et de l’IA appliquée. Je cherche à comprendre pourquoi les systèmes fonctionnent, où ils échouent et comment les rendre plus simples à exploiter et à faire évoluer.",
-    profileLink: "Lire mon CV",
-    contactLabel: "Contact",
-    contactTitle: "Un problème logiciel difficile à résoudre ? Parlons-en.",
+    explore: "Explorer mes projets",
+    selected: "Projets sélectionnés",
+    selectedIntro: "Des produits façonnés par des contraintes réelles.",
+    caseStudy: "Voir l’étude de cas",
+    allProjects: "Voir tous les projets",
+    now: "En ce moment",
+    currentTitle: "Je construis des logiciels fiables depuis Ouagadougou.",
+    about: "Découvrir mon parcours",
     email: "M’écrire",
-    copyright: "Yanis Axel Dabo",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    experience: "Expérience professionnelle",
+    roles: "postes",
+    fullExperience: "Voir tout le parcours",
   },
 } as const;
 
-const selectedProjectIds = ["glexTalent", "wisemoney", "tenglaafi", "7review"] as const;
-const experienceIds = ["aïobiSystems", "y7labs", "fikasso", "bitSolutions"] as const;
+const featuredIds = ["mishkan", "glexTalent"] as const;
+const homeExperienceGroups = experienceGroups.slice(0, 4);
 
 export default function EditorialPortfolio() {
-  const { locale, setLocale } = useTranslations();
-  const { theme, toggleTheme } = useTheme();
-  const copy = editorialCopy[locale];
-  const localized = translations[locale];
-  const projectCopy = localized.projects.items as typeof translations.en.projects.items;
-  const experienceCopy = localized.experience.items as typeof translations.en.experience.items;
-  const selectedProjects = selectedProjectIds
-    .map((id) => projectEntries.find((project) => project.id === id))
-    .filter((project): project is (typeof projectEntries)[number] => Boolean(project));
-  const capabilities = localized.overview.coreSkills.slice(0, 4);
-
-  const trackProject = (projectId: string, destination: "live" | "github") => {
-    if (analytics.enabled) {
-      posthog.capture("project_opened", {
-        project_id: projectId,
-        destination_type: destination,
-        portfolio_variant: "editorial",
-      });
-    }
-  };
+  const { locale } = useTranslations();
+  const copy = copyByLocale[locale];
+  const projectCopy = translations[locale].projects.items as typeof translations.en.projects.items;
+  const experienceCopy = translations[locale].experience.items as typeof translations.en.experience.items;
+  const projects = featuredIds.map((id) => projectEntries.find((project) => project.id === id)).filter(Boolean) as typeof projectEntries;
 
   return (
-    <div className="editorial-site">
-      <a href="#content" className="editorial-skip-link">
-        Skip to content
-      </a>
-
-      <header className="editorial-header">
-        <Link href="#top" className="editorial-brand" aria-label="Yanis Axel Dabo — home">
-          <span className="y4nn-logo">
-            <span>Y4NN</span>
-            <b>777</b>
-          </span>
-          <span className="editorial-brand-caption">{copy.brandCaption}</span>
-        </Link>
-
-        <nav className="editorial-nav" aria-label="Main navigation">
-          <Link href="#work">{copy.nav.work}</Link>
-          <Link href="#experience">{copy.nav.experience}</Link>
-          <Link href="#profile">{copy.nav.profile}</Link>
-          <Link href="#contact">{copy.nav.contact}</Link>
-        </nav>
-
-        <div className="editorial-header-actions">
-          <button
-            type="button"
-            className="editorial-language"
-            onClick={() => setLocale(NEXT_LOCALE[locale])}
-            aria-label={locale === "en" ? "Passer en français" : "Switch to English"}
-          >
-            {locale.toUpperCase()}
-          </button>
-          <button
-            type="button"
-            className="editorial-theme-toggle"
-            onClick={toggleTheme}
-            aria-label={theme === "dark" ? "Use light theme" : "Use dark theme"}
-          >
-            <Icon icon={theme === "dark" ? "solar:sun-2-linear" : "solar:moon-linear"} width={18} height={18} aria-hidden />
-          </button>
-          <Link href="mailto:y4nn.dev@gmail.com" className="editorial-header-cta">
-            {copy.contactMe}
-            <Icon icon="solar:arrow-right-up-linear" width={18} height={18} aria-hidden />
-          </Link>
-        </div>
-      </header>
-
+    <FlowShell>
       <main id="content">
-        <section className="editorial-hero" id="top">
-          <div className="editorial-hero-copy">
-            <p className="editorial-kicker">
-              <span aria-hidden />
-              {copy.availability}
-            </p>
-            <h1>{copy.heroTitle}</h1>
-            <p className="editorial-hero-body">{copy.heroBody}</p>
-            <EditorialTypewriter text={copy.process} />
-            <div className="editorial-hero-actions">
-              <Link href="#work" className="editorial-button editorial-button-primary">
-                {copy.viewWork}
-                <Icon icon="solar:arrow-down-linear" width={18} height={18} aria-hidden />
-              </Link>
-              <Link href="mailto:y4nn.dev@gmail.com" className="editorial-text-link">
-                {copy.contactMe}
-                <Icon icon="solar:arrow-right-up-linear" width={18} height={18} aria-hidden />
-              </Link>
-            </div>
-            <div className="editorial-hero-meta">
-              <span>{copy.location}</span>
-              <span>GitHub · Y4NN777</span>
+        <section className="flow-home-hero">
+          <div className="flow-home-copy">
+            <p className="flow-eyebrow"><span aria-hidden />{copy.eyebrow}</p>
+            <h1>{copy.titleBefore} <em>{copy.titleAccent}</em></h1>
+            <p className="flow-intro">{copy.intro}</p>
+            <Typewriter text={copy.process} />
+            <div className="flow-actions">
+              <Link href="/projects" className="flow-button flow-button-primary">{copy.explore}<Icon icon="solar:arrow-right-linear" width={18} height={18} aria-hidden /></Link>
+              <Link href="https://github.com/Y4NN777" target="_blank" rel="noopener noreferrer" className="flow-text-link">{copy.github}<Icon icon="solar:arrow-right-up-linear" width={17} height={17} aria-hidden /></Link>
+              <Link href="https://www.linkedin.com/in/y4nnthedev777/" target="_blank" rel="noopener noreferrer" className="flow-text-link">{copy.linkedin}<Icon icon="solar:arrow-right-up-linear" width={17} height={17} aria-hidden /></Link>
             </div>
           </div>
 
-          <div className="editorial-portrait">
-            <div className="editorial-portrait-label">THE Y4NN · 777</div>
-            <Image
-              src="/they4nn.jpeg"
-              alt="Yanis Axel Dabo"
-              fill
-              priority
-              sizes="(max-width: 900px) 100vw, 42vw"
-              className="editorial-portrait-image"
-            />
-            <div className="editorial-portrait-footer">
-              <span>Yanis Axel Dabo</span>
-              <span>Software engineer</span>
+          <div className="flow-portrait-wrap">
+            <div className="flow-portrait-line" aria-hidden />
+            <div className="flow-portrait">
+              <Image src="/yanis-axel-dabo-portrait.png" alt="Yanis Axel Dabo" fill priority sizes="(max-width: 760px) 82vw, 34vw" />
             </div>
+            <p>Yanis Axel Dabo<br /><span>Software Systems · Platform Engineering · DevSecOps · Applied AI</span></p>
           </div>
         </section>
 
-        <div className="editorial-focus-strip" aria-label="Areas of focus">
-          {copy.focus.map((item, index) => (
-            <div key={item}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              {item}
-            </div>
-          ))}
-        </div>
+        <section className="flow-home-work">
+          <div className="flow-section-heading">
+            <p>{copy.selected}</p>
+            <h2>{copy.selectedIntro}</h2>
+          </div>
 
-        <section className="editorial-section" id="work">
-          <SectionIntro index="01" label={copy.workLabel} title={copy.workTitle} />
-
-          <div className="editorial-projects">
-            {selectedProjects.map((project, index) => {
-              const projectText = projectCopy[project.id];
-              const href = project.live || project.github || "#work";
-              const destination = project.live ? "live" : "github";
-
+          <div className="flow-featured-projects">
+            {projects.map((project, index) => {
+              const content = projectCopy[project.id];
               return (
-                <article className="editorial-project" key={project.id}>
-                  <Link
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="editorial-project-image"
-                    onClick={() => trackProject(project.id, destination)}
-                    aria-label={`${copy.openProject}: ${projectText.title}`}
-                  >
-                    {project.thumbnail && (
-                      <Image
-                        src={project.thumbnail}
-                        alt={`Preview of ${projectText.title}`}
-                        fill
-                        sizes="(max-width: 900px) 100vw, 55vw"
-                        className="editorial-project-thumbnail"
-                      />
-                    )}
-                    <span className="editorial-project-number" aria-hidden>
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
+                <article className={`flow-featured-project flow-featured-project-${index + 1}`} key={project.id}>
+                  <Link href={`/projects/${project.slug}`} className="flow-featured-image" aria-label={`${copy.caseStudy}: ${content.title}`}>
+                    {project.thumbnail
+                      ? <Image src={project.thumbnail} alt="" fill sizes="(max-width: 760px) 100vw, 58vw" />
+                      : <ProjectVisual title={content.title} subtitle={content.subtitle} tech={project.tech} />}
                   </Link>
-
-                  <div className="editorial-project-copy">
-                    <div className="editorial-project-heading">
-                      <h3>{projectText.title}</h3>
-                      <Link
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => trackProject(project.id, destination)}
-                        aria-label={`${copy.openProject}: ${projectText.title}`}
-                      >
-                        <Icon icon="solar:arrow-right-up-linear" width={24} height={24} aria-hidden />
-                      </Link>
-                    </div>
-                    <p className="editorial-project-subtitle">{projectText.subtitle}</p>
-                    <p>{projectText.description}</p>
-                    <ul className="editorial-tech-list" aria-label={`${projectText.title} technology stack`}>
-                      {project.tech.map((tech) => <li key={tech}>{tech}</li>)}
-                    </ul>
+                  <div className="flow-featured-copy">
+                    <p>{content.subtitle}</p>
+                    <h3><Link href={`/projects/${project.slug}`}>{content.title}</Link></h3>
+                    <p>{content.description}</p>
+                    <div className="flow-project-meta">{project.tech.map((tech) => <span key={tech}>{tech}</span>)}</div>
+                    <Link href={`/projects/${project.slug}`} className="flow-text-link">{copy.caseStudy}<Icon icon="solar:arrow-right-linear" width={17} height={17} aria-hidden /></Link>
                   </div>
                 </article>
               );
             })}
           </div>
+
+          <Link href="/projects" className="flow-all-projects">{copy.allProjects}<Icon icon="solar:arrow-right-linear" width={19} height={19} aria-hidden /></Link>
         </section>
 
-        <section className="editorial-section" id="experience">
-          <SectionIntro index="02" label={copy.experienceLabel} title={copy.experienceTitle} />
-          <div className="editorial-experience-list">
-            {experienceIds.map((id, index) => {
-              const role = experienceCopy[id];
+        <section className="flow-home-experience" id="experience">
+          <div className="flow-experience-heading">
+            <h2>{copy.experience}</h2>
+            <Link href="/about" className="flow-text-link">
+              {copy.fullExperience}
+              <Icon icon="solar:arrow-right-linear" width={17} height={17} aria-hidden />
+            </Link>
+          </div>
+          <div className="flow-experience-rows">
+            {homeExperienceGroups.map((group) => {
+              const experience = experienceCopy[group.roles[0]];
               return (
-                <article key={id} className="editorial-experience-row">
-                  <span className="editorial-row-number">{String(index + 1).padStart(2, "0")}</span>
+                <article key={group.id}>
                   <div>
-                    <p className="editorial-company">{role.company}</p>
-                    <h3>{role.role}</h3>
+                    <h3>{experience.role}</h3>
+                    <p>{experience.company}{group.roles.length > 1 ? ` · ${group.roles.length} ${copy.roles}` : ""}</p>
                   </div>
-                  <p className="editorial-period">{role.period}</p>
-                  <p className="editorial-role-description">{role.description}</p>
+                  <p>{periodOnly(experience.period)}</p>
                 </article>
               );
             })}
           </div>
         </section>
 
-        <section className="editorial-section editorial-profile" id="profile">
-          <SectionIntro index="03" label={copy.profileLabel} title={copy.profileTitle} />
-          <div className="editorial-profile-grid">
-            <p className="editorial-profile-lead">{copy.profileBody}</p>
-            <div className="editorial-profile-details">
-              {localized.overview.introParagraphs.slice(0, 2).map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-              <Link href={locale === "fr" ? "/RESUME_FR.pdf" : "/RESUME_EN.pdf"} target="_blank" className="editorial-text-link">
-                {copy.profileLink}
-                <Icon icon="solar:arrow-right-up-linear" width={18} height={18} aria-hidden />
-              </Link>
+        <section className="flow-current">
+          <p>{copy.now}</p>
+          <div>
+            <h2>{copy.currentTitle}</h2>
+            <div className="flow-actions">
+              <Link href="/about" className="flow-button">{copy.about}</Link>
+              <Link href="mailto:y4nn.dev@gmail.com" className="flow-text-link">{copy.email}<Icon icon="solar:arrow-right-up-linear" width={17} height={17} aria-hidden /></Link>
             </div>
           </div>
-          <div className="editorial-capabilities-heading">
-            <p>{copy.capabilitiesLabel}</p>
-            <h3>{copy.capabilitiesTitle}</h3>
-          </div>
-          <div className="editorial-capabilities">
-            {capabilities.map((capability, index) => (
-              <article key={capability.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{capability.title}</h3>
-                <p>{capability.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="editorial-contact" id="contact">
-          <p>{copy.contactLabel}</p>
-          <h2>{copy.contactTitle}</h2>
-          <Link href="mailto:y4nn.dev@gmail.com">
-            {copy.email}
-            <Icon icon="solar:arrow-right-up-linear" width={34} height={34} aria-hidden />
-          </Link>
         </section>
       </main>
-
-      <footer className="editorial-footer">
-        <div className="editorial-footer-brand">
-          <span className="y4nn-logo">
-            <span>Y4NN</span>
-            <b>777</b>
-          </span>
-          <p>Backend systems · Platforms · Applied AI</p>
-        </div>
-        <div className="editorial-footer-links">
-          <Link href="https://github.com/Y4NN777" target="_blank" rel="noopener noreferrer">GitHub</Link>
-          <Link href="https://www.linkedin.com/in/y4nnthedev777/" target="_blank" rel="noopener noreferrer">LinkedIn</Link>
-          <Link href="mailto:y4nn.dev@gmail.com">Email</Link>
-        </div>
-        <p>© {new Date().getFullYear()} {copy.copyright}</p>
-      </footer>
-    </div>
+    </FlowShell>
   );
 }
 
-function SectionIntro({ index, label, title }: { index: string; label: string; title: string }) {
-  return (
-    <div className="editorial-section-intro">
-      <div className="editorial-section-label">
-        <span>{index}</span>
-        <p>{label}</p>
-      </div>
-      <h2>{title}</h2>
-    </div>
-  );
-}
-
-function EditorialTypewriter({ text }: { text: string }) {
+function Typewriter({ text }: { text: string }) {
   const [visibleText, setVisibleText] = useState("");
 
   useEffect(() => {
@@ -363,24 +169,15 @@ function EditorialTypewriter({ text }: { text: string }) {
       setVisibleText(text);
       return;
     }
-
     setVisibleText("");
-    let characterIndex = 0;
+    let index = 0;
     const interval = window.setInterval(() => {
-      characterIndex += 1;
-      setVisibleText(text.slice(0, characterIndex));
-      if (characterIndex >= text.length) {
-        window.clearInterval(interval);
-      }
-    }, 52);
-
+      index += 1;
+      setVisibleText(text.slice(0, index));
+      if (index >= text.length) window.clearInterval(interval);
+    }, 42);
     return () => window.clearInterval(interval);
   }, [text]);
 
-  return (
-    <p className="editorial-process" aria-label={text}>
-      <span aria-hidden="true">{visibleText}</span>
-      <span className="editorial-process-cursor" aria-hidden="true" />
-    </p>
-  );
+  return <p className="flow-process" aria-label={text}><span aria-hidden>{visibleText}</span><i aria-hidden /></p>;
 }

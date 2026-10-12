@@ -314,7 +314,7 @@ export default function ContactSection() {
               {isResumeMenuOpen && (
                 <div className="absolute top-full mt-2 right-0 min-w-[180px] rounded-xl shadow-lg bg-white dark:bg-[#1f4d67] border border-[#296b8d]/40 dark:border-[#53c0fb]/30 z-20 overflow-hidden">
                   <Link
-                    href="/RESUME_EN.pdf"
+                    href="/Yanis-Axel-Dabo-CV-EN.pdf"
                     download
                     onClick={() => {
                       if (analytics.enabled) {
@@ -328,7 +328,7 @@ export default function ContactSection() {
                     {t("contact.resumeEn")}
                   </Link>
                   <Link
-                    href="/RESUME_FR.pdf"
+                    href="/Yanis-Axel-Dabo-CV-FR.pdf"
                     download
                     onClick={() => {
                       if (analytics.enabled) {
