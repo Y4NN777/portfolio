@@ -209,9 +209,9 @@ fikasso: {
       items: {
         mishkan: {
           title: "Mishkan",
-          subtitle: "Engineering missions coordinated as a durable system",
+          subtitle: "Autonomous agentic software development system",
           description:
-            "A local-first software engineering organization that forms mission teams, governs tool access, preserves evidence, and returns independently reviewed results.",
+            "A local-first system of persistent AI agents that plans, executes, and independently reviews complete engineering missions under human control.",
         },
         glexTalent: {
           title: "GlexTalent",
@@ -534,9 +534,9 @@ fikasso: {
       items: {
         mishkan: {
           title: "Mishkan",
-          subtitle: "Des missions d’ingénierie coordonnées comme un système durable",
+          subtitle: "Système agentique autonome de développement logiciel",
           description:
-            "Une organisation d’ingénierie logicielle local-first qui forme des équipes de mission, gouverne l’accès aux outils, conserve les preuves et livre des résultats évalués indépendamment.",
+            "Un système local-first d’agents IA persistants qui planifie, exécute et évalue indépendamment des missions d’ingénierie complètes, sous contrôle humain.",
         },
         glexTalent: {
           title: "GlexTalent",

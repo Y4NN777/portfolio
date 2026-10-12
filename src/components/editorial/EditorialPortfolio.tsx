@@ -56,7 +56,7 @@ const copyByLocale = {
   },
 } as const;
 
-const featuredIds = ["mishkan", "glexTalent"] as const;
+const featuredIds = ["mishkan", "glexTalent", "wisemoney"] as const;
 const homeExperienceGroups = experienceGroups.slice(0, 4);
 
 export default function EditorialPortfolio() {
@@ -111,7 +111,7 @@ export default function EditorialPortfolio() {
                     <p>{content.subtitle}</p>
                     <h3><Link href={`/projects/${project.slug}`}>{content.title}</Link></h3>
                     <p>{content.description}</p>
-                    <div className="flow-project-meta">{project.tech.map((tech) => <span key={tech}>{tech}</span>)}</div>
+                    <div className="flow-project-meta">{project.tech.slice(0, 4).map((tech) => <span key={tech}>{tech}</span>)}</div>
                     <Link href={`/projects/${project.slug}`} className="flow-text-link">{copy.caseStudy}<Icon icon="solar:arrow-right-linear" width={17} height={17} aria-hidden /></Link>
                   </div>
                 </article>

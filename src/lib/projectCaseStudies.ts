@@ -12,8 +12,8 @@ type LocalizedCaseStudies = Record<"en" | "fr", Record<ProjectItemKey, CaseStudy
 export const projectCaseStudies: LocalizedCaseStudies = {
   en: {
     mishkan: {
-      problem: "Complex engineering objectives lose continuity when planning, implementation, review, and operational evidence live in separate sessions.",
-      approach: "Mishkan forms a mission-specific team from persistent engineering roles while the human operator retains authority over consequential actions.",
+      problem: "Most coding agents handle isolated tasks or sessions. They lose continuity across planning, implementation, review, and operational follow-up.",
+      approach: "Mishkan uses persistent AI agents to form a team for each engineering mission, coordinate the work, and return independently reviewed results while the human stays in control.",
       engineering: "A Python daemon coordinates missions, policy-governed capabilities, SQLite state, resumable events, artifacts, MCP clients, and bounded browser and terminal work.",
       state: "Pre-release and under active development. The local single-daemon system is implemented; persistent scheduling, distributed workers, and the operational TUI remain roadmap work.",
     },
@@ -86,8 +86,8 @@ export const projectCaseStudies: LocalizedCaseStudies = {
   },
   fr: {
     mishkan: {
-      problem: "Les objectifs d’ingénierie complexes perdent leur continuité lorsque planification, réalisation, revue et preuves opérationnelles vivent dans des sessions séparées.",
-      approach: "Mishkan forme une équipe propre à chaque mission à partir de rôles persistants, tandis que l’opérateur humain conserve l’autorité sur les actions importantes.",
+      problem: "La plupart des agents de code traitent des tâches ou sessions isolées. Ils perdent la continuité entre planification, réalisation, revue et suivi opérationnel.",
+      approach: "Mishkan utilise des agents IA persistants pour former une équipe par mission, coordonner le travail et livrer un résultat évalué indépendamment, tout en laissant le contrôle à l’humain.",
       engineering: "Un daemon Python coordonne missions, capacités gouvernées par des politiques, état SQLite, événements reprenables, artefacts, clients MCP et travaux bornés dans le navigateur ou le terminal.",
       state: "Préversion en développement actif. Le système local à daemon unique est implémenté ; la planification persistante, les workers distribués et le TUI opérationnel restent dans la roadmap.",
     },
