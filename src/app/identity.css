@@ -267,6 +267,9 @@
 .flow-featured-image img,
 .flow-index-image img,
 .flow-case-image img { object-fit: cover; transition: transform 500ms ease, filter 300ms ease; }
+.flow-featured-image img.flow-wisemoney-preview,
+.flow-index-image img.flow-wisemoney-preview,
+.flow-case-image img.flow-wisemoney-preview { object-fit: contain; background: #f3fbfd; }
 .flow-featured-image:hover img,
 .flow-index-image:hover img { transform: scale(1.025); }
 .flow-featured-copy > p:first-child,

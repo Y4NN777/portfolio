@@ -104,7 +104,13 @@ export default function EditorialPortfolio() {
                 <article className={`flow-featured-project flow-featured-project-${index + 1}`} key={project.id}>
                   <Link href={`/projects/${project.slug}`} className="flow-featured-image" aria-label={`${copy.caseStudy}: ${content.title}`}>
                     {project.thumbnail
-                      ? <Image src={project.thumbnail} alt="" fill sizes="(max-width: 760px) 100vw, 58vw" />
+                      ? <Image
+                          src={project.thumbnail}
+                          alt=""
+                          fill
+                          sizes="(max-width: 760px) 100vw, 58vw"
+                          className={project.id === "wisemoney" ? "flow-wisemoney-preview" : undefined}
+                        />
                       : <ProjectVisual title={content.title} subtitle={content.subtitle} tech={project.tech} />}
                   </Link>
                   <div className="flow-featured-copy">

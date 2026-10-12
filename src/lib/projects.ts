@@ -74,7 +74,7 @@ const projectCatalog: Array<{
     ],
   },
   {
-    thumbnail: "/projects/wisemoney-current.png",
+    thumbnail: "/projects/wisemoney-landing.png",
     id: "wisemoney",
     slug: "wisemoney",
     gradient: "from-[#04283f] to-[#085b85]",

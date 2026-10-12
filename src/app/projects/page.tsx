@@ -65,7 +65,13 @@ export default function ProjectsPage() {
                 <article className="flow-index-feature" key={project.id}>
                   <Link href={`/projects/${project.slug}`} className="flow-index-image">
                     {project.thumbnail
-                      ? <Image src={project.thumbnail} alt="" fill sizes="(max-width: 760px) 100vw, 45vw" />
+                      ? <Image
+                          src={project.thumbnail}
+                          alt=""
+                          fill
+                          sizes="(max-width: 760px) 100vw, 45vw"
+                          className={project.id === "wisemoney" ? "flow-wisemoney-preview" : undefined}
+                        />
                       : <ProjectVisual title={content.title} subtitle={content.subtitle} tech={project.tech} />}
                   </Link>
                   <div>

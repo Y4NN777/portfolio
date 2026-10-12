@@ -67,7 +67,14 @@ export default function ProjectDetail({ projectId }: { projectId: ProjectItemKey
 
         <div className="flow-case-image">
           {project.thumbnail
-            ? <Image src={project.thumbnail} alt={`Preview of ${content.title}`} fill priority sizes="(max-width: 760px) 100vw, 78vw" />
+            ? <Image
+                src={project.thumbnail}
+                alt={`Preview of ${content.title}`}
+                fill
+                priority
+                sizes="(max-width: 760px) 100vw, 78vw"
+                className={project.id === "wisemoney" ? "flow-wisemoney-preview" : undefined}
+              />
             : <ProjectVisual title={content.title} subtitle={content.subtitle} tech={project.tech} />}
         </div>
 
