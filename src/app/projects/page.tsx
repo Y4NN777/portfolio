@@ -109,10 +109,15 @@ function ProjectRows({ title, projects, labels, caseStudies, openLabel }: {
           const content = labels[project.id];
           return (
             <article key={project.id}>
+              <Link className="flow-row-thumbnail" href={`/projects/${project.slug}`} aria-label={`${openLabel}: ${content.title}`}>
+                {project.thumbnail
+                  ? <Image src={project.thumbnail} alt="" fill sizes="120px" />
+                  : <ProjectVisual title={content.title} subtitle={content.subtitle} tech={project.tech} />}
+              </Link>
               <div><h3>{content.title}</h3><p>{content.subtitle}</p></div>
               <p>{caseStudies[project.id].state}</p>
               <div className="flow-row-tech">{project.tech.slice(0, 3).map((tech) => <span key={tech}>{tech}</span>)}</div>
-              <Link href={`/projects/${project.slug}`} aria-label={`${openLabel}: ${content.title}`}>
+              <Link className="flow-row-arrow" href={`/projects/${project.slug}`} aria-label={`${openLabel}: ${content.title}`}>
                 <Icon icon="solar:arrow-right-linear" width={20} height={20} aria-hidden />
               </Link>
             </article>
