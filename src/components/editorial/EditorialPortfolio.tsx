@@ -56,7 +56,7 @@ const copyByLocale = {
   },
 } as const;
 
-const featuredIds = ["mishkan", "glexTalent", "wisemoney"] as const;
+const featuredIds = ["wisemoney", "glexTalent", "mishkan"] as const;
 const homeExperienceGroups = experienceGroups.slice(0, 4);
 
 export default function EditorialPortfolio() {

@@ -13,7 +13,7 @@ const chromeCopy = {
   en: {
     skip: "Skip to content",
     home: "Home",
-    work: "Work",
+    work: "Projects",
     about: "About",
     resume: "Résumé",
     contact: "Contact",

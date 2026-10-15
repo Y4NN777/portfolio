@@ -12,6 +12,7 @@ import { projectEntries } from "@/lib/projects";
 
 const featured = new Set(["mishkan", "glexTalent", "7review", "wisemoney"]);
 const productIds = new Set(["y7Feedback", "y7Jprompter", "piGeosint"]);
+const websiteIds = new Set(["fikassoTech", "givemealiftCms"]);
 
 const pageCopy = {
   en: {
@@ -21,6 +22,7 @@ const pageCopy = {
     selected: "Selected work",
     selectedBody: "Project case studies.",
     products: "Products & tools",
+    websites: "Websites & content platforms",
     experiments: "Experiments & research",
     caseStudy: "View case study",
     open: "Open project",
@@ -32,6 +34,7 @@ const pageCopy = {
     selected: "Projets sélectionnés",
     selectedBody: "Études de cas projet.",
     products: "Produits & outils",
+    websites: "Sites web & plateformes de contenu",
     experiments: "Expérimentations & recherche",
     caseStudy: "Voir l’étude de cas",
     open: "Ouvrir le projet",
@@ -45,7 +48,8 @@ export default function ProjectsPage() {
   const caseStudies = projectCaseStudies[locale];
   const selected = projectEntries.filter((project) => featured.has(project.id));
   const products = projectEntries.filter((project) => productIds.has(project.id));
-  const experiments = projectEntries.filter((project) => !featured.has(project.id) && !productIds.has(project.id));
+  const websites = projectEntries.filter((project) => websiteIds.has(project.id));
+  const experiments = projectEntries.filter((project) => !featured.has(project.id) && !productIds.has(project.id) && !websiteIds.has(project.id));
 
   return (
     <FlowShell>
@@ -88,6 +92,7 @@ export default function ProjectsPage() {
         </section>
 
         <ProjectRows title={copy.products} projects={products} labels={projectCopy} caseStudies={caseStudies} openLabel={copy.caseStudy} />
+        <ProjectRows title={copy.websites} projects={websites} labels={projectCopy} caseStudies={caseStudies} openLabel={copy.caseStudy} />
         <ProjectRows title={copy.experiments} projects={experiments} labels={projectCopy} caseStudies={caseStudies} openLabel={copy.caseStudy} />
       </main>
     </FlowShell>

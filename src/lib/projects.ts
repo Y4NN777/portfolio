@@ -187,15 +187,17 @@ const projectCatalog: Array<{
 ];
 
 const portfolioOrder: ProjectItemKey[] = [
-  "mishkan",
+  "wisemoney",
   "glexTalent",
   "7review",
-  "wisemoney",
+  "mishkan",
   "y7Feedback",
   "y7Jprompter",
   "piGeosint",
   "tenglaafi",
   "malvision",
+  "fikassoTech",
+  "givemealiftCms",
 ];
 
 export const projectEntries = portfolioOrder.map((id) => projectCatalog.find((project) => project.id === id)!);

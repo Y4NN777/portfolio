@@ -305,6 +305,7 @@
 .flow-page-hero > p:last-child { color: var(--flow-muted); font-size: var(--flow-type-body); line-height: var(--flow-leading-body); }
 .flow-project-group { padding: clamp(4rem, 7vw, 6rem) 0; border-top: 1px solid var(--flow-line); }
 .flow-group-heading { display: grid; grid-template-columns: minmax(9rem, .45fr) minmax(0, 1.55fr); gap: 3rem; margin-bottom: 3rem; }
+.flow-project-group:not(.flow-project-group-featured) .flow-group-heading { grid-template-columns: 1fr; }
 .flow-group-heading h2 { font-size: var(--flow-type-section); font-weight: 500; letter-spacing: var(--flow-tracking-display); line-height: var(--flow-leading-display); }
 .flow-group-heading p { max-width: 34rem; color: var(--flow-muted); font-size: var(--flow-type-body); line-height: var(--flow-leading-body); }
 .flow-project-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 3vw, 3rem); }
